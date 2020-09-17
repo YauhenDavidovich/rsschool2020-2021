@@ -1,5 +1,30 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
 .wrapper {
     max-width: 1600px;
     margin: 0 auto;
-    
+}
+
+.header {
+    position: absolute;
+}
+
+.header__nav-row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.main-banner {
+    background-image: url(./assets/bg-image.png);
+    height: 768px;
 }
