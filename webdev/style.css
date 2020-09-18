@@ -9,27 +9,128 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+li {
+    list-style-type: none;
+}
+
+
 a {
-    color: white;
+    color: inherit;
     text-decoration: none;
+    outline: none;
 }
 
 .wrapper {
-    max-width: 1600px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    width: 1600px;
     margin: 0 auto;
+    overflow: hidden;
+
 }
 
 .header {
-    position: absolute;
+    position: relative;
+    width: 100%;
+    height: 70px;
 }
 
+.header__nav {
+    margin-left: 30px;
+}
+
+
 .header__nav-row {
+    position: absolute;
+    top: 25px;
     display: flex;
-    flex-flow: row nowrap;
+    justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 45px;
+    z-index: 1000;
+}
+
+.menu__link {
+    color: #fff;
+    opacity: .8;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.main {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-page {
+    width: 100%;
+    height: 674px;
+    z-index: 10;
 }
 
 .main-banner {
-    background-image: url(./assets/bg-image.png);
-    height: 768px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 744px;
+    background-image: url('./assets/bg-image.png');
+    background-repeat: no-repeat;
 }
+
+.main-banner__content {
+    position: absolute;
+    top: 229px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.main-banner__title {    
+    padding-left: 5px;
+    height: 75px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    letter-spacing: 4.5px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.main-banner__text {
+    margin-top: 20px;
+    width: 504px;
+    height: 50px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 140%;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.main-banner__button {
+    margin-top: 16px;
+    padding: 0 6px 0 3px;
+    width: 184px;
+    height: 46px;
+    background: #00AFDB;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16.41px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -0.7px;
+    border: 0;
+    outline: 0;
+  }
+
+  .main-banner__button:hover {
+    background: #009CC2;
+  }

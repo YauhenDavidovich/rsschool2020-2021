@@ -6,26 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>webdev</title>
     <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <div class="wrapper">
         <header class="header">
             <div>
-            <nav>
-                <ul class="header__nav-row">
-                    <li><a href="/">About</a></li>
-                    <li><a href="/syllabus">Syllabus</a></li>
-                    <li><img class="header__logo-img" src="./assets/logo.svg" alt="webdev"></li>
-                    <li><a href="/progects">Projects</a></li>
-                    <li><a href="/faq">FAQ</a></li>
-                </ul>
-            </nav>            
-        </div>
-        </header>        
-        <main>
-            <section class="main-banner"></section>
+                <nav class="header__nav">
+                    <ul class="header__nav-row">
+                        <li><a href="/" class="menu__link">About</a></li>
+                        <li><a href="/syllabus" class="menu__link">Syllabus</a></li>
+                        <li><img class="header__logo-img" src="./assets/logo.svg" alt="webdev"></li>
+                        <li><a href="/progects" class="menu__link">Projects</a></li>
+                        <li><a href="/faq" class="menu__link">FAQ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="main">
+            <div class="main-page">
+                <section class="main-banner">
+                    <div class="main-banner__content">
+                        <h1 class="main-banner__title">your life is webdev</h1>
+                        <p class="main-banner__text">Whatever the approach to development may be, the final program must
+                            satisfy some fundamental properties</p>
+                        <button class="main-banner__button">get started</button>
+                    </div>
+                </section>
+            </div>
             <section></section>
             <section></section>
             <section></section>
@@ -35,7 +46,7 @@
         <footer>
 
         </footer>
-    </div>    
+    </div>
 </body>
 
 </html>
