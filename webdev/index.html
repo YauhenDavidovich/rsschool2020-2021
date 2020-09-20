@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>webdev</title>
     <link rel="stylesheet" href="style.css" />
     <link
@@ -14,16 +14,18 @@
 <body>
     <div class="wrapper">
         <header class="header">
-            <div>
-                <nav class="header__nav">
-                    <ul class="header__nav-row">
-                        <li><a href="/" class="menu__link">About</a></li>
-                        <li><a href="/syllabus" class="menu__link">Syllabus</a></li>
-                        <li><img class="header__logo-img" src="./assets/logo.svg" alt="webdev"></li>
-                        <li><a href="/progects" class="menu__link">Projects</a></li>
-                        <li><a href="/faq" class="menu__link">FAQ</a></li>
+            <div class="header__row">        
+                <nav class="header__menu">
+                    <ul class="header__menu-list">
+                        <li class="menu-list__item"><a href="/" class="menu__link menu__active">About</a></li>
+                        <li class="menu-list__item"><a href="/syllabus" class="menu__link">Syllabus</a></li>                        
+                        <li class="menu-list__item"><a href="/progects" class="menu__link">Projects</a></li>
+                        <li class="menu-list__item"><a href="/faq" class="menu__link">FAQ</a></li>
                     </ul>
                 </nav>
+                <div class="logo">
+                    <a class="logo__link"><img src="./assets/logo.svg" alt="webdev"></a>
+                </div>
             </div>
         </header>
         <main class="main">
@@ -34,10 +36,41 @@
                         <p class="main-banner__text">Whatever the approach to development may be, the final program must
                             satisfy some fundamental properties</p>
                         <button class="main-banner__button">get started</button>
+                        <div class="socials">
+                            <ul class="socials__list">
+                                <li class="socials__item">
+                                    <a class="socials__link" href="/" aria-label="contact us with e-mail">
+                                        <img class="socials__img" src="./assets//mail.svg" alt="contact us with e-mail">
+                                    </a>
+                                </li>
+                                <li class="socials__item">
+                                    <a class="socials__link" href="/" aria-label="contact us with facebook">
+                                        <img class="socials__img" src="./assets/facebook_fff.svg"
+                                            alt="contact us with facebook">
+                                    </a>
+                                </li>
+                                <li class="socials__item">
+                                    <a class="socials__link" href="/" aria-label="contact us with instagram">
+                                        <img class="socials__img" src="./assets/insta_fff.svg"
+                                            alt="contact us with instagram">
+                                    </a>
+                                </li>
+                                <li class="socials__item">
+                                    <a class="socials__link" href="/" aria-label="contact us with telegram">
+                                        <img class="socials__img" src="./assets/telegram_fff.svg"
+                                            alt="contact us with telegram">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </section>
             </div>
-            <section></section>
+            <div class="page-2">
+                <section>
+
+                </section>
+            </div>
             <section></section>
             <section></section>
             <section></section>
