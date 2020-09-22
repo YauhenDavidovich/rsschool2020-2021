@@ -304,15 +304,15 @@ a {
 }
 
 
-  .page-5__form {
+.page-5__form {
     width: 406px;
     height: 105px;
     margin: 199px 0 0 0;
     padding: 0;
     font-size: 0;
-  }
+}
 
-  .page-5__title {
+.page-5__title {
     margin: 0;
     padding: 0 0 0 13px;
     font-size: 24px;
@@ -320,8 +320,9 @@ a {
     color: #fff;
     letter-spacing: 1px;
     text-transform: uppercase;
-  }
-  .page-5__email {
+}
+
+.page-5__email {
     display: inline-block;
     width: 340px;
     height: 46px;
@@ -330,14 +331,15 @@ a {
     padding: 14px 23px 12px 23px;
     border: 0;
     outline: 0;
-  }
-  .page-5__email::placeholder {
+}
+
+.page-5__email::placeholder {
     font-size: 14px;
     font-weight: 400;
     color: #373737;
-  }
+}
 
-  .page-5__submit {
+.page-5__submit {
     display: inline-block;
     width: 66px;
     height: 46px;
@@ -345,8 +347,77 @@ a {
     border: 0;
     outline: 0;
     padding: 0;
-  }
-  .singup__submit:hover {
+}
+
+.singup__submit:hover {
     background: #009CC2;
+}
+
+
+.page-6 {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 464px;
+    background: FFFFFF;
+}
+
+.page-6__content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 120px 0 0 0;
+    width: 480px;
+    height: 164px;
+}
+
+.page-6__title {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #373737;
+}
+
+.page-6__text {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 140%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #4E4E4E;
+}
+
+.app-download__buttons {
+    display: flex;
+    width: 406px;
+    height: 46px;
+    margin-top: 8px;
   }
   
+  .app-download__buttons > .button {
+    display: flex;
+    justify-content: space-between;
+    width: 186px;
+    padding: 0;
+    margin: 0 28px 0 2px;
+  }
+  .button__text {
+    width: 128px;
+    height: 46px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 19px;
+  }
+  .button__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 46px;
+    background: #009CC2;
+  }
