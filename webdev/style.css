@@ -404,6 +404,10 @@ a {
     margin-left: 269px;
 }
 
+.page-4__btn {
+    margin-top: 6px;
+    width: 180px;
+}
 /*************** PAGE5 */
 .page-5 {
     display: flex;
@@ -461,7 +465,7 @@ a {
     padding: 0;
 }
 
-.singup__submit:hover {
+.page-5__submit:hover {
     background: #009CC2;
 }
 
@@ -478,19 +482,19 @@ a {
     display: flex;
     align-items: center;
     flex-direction: column;
-    margin: 120px 0 0 0;
+    margin: 100px 0 0 0;
     width: 480px;
     height: 164px;
 }
 
-.page-6__title {
-    font-style: normal;
+.page-6__title {    
     font-weight: bold;
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 1px;
     text-transform: uppercase;
     color: #373737;
+    margin-bottom: 8px;
 }
 
 .page-6__text {
@@ -507,7 +511,7 @@ a {
     display: flex;
     width: 406px;
     height: 46px;
-    margin-top: 8px;
+    margin-top: 16px;
 }
 
 .app-download__buttons>.button {
