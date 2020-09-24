@@ -32,6 +32,24 @@ class Calculator {
     this.currentOperand = '';
   }
 
+
+  computeExtended() {
+    let computation;    
+    const current = parseFloat(this.currentOperand);
+    if (isNaN(current)) return;
+    switch (this.operation) {      
+        case '√':
+          computation = Math.sqrt(current);
+          break  
+      default:
+        return;
+    }
+    this.readyToReset = true;
+    this.currentOperand = computation;
+    this.operation = undefined;
+    this.previousOperand = '';
+  }
+
   compute() {
     let computation;
     const prev = parseFloat(this.previousOperand);
@@ -49,7 +67,7 @@ class Calculator {
         break
       case '÷':
         computation = prev / current;
-        break
+        break        
       default:
         return;
     }
@@ -88,10 +106,22 @@ class Calculator {
   }
 }
 
+updateDisplayExtended() {
+  this.currentOperandTextElement.innerText =
+    this.getDisplayNumber(this.currentOperand)
+  if (this.operation != null) {
+    this.previousOperandTextElement.innerText =
+      `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+  } else {
+    this.previousOperandTextElement.innerText = ''
+  }
+}
+}
 
 const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');
+const squareRootButton = document.querySelector('[data-sq__root]');
 const deleteButton = document.querySelector('[data-delete]');
 const allClearButton = document.querySelector('[data-all-clear]');
 const previousOperandTextElement = document.querySelector('[data-previous-operand]');
@@ -124,6 +154,12 @@ equalsButton.addEventListener('click', button => {
   calculator.compute();
   calculator.updateDisplay();
 })
+
+squareRootButton.addEventListener('click', button => {
+  calculator.computeExtended();
+  calculator.updateDisplay();
+})
+
 
 allClearButton.addEventListener('click', button => {
   calculator.clear();
