@@ -41,8 +41,15 @@ class Calculator {
 
   compute() {
     let computation;
-    const prev = parseFloat(this.previousOperand);
-    const current = parseFloat(this.currentOperand);
+    let prev = parseFloat(this.previousOperand);
+    let current = parseFloat(this.currentOperand);    
+    const decimalPlaces = x => ( (x.toString().includes('.')) ? (x.toString().split('.').pop().length) : (0) );
+    if (this.currentOperand.includes('.') &&  this.previousOperand.includes('.')) {
+      let maxDecimalPlaces = Math.max(decimalPlaces(current), decimalPlaces(prev));
+      current = current * 10 * maxDecimalPlaces
+      prev = prev * 10 * maxDecimalPlaces
+      console.log(prev, current)
+    }
     if (isNaN(prev) || isNaN(current)) return;
     switch (this.operation) {
       case '+':
@@ -54,8 +61,11 @@ class Calculator {
       case '*':
         computation = prev * current;
         break
-      case '÷':
-        computation = prev / current;
+      case '+':
+        computation = prev + current;
+        break
+      case 'xn':
+        computation = Math.pow(prev, current);
         break
       default:
         return;
@@ -91,6 +101,9 @@ class Calculator {
     if (this.operation === '√') {
       this.previousOperandTextElement.innerText =
         `${this.operation} ${this.getDisplayNumber(this.previousOperand)}`
+    }else if (this.operation === 'xn') {
+      this.previousOperandTextElement.innerText =
+        `${this.getDisplayNumber(this.previousOperand)} ^`
     } else if (this.operation != null) {
       this.previousOperandTextElement.innerText =
         `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
