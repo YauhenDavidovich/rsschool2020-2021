@@ -35,9 +35,19 @@ class Calculator {
 
   sqrt() {
     this.previousOperand = this.currentOperand;
-    this.currentOperand = Math.sqrt(parseFloat(this.currentOperand));
-    this.operation = '√';
+    if (parseFloat(this.currentOperand) < 0) {
+      this.operation = '√ Sq root can\'t be extracted!';
+    } else {
+      this.currentOperand = Math.sqrt(parseFloat(this.currentOperand));
+      this.operation = '√';
+    }
   }
+
+  plusMinus(number) {
+    if (this.currentOperand === '') return;
+    this.currentOperand = this.currentOperand * (-1);
+  }
+
 
   compute() {
     let computation;
@@ -47,8 +57,7 @@ class Calculator {
     if (String(current).includes('.') && String(prev).includes('.')) {
       let maxDecimalPlaces = Math.max(decimalPlaces(current), decimalPlaces(prev));
       current = current * Math.pow(10, maxDecimalPlaces)
-      prev = prev * Math.pow(10, maxDecimalPlaces)
-      console.log(prev, current)
+      prev = prev * Math.pow(10, maxDecimalPlaces)      
       switch (this.operation) {
         case '+':
           console.log(prev, current)
@@ -118,14 +127,16 @@ class Calculator {
   }
 
   updateDisplay() {
-    this.currentOperandTextElement.innerText =
+    if (this.operation === '√ Sq root can\'t be extracted!') {      
+      this.currentOperandTextElement.innerText ='ERROR';
+    } else this.currentOperandTextElement.innerText =
       this.getDisplayNumber(this.currentOperand)
     if (this.operation === '√') {
       this.previousOperandTextElement.innerText =
         `${this.operation} ${this.getDisplayNumber(this.previousOperand)}`
     } else if (this.operation === 'xn') {
       this.previousOperandTextElement.innerText =
-        `${this.getDisplayNumber(this.previousOperand)} ^`
+        `${this.getDisplayNumber(this.previousOperand)} ^`      
     } else if (this.operation != null) {
       this.previousOperandTextElement.innerText =
         `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
@@ -141,6 +152,7 @@ const numberButtons = document.querySelectorAll('[data-number]');
 const operationButtons = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');
 const squareRootButton = document.querySelector('[data-sq__root]');
+const plusMinus = document.querySelector('[data-plus__minus]');
 const deleteButton = document.querySelector('[data-delete]');
 const allClearButton = document.querySelector('[data-all-clear]');
 const previousOperandTextElement = document.querySelector('[data-previous-operand]');
@@ -178,6 +190,12 @@ squareRootButton.addEventListener('click', button => {
   calculator.sqrt();
   calculator.updateDisplay();
 })
+
+plusMinus.addEventListener('click', button => {
+  calculator.plusMinus();
+  calculator.updateDisplay();
+})
+
 
 
 allClearButton.addEventListener('click', button => {
