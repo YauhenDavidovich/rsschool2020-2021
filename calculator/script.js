@@ -44,7 +44,7 @@ class Calculator {
     let prev = parseFloat(this.previousOperand);
     let current = parseFloat(this.currentOperand);
     const decimalPlaces = x => ((x.toString().includes('.')) ? (x.toString().split('.').pop().length) : (0));
-    if (this.currentOperand.includes('.') && this.previousOperand.includes('.')) {
+    if (String(current).includes('.') && String(prev).includes('.')) {
       let maxDecimalPlaces = Math.max(decimalPlaces(current), decimalPlaces(prev));
       current = current * Math.pow(10, maxDecimalPlaces)
       prev = prev * Math.pow(10, maxDecimalPlaces)
