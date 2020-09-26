@@ -42,33 +42,55 @@ class Calculator {
   compute() {
     let computation;
     let prev = parseFloat(this.previousOperand);
-    let current = parseFloat(this.currentOperand);    
-    const decimalPlaces = x => ( (x.toString().includes('.')) ? (x.toString().split('.').pop().length) : (0) );
-    if (this.currentOperand.includes('.') &&  this.previousOperand.includes('.')) {
+    let current = parseFloat(this.currentOperand);
+    const decimalPlaces = x => ((x.toString().includes('.')) ? (x.toString().split('.').pop().length) : (0));
+    if (this.currentOperand.includes('.') && this.previousOperand.includes('.')) {
       let maxDecimalPlaces = Math.max(decimalPlaces(current), decimalPlaces(prev));
-      current = current * 10 * maxDecimalPlaces
-      prev = prev * 10 * maxDecimalPlaces
+      current = current * Math.pow(10, maxDecimalPlaces)
+      prev = prev * Math.pow(10, maxDecimalPlaces)
       console.log(prev, current)
-    }
-    if (isNaN(prev) || isNaN(current)) return;
-    switch (this.operation) {
-      case '+':
-        computation = prev + current;
-        break
-      case '-':
-        computation = prev - current;
-        break
-      case '*':
-        computation = prev * current;
-        break
-      case '+':
-        computation = prev + current;
-        break
-      case 'xn':
-        computation = Math.pow(prev, current);
-        break
-      default:
-        return;
+      switch (this.operation) {
+        case '+':
+          console.log(prev, current)
+          computation = (prev + current) / Math.pow(10, maxDecimalPlaces);
+          console.log(computation)
+          break
+        case '-':
+          computation = (prev - current) / Math.pow(10, maxDecimalPlaces);
+          break
+        case '*':
+          computation = prev * current / Math.pow(10, maxDecimalPlaces);
+          break
+        case '+':
+          computation = prev + current / Math.pow(10, maxDecimalPlaces);
+          break
+        case 'xn':
+          computation = Math.pow(prev, current) / Math.pow(10, maxDecimalPlaces);
+          break
+        default:
+          return;
+      }
+    } else if (isNaN(prev) || isNaN(current)) return;
+    else {
+      switch (this.operation) {
+        case '+':
+          computation = prev + current;
+          break
+        case '-':
+          computation = prev - current;
+          break
+        case '*':
+          computation = prev * current;
+          break
+        case '+':
+          computation = prev + current;
+          break
+        case 'xn':
+          computation = Math.pow(prev, current);
+          break
+        default:
+          return;
+      }
     }
     this.readyToReset = true;
     this.currentOperand = computation;
@@ -101,7 +123,7 @@ class Calculator {
     if (this.operation === '√') {
       this.previousOperandTextElement.innerText =
         `${this.operation} ${this.getDisplayNumber(this.previousOperand)}`
-    }else if (this.operation === 'xn') {
+    } else if (this.operation === 'xn') {
       this.previousOperandTextElement.innerText =
         `${this.getDisplayNumber(this.previousOperand)} ^`
     } else if (this.operation != null) {
