@@ -1,0 +1,47 @@
+* {}
+
+.wrapper {
+    display: flex;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.header {
+    width: 100vw;
+    background-color: black;
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo__title {
+    font-family: Georgia;
+    font-size: 32px;
+    line-height: 110%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 6%;
+    color: #F1CDB3;
+}
+
+.logo__subtitle {
+    font-family: Arial;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 10%;
+    color: #FFFFFF;
+}
+
+.menu {
+    display: flex;
+}
+
+.list {
+
+}
+
+.list__link {
+    
+}
