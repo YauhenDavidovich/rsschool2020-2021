@@ -80,5 +80,35 @@ a {
 
 .list__link-active {
     color: #FAFAFA;
-    border-bottom: solid 3px #F1CDB3;;
+    border-bottom: solid 3px #F1CDB3;
+    ;
+}
+
+.start-screen {
+    display: flex;
+    background-color: black;
+}
+
+.start-screen__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.start-screen__title {
+    font-family: Georgia;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 44px;
+    line-height: 130%;
+    color: #FFFFFF;
+}
+
+.start-screen__subtitle {
+    font-family: Arial;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 160%;
+    color: #CDCDCD;
 }
