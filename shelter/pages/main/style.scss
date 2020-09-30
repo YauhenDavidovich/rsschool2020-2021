@@ -1,5 +1,16 @@
 
 $color-primary: #F1CDB3;
+$color-primary-light: #FDDCC4;
+$color-dark-3xl: #292929;
+$color-dark-2xl: #444444;
+$color-dark-xl: #4C4C4C;
+$color-dark-l: #545454;
+$color-dark-m: #B2B2B2;
+$color-dark-s: #CDCDCD;
+$color-light-s: #FAFAFA;
+$color-light-l: #F6F6F6;
+$color-light-xl: #FFFFFF;
+
 
 
 *,
@@ -16,7 +27,6 @@ li {
 
 
 a {
-    color: inherit;
     text-decoration: none;
     outline: none;
 }
@@ -45,7 +55,7 @@ a {
     display: flex;
     align-items: center;
     letter-spacing: 6%;
-    color: #F1CDB3;
+    color: $color-primary;
 }
 
 .logo__subtitle {
@@ -53,7 +63,7 @@ a {
     font-size: 13px;
     line-height: 110%;
     letter-spacing: 10%;
-    color: $color-primary;
+    color: $color-light-xl;
 }
 
 .menu {
@@ -85,8 +95,8 @@ a {
 }
 
 .list__link-active {
-    color: #FAFAFA;
-    border-bottom: solid 3px #F1CDB3;
+    color: $color-dark-s;
+    border-bottom: solid 3px $color-primary;
     ;
 }
 
