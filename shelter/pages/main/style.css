@@ -1,114 +1,148 @@
 *,
 *::before,
 *::after {
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 li {
-    list-style-type: none;
+  list-style-type: none;
 }
 
-
 a {
-    color: inherit;
-    text-decoration: none;
-    outline: none;
+  color: inherit;
+  text-decoration: none;
+  outline: none;
 }
 
 .wrapper {
-    display: flex;
-    margin: 0 auto;
-    max-width: 1200px;
-    justify-content: space-between;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  max-width: 1200px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .header {
-    width: 100vw;
-    background-color: black;
+  width: 100vw;
+  background-color: black;
 }
 
 .logo {
-    display: flex;
-    flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .logo__title {
-    font-family: Georgia;
-    font-size: 32px;
-    line-height: 110%;
-    display: flex;
-    align-items: center;
-    letter-spacing: 6%;
-    color: #F1CDB3;
+  font-family: Georgia;
+  font-size: 32px;
+  line-height: 110%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  letter-spacing: 6%;
+  color: #F1CDB3;
 }
 
 .logo__subtitle {
-    font-family: Arial;
-    font-size: 13px;
-    line-height: 110%;
-    letter-spacing: 10%;
-    color: #FFFFFF;
+  font-family: Arial;
+  font-size: 13px;
+  line-height: 110%;
+  letter-spacing: 10%;
+  color: #F1CDB3;
 }
 
 .menu {
-    width: 443px;
-    display: flex;
+  width: 443px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .list {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 }
 
 .list__item {
-    display: flex;
-    align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .list__link {
-    font-family: Arial;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-    line-height: 160%;
-    color: #CDCDCD;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 160%;
+  color: #CDCDCD;
 }
 
 .list__link-active {
-    color: #FAFAFA;
-    border-bottom: solid 3px #F1CDB3;
-    ;
+  color: #FAFAFA;
+  border-bottom: solid 3px #F1CDB3;
 }
 
 .start-screen {
-    display: flex;
-    background-color: black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: black;
 }
 
 .start-screen__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .start-screen__title {
-    font-family: Georgia;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 44px;
-    line-height: 130%;
-    color: #FFFFFF;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 44px;
+  line-height: 130%;
+  color: #FFFFFF;
 }
 
 .start-screen__subtitle {
-    font-family: Arial;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 15px;
-    line-height: 160%;
-    color: #CDCDCD;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 160%;
+  color: #CDCDCD;
 }
+/*# sourceMappingURL=style.css.map */
