@@ -230,29 +230,13 @@ a {
 }
 
 
-.pets-slider__button_left {
-    padding: 1.4375rem;
-    background: none;
-    border: 2px solid #F1CDB3;
-    border-radius: 100%;
-}
 
-
-
-
-.pets-slider__button_right {
-    transform: rotate(180deg);
-    padding: 1.4375rem;
-    background: none;
-    border: 2px solid #F1CDB3;
-    border-radius: 100%;
-}
 
 
 .pets__wrapper {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 75rem;
     align-items: center;
 
 }
@@ -261,10 +245,52 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 100%;
+    width: 75rem;
     align-items: center;
 }
 
+
+.pets-slider__button_left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.25rem;
+    border-radius: 50%;
+    border: 2px solid #f1cdb3;
+    outline: none;
+    font-family: Georgia;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.7rem;
+    line-height: 2.21rem;
+    letter-spacing: 0.06em;
+    background-color: transparent;
+    width: 3.25rem;
+    margin-right: 3.3125rem;;
+}
+
+
+
+
+.pets-slider__button_right {
+    transform: rotate(180deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3.25rem;
+    border-radius: 50%;
+    border: 2px solid #f1cdb3;
+    outline: none;
+    font-family: Georgia;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.7rem;
+    line-height: 2.21rem;
+    letter-spacing: 0.06em;
+    background-color: transparent;
+    width: 3.25rem;
+    margin-left: 3.3125rem;
+}
 
 .pets__title {
     font-family: Georgia;
@@ -280,7 +306,7 @@ a {
 .pets__cards {
     display: flex;
     justify-content: space-between;
-
+    max-width: 61.875rem;
     width: 100%;
 }
 
