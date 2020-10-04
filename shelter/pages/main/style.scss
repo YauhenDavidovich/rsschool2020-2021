@@ -375,7 +375,7 @@ a {
 }
 
 
-.help-cards__wrapper {    
+.help-cards__wrapper {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -397,4 +397,61 @@ a {
 .help-cards__card_image {
     width: 5.125rem;
     margin-bottom: 3rem;
+}
+
+
+//Donation
+.donation {
+    background-color: $color-light-l;
+}
+
+.donation-container {
+    align-items: center;
+    column-gap: 1.875rem;
+    width: 100%;
+    margin-top: 5.0625rem;
+    margin-bottom: 6.3125rem;
+    display: flex;
+    justify-content: center;
+}
+
+.donation__title {
+    font-family: Georgia;
+    font-weight: normal;
+    font-size: 2.1875rem;
+    line-height: 130%;
+    letter-spacing: 0.06rem;
+    color: $color-dark-l;
+    text-align: left;
+}
+
+.donation__subtitle {
+    font-size: 0.9375rem;
+    line-height: 110%;
+    letter-spacing: 0.05625rem;
+}
+
+.donation__card {
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    background-color: $color-primary;
+    border-radius: 0.9rem;
+}
+
+.donation .wrapper .donation-container .donation-information .donation__card_link a {
+    padding: 1rem 1.5rem;
+    border-radius: 0.9rem;
+    text-decoration: none;
+}
+
+
+.donation .donation-container .donation-information .donation__card_link a span {
+    display: flex;
+    font-size: 2rem;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    line-height: 2.3rem;
+    letter-spacing: 0.12rem;
+    color: #545454;
 }
