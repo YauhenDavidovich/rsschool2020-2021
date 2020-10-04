@@ -266,11 +266,9 @@ a {
     letter-spacing: 0.06em;
     background-color: transparent;
     width: 3.25rem;
-    margin-right: 3.3125rem;;
+    margin-right: 3.3125rem;
+    ;
 }
-
-
-
 
 .pets-slider__button_right {
     transform: rotate(180deg);
@@ -350,4 +348,52 @@ a {
     line-height: 130%;
     letter-spacing: 0.02rem;
     color: $color-dark-3xl;
+}
+
+////Help
+.help {
+    background-color: $color-light-xl;
+}
+
+
+.help-content__title {
+    font-family: Georgia;
+    font-weight: normal;
+    font-size: 2.1875rem;
+    line-height: 130%;
+    letter-spacing: 0.06rem;
+    color: $color-dark-l;
+    text-align: center;
+}
+
+.help-content {
+    width: 100%;
+    padding-top: 5rem;
+    padding-bottom: 6.25rem;
+    align-items: center;
+}
+
+
+.help-cards__wrapper {
+    margin-top: 3.6875rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 7.5rem;
+    row-gap: 3.4375rem;
+    max-width: 86%;
+}
+
+
+.help-cards__card {
+    max-height: 8.3125rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.help-cards__card_image {
+    width: 5.125rem;
+    margin-bottom: 3rem;
 }
