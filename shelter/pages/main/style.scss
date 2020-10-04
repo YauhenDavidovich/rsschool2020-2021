@@ -364,6 +364,7 @@ a {
     letter-spacing: 0.06rem;
     color: $color-dark-l;
     text-align: center;
+    margin-bottom: 3.6875rem;
 }
 
 .help-content {
@@ -374,14 +375,14 @@ a {
 }
 
 
-.help-cards__wrapper {
-    margin-top: 3.6875rem;
+.help-cards__wrapper {    
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     column-gap: 7.5rem;
     row-gap: 3.4375rem;
     max-width: 86%;
+    margin: 0 auto;
 }
 
 
