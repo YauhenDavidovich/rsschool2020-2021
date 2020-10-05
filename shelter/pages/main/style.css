@@ -435,6 +435,12 @@ a {
   width: 100%;
 }
 
+.footer-content__contacts {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
+}
+
 .contacts__title {
   font-family: Georgia;
   font-weight: normal;
@@ -457,6 +463,12 @@ a {
   justify-content: flex-start;
   text-align: center;
   letter-spacing: 0.075rem;
+}
+
+.footer-content_locations {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
 }
 
 .locations__title {
