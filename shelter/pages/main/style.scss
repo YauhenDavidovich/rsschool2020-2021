@@ -439,14 +439,14 @@ a {
     border-radius: 0.9rem;
 }
 
-.donation__card_link  a {
+.donation__card_link a {
     padding: 1rem 1.5rem;
     border-radius: 0.9rem;
     text-decoration: none;
 }
 
 
- .donation__card_link > a > span {
+.donation__card_link>a>span {
     display: flex;
     font-size: 1.25rem;
     font-family: Georgia, serif;
@@ -467,14 +467,14 @@ a {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 2.5rem;
 }
 
 .footer-content__wrapper {
     display: flex;
     justify-content: space-between;
     max-width: 46.25rem;
-    margin-top: 3.5rem;
-    margin-bottom: 3.75rem;
+
     width: 100%;
 }
 
@@ -489,6 +489,21 @@ a {
     text-align: left;
 }
 
+.contact-link span {
+    font-family: Georgia;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.25rem;
+    line-height: 115%;
+    letter-spacing: 0.016rem;
+    color: $color-primary;
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    letter-spacing: 0.075rem;
+
+}
+
 
 .locations__title {
     font-family: Georgia;
@@ -498,4 +513,17 @@ a {
     letter-spacing: 0.06rem;
     color: $color-light-xl;
     text-align: left;
+}
+
+.contact-link img {
+    position: relative;
+    bottom: 0.1875rem;
+    object-fit: none;
+    margin-right: 2rem;
+}
+
+.footer__image img {
+    width: 18.75rem;
+    height: 19.375rem;
+    vertical-align: bottom;
 }
