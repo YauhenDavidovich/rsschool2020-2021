@@ -431,7 +431,7 @@ a {
     letter-spacing: 0.05625rem;
 }
 
-.donation__card {
+.donation__card_link {
     margin-right: auto;
     display: flex;
     align-items: center;
@@ -439,19 +439,26 @@ a {
     border-radius: 0.9rem;
 }
 
-.donation .wrapper .donation-container .donation-information .donation__card_link a {
+.donation__card_link  a {
     padding: 1rem 1.5rem;
     border-radius: 0.9rem;
     text-decoration: none;
 }
 
 
-.donation .donation-container .donation-information .donation__card_link a span {
+ .donation__card_link > a > span {
     display: flex;
-    font-size: 2rem;
+    font-size: 1.25rem;
     font-family: Georgia, serif;
     font-weight: normal;
-    line-height: 2.3rem;
-    letter-spacing: 0.12rem;
+    line-height: 1.4375rem;
+    letter-spacing: 0.075rem;
     color: #545454;
+}
+
+//Footer
+
+.footer {
+    width: 100wv;
+    background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
 }
