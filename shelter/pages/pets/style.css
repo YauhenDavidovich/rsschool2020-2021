@@ -124,6 +124,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .pets-content__title {
@@ -196,5 +197,108 @@ a {
 .pets__card_button:hover {
   background-color: #FDDCC4;
   border: 2px solid #FDDCC4;
+}
+
+.slider-buttons {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.slider-button {
+  width: 5.2rem;
+  height: 5.2rem;
+  border-radius: 100%;
+  border: 2px solid #F1CDB3;
+  font-size: 2rem;
+  line-height: 2.3rem;
+  letter-spacing: 0.12rem;
+  word-spacing: -0.5rem;
+  outline: none;
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.slider-button:disabled {
+  background-color: transparent;
+  border: 2px solid #CDCDCD;
+}
+
+.footer {
+  width: 100%;
+  background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 4rem;
+}
+
+.footer-content__wrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 74rem;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.footer-content__contacts {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4rem;
+}
+
+.contacts__title {
+  font-family: Georgia;
+  font-weight: normal;
+  font-size: 3.5rem;
+  line-height: 130%;
+  letter-spacing: 0.21rem;
+  color: #FFFFFF;
+  text-align: left;
+}
+
+.contact-link span {
+  font-family: Georgia;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 115%;
+  letter-spacing: 0.21rem;
+  color: #F1CDB3;
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+}
+
+.footer-content_locations {
+  display: flex;
+  flex-direction: column;
+  row-gap: 2.5rem;
+}
+
+.locations__title {
+  font-family: Georgia;
+  font-weight: normal;
+  font-size: 2.1875rem;
+  line-height: 130%;
+  letter-spacing: 0.06rem;
+  color: #FFFFFF;
+  text-align: left;
+}
+
+.contact-link img {
+  position: relative;
+  bottom: 0.1875rem;
+  object-fit: none;
+  margin-right: 2rem;
+}
+
+.footer__image img {
+  width: 18.75rem;
+  height: 19.375rem;
+  vertical-align: bottom;
 }
 /*# sourceMappingURL=style.css.map */
