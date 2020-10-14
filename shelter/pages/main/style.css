@@ -117,7 +117,7 @@ a {
 
 .start-screen {
   display: flex;
-  padding-top: 180px;
+  padding-top: 18rem;
   background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
 }
 
@@ -125,22 +125,23 @@ a {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  max-width: 75rem;
+  max-width: 120rem;
 }
 
 .content-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 28.75rem;
+  max-width: 46rem;
   width: 100%;
+  padding-bottom: 8.3rem;
 }
 
 .content-section__title {
   font-family: Georgia;
   font-style: normal;
   font-weight: normal;
-  font-size: 2.75rem;
+  font-size: 4.4rem;
   line-height: 130%;
   color: #FFFFFF;
 }
@@ -149,24 +150,25 @@ a {
   font-family: Arial;
   font-style: normal;
   font-weight: normal;
-  margin-top: 2.625rem;
-  font-size: 0.9375rem;
+  margin-top: 4rem;
+  font-size: 1.5rem;
   line-height: 160%;
   color: #CDCDCD;
 }
 
 .content-section__button {
-  width: 207px;
-  border-radius: 100px;
-  margin-top: 42px;
-  padding: 15px 45px;
+  width: 20.7rem;
+  height: 5.2rem;
+  border-radius: 10rem;
+  margin-top: 4.2rem;
+  padding: 1.5rem 4.5rem;
   background-color: #F1CDB3;
   border: none;
   font-family: Georgia;
   font-weight: 400;
-  font-size: 1.0625rem;
+  font-size: 1.7rem;
   line-height: 130%;
-  letter-spacing: 0.02rem;
+  letter-spacing: 0.1003rem;
   color: #292929;
 }
 
