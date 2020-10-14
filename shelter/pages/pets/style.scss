@@ -119,7 +119,7 @@ a {
     font-weight: 400;
     font-size: 1.5rem;
     line-height: 160%;
-    color: $color-dark-l;
+    color: $color-dark-l;    
 }
 
 .list__link-active {
@@ -184,6 +184,7 @@ a {
 .pets__card:hover {
     background-color: $color-light-xl;
     box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    cursor: pointer;
 }
 
 .card__title {
@@ -247,9 +248,22 @@ a {
 }
 
 
+.slider-button.active {
+    background-color: $color-primary;
+    border: 2px solid $color-primary;
+}
+
+
+.slider-button:hover {
+    background-color: $color-primary;
+    border: 2px solid $color-primary;
+    cursor: pointer;
+}
+
 .slider-button:disabled {
     background-color: transparent;
     border: 2px solid $color-dark-s;
+    cursor: default;
 }
 //Footer
 

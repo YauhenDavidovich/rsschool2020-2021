@@ -161,6 +161,7 @@ a {
 .pets__card:hover {
   background-color: #FFFFFF;
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+  cursor: pointer;
 }
 
 .card__title {
@@ -221,9 +222,21 @@ a {
   font-weight: normal;
 }
 
+.slider-button.active {
+  background-color: #F1CDB3;
+  border: 2px solid #F1CDB3;
+}
+
+.slider-button:hover {
+  background-color: #F1CDB3;
+  border: 2px solid #F1CDB3;
+  cursor: pointer;
+}
+
 .slider-button:disabled {
   background-color: transparent;
   border: 2px solid #CDCDCD;
+  cursor: default;
 }
 
 .footer {
