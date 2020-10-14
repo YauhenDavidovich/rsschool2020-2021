@@ -255,15 +255,12 @@ a {
     background-color: $color-light-l;
 }
 
-
-
-
-
 .pets__wrapper {
     display: flex;
-    flex-direction: column;
-    width: 75rem;
+    flex-direction: column;    
     align-items: center;
+    width: 100%;
+    padding-top: 8rem;
 
 }
 
@@ -271,8 +268,8 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 75rem;
-    align-items: center;
+    width: 100%;
+    align-items: center;    
 }
 
 
@@ -280,49 +277,49 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3.25rem;
+    height: 5.2rem;
+    width: 5.2rem;
     border-radius: 50%;
     border: 2px solid #f1cdb3;
     outline: none;
     font-family: Georgia;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.7rem;
+    font-size: 2.7rem;
     line-height: 2.21rem;
     letter-spacing: 0.06em;
-    background-color: transparent;
-    width: 3.25rem;
-    margin-right: 3.3125rem;
-    ;
+    background-color: transparent;    
+    margin-right: 5.3rem;
 }
 
 .pets-slider__button_right {
-    transform: rotate(180deg);
+    transform: rotate(180deg);    
+    margin-left: 3.3125rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3.25rem;
+    height: 5.2rem;
+    width: 5.2rem;
     border-radius: 50%;
     border: 2px solid #f1cdb3;
     outline: none;
     font-family: Georgia;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.7rem;
+    font-size: 2.7rem;
     line-height: 2.21rem;
     letter-spacing: 0.06em;
-    background-color: transparent;
-    width: 3.25rem;
-    margin-left: 3.3125rem;
+    background-color: transparent;    
+    margin-right: 5.3rem;
 }
 
 .pets__title {
     font-family: Georgia;
     color: $color-dark-l;
     font-weight: 400;
-    font-size: 2.1875rem;
+    font-size: 3.5rem;
     line-height: 130%;
-    letter-spacing: 0.12rem;
+    letter-spacing: 0.21rem;
     text-align: center;
 }
 
@@ -330,7 +327,7 @@ a {
 .pets__cards {
     display: flex;
     justify-content: space-between;
-    max-width: 61.875rem;
+    max-width: 99rem;
     width: 100%;
 }
 
