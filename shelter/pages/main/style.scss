@@ -280,7 +280,7 @@ a {
     height: 5.2rem;
     width: 5.2rem;
     border-radius: 50%;
-    border: 2px solid #f1cdb3;
+    border: 2px solid $color-primary;
     outline: none;
     font-family: Georgia;
     font-style: normal;
@@ -290,6 +290,12 @@ a {
     letter-spacing: 0.06em;
     background-color: transparent;
     margin-right: 5.3rem;
+
+    &:hover {
+        background-color: $color-primary-light;
+        border: 2px solid $color-primary-light;
+        cursor: pointer;
+    }    
 }
 
 .pets-slider__button_right {
@@ -300,7 +306,7 @@ a {
     height: 5.2rem;
     width: 5.2rem;
     border-radius: 50%;
-    border: 2px solid #f1cdb3;
+    border: 2px solid $color-primary;
     outline: none;
     font-family: Georgia;
     font-style: normal;
@@ -310,7 +316,14 @@ a {
     letter-spacing: 0.06em;
     background-color: transparent;
     margin-left: 5.3rem;
+
+    &:hover {
+        background-color: $color-primary-light;
+        border: 2px solid $color-primary-light;
+        cursor: pointer;
+    }
 }
+
 
 .pets__title {
     font-family: Georgia;
@@ -403,12 +416,6 @@ a {
     letter-spacing: 0.102rem;
     background-color: $color-primary;
     text-align: center;
-
-    &:hover {
-        background-color: $color-primary-light;
-        border: 2px solid $color-primary-light;
-        cursor: pointer;
-    }
 }
 
 ////Help
@@ -432,8 +439,8 @@ a {
 
 .help-content {
     width: 100%;
-    padding-top: 5rem;
-    padding-bottom: 6.25rem;
+    padding-top: 8.1rem;
+    padding-bottom: 10rem;
     align-items: center;
 }
 
@@ -442,26 +449,39 @@ a {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    column-gap: 7.5rem;
-    row-gap: 3.4375rem;
+    column-gap: 12rem;
+    row-gap: 5.5rem;
     max-width: 86%;
     margin: 0 auto;
 }
 
 
 .help-cards__card {
-    max-height: 8.3125rem;
+    max-height: 11.3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-end;
 }
 
 
-.help-cards__card_image {
-    width: 5.125rem;
+.help-cards__card img {
     margin-bottom: 3rem;
 }
 
+.help-cards__card:nth-child(8) img {
+    margin-bottom: 3.3rem;
+}
+
+
+.help-cards__card_title {
+    font-family: Georgia;
+    font-weight: normal;
+    font-size: 2rem;
+    line-height: 115%;
+    letter-spacing: 0.12rem;
+    color: $color-dark-l;
+}
 
 //Donation
 .donation {

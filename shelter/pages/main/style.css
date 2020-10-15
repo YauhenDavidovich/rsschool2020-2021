@@ -329,7 +329,7 @@ a {
   height: 5.2rem;
   width: 5.2rem;
   border-radius: 50%;
-  border: 2px solid #f1cdb3;
+  border: 2px solid #F1CDB3;
   outline: none;
   font-family: Georgia;
   font-style: normal;
@@ -339,6 +339,12 @@ a {
   letter-spacing: 0.06em;
   background-color: transparent;
   margin-right: 5.3rem;
+}
+
+.pets-slider__button_left:hover {
+  background-color: #FDDCC4;
+  border: 2px solid #FDDCC4;
+  cursor: pointer;
 }
 
 .pets-slider__button_right {
@@ -356,7 +362,7 @@ a {
   height: 5.2rem;
   width: 5.2rem;
   border-radius: 50%;
-  border: 2px solid #f1cdb3;
+  border: 2px solid #F1CDB3;
   outline: none;
   font-family: Georgia;
   font-style: normal;
@@ -366,6 +372,12 @@ a {
   letter-spacing: 0.06em;
   background-color: transparent;
   margin-left: 5.3rem;
+}
+
+.pets-slider__button_right:hover {
+  background-color: #FDDCC4;
+  border: 2px solid #FDDCC4;
+  cursor: pointer;
 }
 
 .pets__title {
@@ -472,12 +484,6 @@ a {
   text-align: center;
 }
 
-.pets__button:hover {
-  background-color: #FDDCC4;
-  border: 2px solid #FDDCC4;
-  cursor: pointer;
-}
-
 .help {
   background-color: #FFFFFF;
 }
@@ -496,8 +502,8 @@ a {
 
 .help-content {
   width: 100%;
-  padding-top: 5rem;
-  padding-bottom: 6.25rem;
+  padding-top: 8.1rem;
+  padding-bottom: 10rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -512,15 +518,15 @@ a {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -webkit-column-gap: 7.5rem;
-          column-gap: 7.5rem;
-  row-gap: 3.4375rem;
+  -webkit-column-gap: 12rem;
+          column-gap: 12rem;
+  row-gap: 5.5rem;
   max-width: 86%;
   margin: 0 auto;
 }
 
 .help-cards__card {
-  max-height: 8.3125rem;
+  max-height: 11.3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -531,11 +537,26 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
-.help-cards__card_image {
-  width: 5.125rem;
+.help-cards__card img {
   margin-bottom: 3rem;
+}
+
+.help-cards__card:nth-child(8) img {
+  margin-bottom: 3.3rem;
+}
+
+.help-cards__card_title {
+  font-family: Georgia;
+  font-weight: normal;
+  font-size: 2rem;
+  line-height: 115%;
+  letter-spacing: 0.12rem;
+  color: #545454;
 }
 
 .donation {
