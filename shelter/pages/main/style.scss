@@ -21,7 +21,7 @@ $color-light-xl: #FFFFFF;
 }
 
 :root {
-    font-size: 16px;
+    font-size: 10px;
 }
 
 
@@ -38,16 +38,30 @@ a {
 .wrapper {
     display: flex;
     margin: 0 auto;
-    max-width: 75rem;
+    max-width: 120rem;
     justify-content: space-between;
     width: 100%;
 }
 
+
+//Header
 .header {
-    width: 100vw;
+    max-width: 100vw;
+    width: 100%;
     position: absolute;
-    top: 60px;
+    top: 6.1rem;
+    display: flex;
 }
+
+
+.header__content {
+    margin-top: 3.1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
 
 
 .logo {
@@ -57,27 +71,31 @@ a {
 
 .logo__title {
     font-family: Georgia;
-    font-size: 2rem;
+    font-size: 3.2rem;
     font-weight: 400;
     line-height: 110%;
-    align-items: center;
-    letter-spacing: 0.12rem;
+    letter-spacing: 0.19rem;
     color: $color-primary;
+    margin: 0;
 }
 
 .logo__subtitle {
     font-family: Arial;
-    font-size: 0.8125rem;
-    font-weight: 400;
-    line-height: 110%;
-    letter-spacing: 10%;
+    margin-top: 0.9rem;
+    margin-left: 0.5rem;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.13rem;
     color: $color-light-xl;
-    text-align: center;
+
 }
 
 .menu {
-    width: 27.6875rem;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 44.3rem;
+    margin-bottom: 0.6rem;
 }
 
 .list {
@@ -97,7 +115,7 @@ a {
 .list__link {
     font-family: Arial;
     font-weight: 400;
-    font-size: 15px;
+    font-size: 1.5rem;
     line-height: 160%;
     color: $color-light-l;
 }
@@ -105,6 +123,7 @@ a {
 .list__link-active {
     color: $color-light-s;
     border-bottom: solid 3px $color-primary;
+    padding-top: 0.4rem;
 }
 
 .list__link:hover {
@@ -113,6 +132,7 @@ a {
 }
 
 
+//Banner
 .main {
     display: flex;
     flex-direction: column;
@@ -121,7 +141,7 @@ a {
 
 .start-screen {
     display: flex;
-    padding-top: 180px;
+    padding-top: 18rem;
     background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
 }
 
@@ -129,15 +149,16 @@ a {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 75rem;
+    max-width: 120rem;
 }
 
 .content-section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 28.75rem;
+    max-width: 46rem;
     width: 100%;
+    padding-bottom: 8rem;
 }
 
 
@@ -145,7 +166,7 @@ a {
     font-family: Georgia;
     font-style: normal;
     font-weight: normal;
-    font-size: 2.75rem;
+    font-size: 4.4rem;
     line-height: 130%;
     color: $color-light-xl;
 }
@@ -154,24 +175,25 @@ a {
     font-family: Arial;
     font-style: normal;
     font-weight: normal;
-    margin-top: 2.625rem;
-    font-size: 0.9375rem;
+    margin-top: 4rem;
+    font-size: 1.5rem;
     line-height: 160%;
     color: $color-dark-s;
 }
 
 .content-section__button {
-    width: 207px;
-    border-radius: 100px;
-    margin-top: 42px;
-    padding: 15px 45px;
+    width: 20.7rem;
+    height: 5.2rem;
+    border-radius: 10rem;
+    margin-top: 4.2rem;
+    padding: 1.5rem 4.5rem;
     background-color: $color-primary;
     border: none;
     font-family: Georgia;
     font-weight: 400;
-    font-size: 1.0625rem;
+    font-size: 1.7rem;
     line-height: 130%;
-    letter-spacing: 0.02rem;
+    letter-spacing: 0.1003rem;
     color: $color-dark-3xl;
 }
 
@@ -184,44 +206,47 @@ a {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 5rem 10.9375rem 6.25rem;
+    max-width: 85rem;
+    padding-top: 8rem;
+    padding-bottom: 9.8rem;
+    margin: 0 auto;
 }
 
 
 .about-text {
-    margin-top: 0.95rem;
+    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
-    max-width: 26.875rem;
+    max-width: 43rem;
 
 }
 
 .about-text__title {
     font-family: Georgia;
     font-weight: 400;
-    font-size: 2.1875rem;
+    font-size: 3.5rem;
     line-height: 130%;
     align-items: center;
-    letter-spacing: 0.13rem;
+    letter-spacing: 0.21rem;
     color: $color-dark-l;
 }
 
 .about-text__subtitle_first {
-    margin-top: 1.5625rem;
+    margin-top: 2.4rem;
     font-family: Arial;
     font-weight: 400;
-    font-size: 0.9375rem;
+    font-size: 1.5rem;
     line-height: 160%;
     color: $color-dark-xl;
 }
 
 .about-text__subtitle_second {
     font-family: Arial;
-    font-weight: rem;
-    font-size: 0.9375rem;
+    font-weight: 400;
+    font-size: 1.5rem;
     line-height: 160%;
     color: $color-dark-xl;
-    padding-top: 1.5625rem;
+    padding-top: 2.5rem;
 }
 
 
@@ -229,15 +254,12 @@ a {
     background-color: $color-light-l;
 }
 
-
-
-
-
 .pets__wrapper {
     display: flex;
     flex-direction: column;
-    width: 75rem;
     align-items: center;
+    width: 100%;
+    padding-top: 8.1rem;
 
 }
 
@@ -245,7 +267,8 @@ a {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 75rem;
+    max-width: 120rem;
+    width: 100%;
     align-items: center;
 }
 
@@ -254,20 +277,25 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3.25rem;
+    height: 5.2rem;
+    width: 5.2rem;
     border-radius: 50%;
-    border: 2px solid #f1cdb3;
+    border: 2px solid $color-primary;
     outline: none;
     font-family: Georgia;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.7rem;
+    font-size: 2.7rem;
     line-height: 2.21rem;
     letter-spacing: 0.06em;
     background-color: transparent;
-    width: 3.25rem;
-    margin-right: 3.3125rem;
-    ;
+    margin-right: 5.3rem;
+
+    &:hover {
+        background-color: $color-primary-light;
+        border: 2px solid $color-primary-light;
+        cursor: pointer;
+    }    
 }
 
 .pets-slider__button_right {
@@ -275,79 +303,119 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 3.25rem;
+    height: 5.2rem;
+    width: 5.2rem;
     border-radius: 50%;
-    border: 2px solid #f1cdb3;
+    border: 2px solid $color-primary;
     outline: none;
     font-family: Georgia;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.7rem;
+    font-size: 2.7rem;
     line-height: 2.21rem;
     letter-spacing: 0.06em;
     background-color: transparent;
-    width: 3.25rem;
-    margin-left: 3.3125rem;
+    margin-left: 5.3rem;
+
+    &:hover {
+        background-color: $color-primary-light;
+        border: 2px solid $color-primary-light;
+        cursor: pointer;
+    }
 }
+
 
 .pets__title {
     font-family: Georgia;
     color: $color-dark-l;
     font-weight: 400;
-    font-size: 2.1875rem;
+    font-size: 3.5rem;
     line-height: 130%;
-    letter-spacing: 0.12rem;
+    letter-spacing: 0.21rem;
     text-align: center;
+    padding-bottom: 5.9rem;
+    padding-left: 0.2rem;
 }
 
 
 .pets__cards {
     display: flex;
     justify-content: space-between;
-    max-width: 61.875rem;
+    max-width: 99rem;
     width: 100%;
 }
 
-.card__inner {
+.pets__card {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 27rem;
+    height: 43.5rem;
+    border-radius: 0.9rem;
     background-color: $color-light-s;
+}
+
+.pets__card:hover {
+    background-color: $color-light-xl;
+    box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    cursor: pointer;
 }
 
 .card__title {
     font-family: Georgia;
-    font-weight: 400;
-    font-size: 1.25rem;
-    line-height: 1.4375rem;
-    letter-spacing: 0.12rem;
-    color: $color-dark-l
+    font-weight: normal;
+    font-size: 2rem;
+    line-height: 2.3rem;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.11rem;
+    color: $color-dark-l;
 }
 
-.card__button {
-    padding: 0.9375rem 2.8125rem;
-    background: none;
-    border: 2px solid #F1CDB3;
-    border-radius: 6.25rem;
-    font-family: Georgia;
-    font-weight: 400;
-    font-size: 1.0625rem;
-    line-height: 130%;
-    letter-spacing: 0.16rem;
-    color: $color-dark-3xl;
+
+.card__image {
+    width: 100%;
+    max-height: 27rem;
+    margin-bottom: 3rem;
 }
+
+.pets__card_button {
+    width: 18.7rem;
+    margin-top: 3rem;
+    height: 5.2rem;
+    border-radius: 10rem;
+    border: 2px solid $color-primary;
+    outline: none;
+    font-family: Georgia;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.7rem;
+    line-height: 2.21rem;
+    letter-spacing: 0.102rem;
+    background-color: transparent;
+
+    &:hover {
+        background-color: $color-primary-light;
+        border: 2px solid $color-primary-light;
+    }
+}
+
 
 .pets__button {
-    padding: 0.9375rem 2.8125rem;
-    background-color: $color-primary;
-    border: none;
-    border-radius: 6.25rem;
+    width: 26.1rem;
+    height: 5.2rem;
+    margin-top: 6rem;
+    margin-bottom: 10rem;
+    border-radius: 10rem;
+    border: 2px solid $color-primary;
+    outline: none;
     font-family: Georgia;
-    font-weight: 400;
-    font-size: 1.0625rem;
-    line-height: 130%;
-    letter-spacing: 0.02rem;
-    color: $color-dark-3xl;
+    font-weight: normal;
+    font-size: 1.7rem;
+    line-height: 2.2rem;
+    letter-spacing: 0.102rem;
+    background-color: $color-primary;
+    text-align: center;
 }
 
 ////Help
@@ -358,19 +426,21 @@ a {
 
 .help-content__title {
     font-family: Georgia;
-    font-weight: normal;
-    font-size: 2.1875rem;
-    line-height: 130%;
-    letter-spacing: 0.06rem;
     color: $color-dark-l;
+    font-weight: 400;
+    font-size: 3.5rem;
+    line-height: 130%;
+    letter-spacing: 0.21rem;
     text-align: center;
-    margin-bottom: 3.6875rem;
+    padding-bottom: 5.9rem;
+    padding-left: 0.2rem;
 }
+
 
 .help-content {
     width: 100%;
-    padding-top: 5rem;
-    padding-bottom: 6.25rem;
+    padding-top: 8.1rem;
+    padding-bottom: 10rem;
     align-items: center;
 }
 
@@ -379,26 +449,39 @@ a {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    column-gap: 7.5rem;
-    row-gap: 3.4375rem;
+    column-gap: 12rem;
+    row-gap: 5.5rem;
     max-width: 86%;
     margin: 0 auto;
 }
 
 
 .help-cards__card {
-    max-height: 8.3125rem;
+    max-height: 11.3rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-end;
 }
 
 
-.help-cards__card_image {
-    width: 5.125rem;
+.help-cards__card img {
     margin-bottom: 3rem;
 }
 
+.help-cards__card:nth-child(8) img {
+    margin-bottom: 3.3rem;
+}
+
+
+.help-cards__card_title {
+    font-family: Georgia;
+    font-weight: normal;
+    font-size: 2rem;
+    line-height: 115%;
+    letter-spacing: 0.12rem;
+    color: $color-dark-l;
+}
 
 //Donation
 .donation {
@@ -459,7 +542,7 @@ a {
 //Footer
 
 .footer {
-    width: 100wv;
+    width: 100%;
     background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211F20;
 }
 
@@ -467,75 +550,62 @@ a {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-top: 2.5rem;
+    margin-top: 4rem;
 }
 
 .footer-content__wrapper {
     display: flex;
     justify-content: space-between;
-    max-width: 46.25rem;
-
+    max-width: 73.3rem;
     width: 100%;
+    padding-top: 1.7rem;
 }
 
 
 .footer-content__contacts {
-    display: flex;
-    flex-direction: column;
-    row-gap: 2.5rem;
+    width: 27.9rem;
+}
+
+.footer-content__locations {
+    width: 30.2rem;
+}
+
+.icon {
+    margin-right: 20px;
+}
+
+
+.contact-link h4 {
+    align-self: center;
+    color: $color-primary;
+    margin: 0;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    line-height: 2.3rem;
+    letter-spacing: 0.12rem;
+    font-weight: normal;
+    font-size: 2rem;
+    color: $color-primary;
+}
+
+.contact-link h4>a {
+    color: $color-primary;
 }
 
 .contacts__title {
     font-family: Georgia;
     font-weight: normal;
-    font-size: 2.1875rem;
-    line-height: 130%;
-    letter-spacing: 0.06rem;
+    font-size: 3.5rem;
+    line-height: 4.55rem;
+    letter-spacing: 0.21rem;
     color: $color-light-xl;
     text-align: left;
 }
 
-.contact-link span {
-    font-family: Georgia;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.25rem;
-    line-height: 115%;
-    letter-spacing: 0.016rem;
-    color: $color-primary;
+
+.contact-link {
     display: flex;
-    justify-content: flex-start;
-    text-align: center;
-    letter-spacing: 0.075rem;
-
-}
-
-.footer-content_locations {
-    display: flex;
-    flex-direction: column;
-    row-gap: 2.5rem;
-}
- 
-
-.locations__title {
-    font-family: Georgia;
-    font-weight: normal;
-    font-size: 2.1875rem;
-    line-height: 130%;
-    letter-spacing: 0.06rem;
-    color: $color-light-xl;
-    text-align: left;
-}
-
-.contact-link img {
-    position: relative;
-    bottom: 0.1875rem;
-    object-fit: none;
-    margin-right: 2rem;
-}
-
-.footer__image img {
-    width: 18.75rem;
-    height: 19.375rem;
-    vertical-align: bottom;
+    flex-direction: row;
+    height: 3.2rem;
+    margin-top: 4rem;
 }

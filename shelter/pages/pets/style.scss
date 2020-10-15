@@ -43,6 +43,8 @@ a {
     width: 100%;
 }
 
+
+//Header
 .header {
     max-width: 100vw;
     position: sticky;
@@ -119,7 +121,7 @@ a {
     font-weight: 400;
     font-size: 1.5rem;
     line-height: 160%;
-    color: $color-dark-l;
+    color: $color-dark-l;    
 }
 
 .list__link-active {
@@ -141,7 +143,7 @@ a {
 .pets-content {
     width: 100%;
     padding-top: 8rem;
-    padding-bottom: 10rem;
+    padding-bottom: 10.1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;    
@@ -151,17 +153,19 @@ a {
 
 
 .pets-content__title {
+    padding-left: 0.2rem;
+    padding-top: 0.1rem;
     font-family: Georgia;
     font-weight: normal;
     font-size: 3.5rem;
-    line-height: 130%;
+    line-height: 4.55rem;
     text-align: center;
     letter-spacing: 0.21rem;
     color: $color-dark-l;
 }
 
 .pets__slider {
-    padding: 6rem 0;
+    padding: 5.9rem 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
@@ -182,6 +186,7 @@ a {
 .pets__card:hover {
     background-color: $color-light-xl;
     box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+    cursor: pointer;
 }
 
 .card__title {
@@ -191,7 +196,7 @@ a {
     line-height: 2.3rem;
     align-items: center;
     text-align: center;
-    letter-spacing: 0.12rem;
+    letter-spacing: 0.11rem;
     color: $color-dark-l;
 }
 
@@ -214,7 +219,7 @@ a {
     font-weight: normal;
     font-size: 1.7rem;
     line-height: 2.21rem;
-    letter-spacing: 0.12rem;
+    letter-spacing: 0.102rem;
     background-color: transparent;
 
     &:hover {
@@ -245,9 +250,22 @@ a {
 }
 
 
+.slider-button.active {
+    background-color: $color-primary;
+    border: 2px solid $color-primary;
+}
+
+
+.slider-button:hover {
+    background-color: $color-primary;
+    border: 2px solid $color-primary;
+    cursor: pointer;
+}
+
 .slider-button:disabled {
     background-color: transparent;
     border: 2px solid $color-dark-s;
+    cursor: default;
 }
 //Footer
 
@@ -266,69 +284,62 @@ a {
 .footer-content__wrapper {
     display: flex;
     justify-content: space-between;
-    max-width: 74rem;
+    max-width: 73.3rem;
     width: 100%;
-    padding-top: 2rem;
+    padding-top: 1.7rem;
 }
 
 
 .footer-content__contacts {
-    display: flex;
-    flex-direction: column;
-    row-gap: 4rem;
+    width: 27.9rem;
+}
+ 
+.footer-content__locations {
+    width: 30.2rem;
+}
+
+.icon {
+    margin-right: 20px;
+}
+
+
+.contact-link h4 {
+    align-self: center;
+    color: $color-primary;
+    margin: 0;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    line-height: 2.3rem;
+    letter-spacing: 0.12rem;
+    font-weight: normal;
+    font-size: 2rem;    
+    color: $color-primary;     
+}
+
+.contact-link h4 > a {    
+    color: $color-primary;
 }
 
 .contacts__title {
     font-family: Georgia;
     font-weight: normal;
     font-size: 3.5rem;
-    line-height: 130%;
+    line-height: 4.55rem;
     letter-spacing: 0.21rem;
     color: $color-light-xl;
     text-align: left;
 }
 
-.contact-link span {
-    font-family: Georgia;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 2rem;
-    line-height: 115%;
-    letter-spacing: 0.21rem;
-    color: $color-primary;
+
+.contact-link {
     display: flex;
-    justify-content: flex-start;
-    text-align: center;
-    
-
-}
-
-.footer-content_locations {
-    display: flex;
-    flex-direction: column;
-    row-gap: 2.5rem;
-}
- 
-
-.locations__title {
-    font-family: Georgia;
-    font-weight: normal;
-    font-size: 2.1875rem;
-    line-height: 130%;
-    letter-spacing: 0.06rem;
-    color: $color-light-xl;
-    text-align: left;
-}
-
-.contact-link img {
-    position: relative;
-    bottom: 0.1875rem;
-    object-fit: none;
-    margin-right: 2rem;
+    flex-direction: row;
+    height: 3.2rem;
+    margin-top: 4rem;
 }
 
 .footer__image img {
-    width: 18.75rem;
-    height: 19.375rem;
+    width: 30rem;
+    height: 31rem;
     vertical-align: bottom;
 }
