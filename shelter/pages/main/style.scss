@@ -49,7 +49,7 @@ a {
     max-width: 100vw;
     width: 100%;
     position: absolute;
-    top: 6.1rem;
+    top: 6rem;
     display: flex;
 }
 
@@ -155,7 +155,7 @@ a {
 .content-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     max-width: 46rem;
     width: 100%;
     padding-bottom: 8rem;
@@ -169,6 +169,7 @@ a {
     font-size: 4.4rem;
     line-height: 130%;
     color: $color-light-xl;
+    padding-top: 16.4rem;
 }
 
 .content-section__subtitle {
@@ -295,7 +296,7 @@ a {
         background-color: $color-primary-light;
         border: 2px solid $color-primary-light;
         cursor: pointer;
-    }    
+    }
 }
 
 .pets-slider__button_right {
@@ -490,54 +491,81 @@ a {
 
 .donation-container {
     align-items: center;
-    column-gap: 1.875rem;
+    column-gap: 3rem;
     width: 100%;
-    margin-top: 5.0625rem;
-    margin-bottom: 6.3125rem;
+    margin-top: 8.2rem;
+    margin-bottom: 10.1rem;
     display: flex;
     justify-content: center;
 }
 
+.donation__image {
+    padding-top: 0.1rem;
+}
+
+.donation__information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 38rem;
+    grid-row-gap: 2rem;
+}
+
+
 .donation__title {
     font-family: Georgia;
     font-weight: normal;
-    font-size: 2.1875rem;
+    font-size: 3.5rem;
     line-height: 130%;
-    letter-spacing: 0.06rem;
+    letter-spacing: 0.21rem;
     color: $color-dark-l;
     text-align: left;
 }
 
 .donation__subtitle {
-    font-size: 0.9375rem;
-    line-height: 110%;
-    letter-spacing: 0.05625rem;
-}
-
-.donation__card_link {
-    margin-right: auto;
-    display: flex;
-    align-items: center;
-    background-color: $color-primary;
-    border-radius: 0.9rem;
-}
-
-.donation__card_link a {
-    padding: 1rem 1.5rem;
-    border-radius: 0.9rem;
-    text-decoration: none;
-}
-
-
-.donation__card_link>a>span {
-    display: flex;
-    font-size: 1.25rem;
-    font-family: Georgia, serif;
+    font-family: Georgia;
     font-weight: normal;
-    line-height: 1.4375rem;
-    letter-spacing: 0.075rem;
-    color: #545454;
+    font-size: 1.5rem;
+    line-height: 110%;
+    letter-spacing: 0.09rem;
 }
+
+.credit-card {
+    display: flex;
+    flex-direction: row;
+    width: 34.9rem;
+    padding: 1rem 1.2rem 1rem 1.5rem;
+    background-color: $color-primary;
+    border-radius: 9px;
+    
+}
+
+.credit-card h4 {
+    margin: 0;
+    font-family: Georgia;
+    font-weight: normal;
+    line-height: 115%;
+    font-size: 2rem;    
+    letter-spacing: 0.12rem;
+    padding-left: 1.5rem;
+    cursor: pointer;
+}
+
+
+.credit-card a {
+    color: $color-dark-l;
+}
+
+.donation__card_information {
+    font-family: Arial;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    color: $color-dark-m;
+}
+
 
 //Footer
 
