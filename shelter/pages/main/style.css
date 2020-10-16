@@ -27,11 +27,18 @@ a {
   width: 100%;
 }
 
+@media screen and (max-width: 1279px) {
+  .wrapper {
+    width: 76.8rem;
+    background-color: white;
+  }
+}
+
 .header {
   max-width: 100vw;
   width: 100%;
   position: absolute;
-  top: 6rem;
+  top: 6.1rem;
   display: flex;
 }
 
@@ -127,6 +134,12 @@ a {
   max-width: 120rem;
 }
 
+@media screen and (max-width: 1279px) {
+  .start-screen__content {
+    flex-direction: column;
+  }
+}
+
 .content-section {
   display: flex;
   flex-direction: column;
@@ -170,6 +183,11 @@ a {
   line-height: 130%;
   letter-spacing: 0.1003rem;
   color: #292929;
+}
+
+.content-section__button:hover {
+  background-color: #FDDCC4;
+  cursor: pointer;
 }
 
 .about {
@@ -383,6 +401,12 @@ a {
   text-align: center;
 }
 
+.pets__button:hover {
+  background-color: #FDDCC4;
+  border-color: #FDDCC4;
+  cursor: pointer;
+}
+
 .help {
   background-color: #FFFFFF;
 }
@@ -493,6 +517,12 @@ a {
   padding: 1rem 1.2rem 1rem 1.5rem;
   background-color: #F1CDB3;
   border-radius: 9px;
+}
+
+.credit-card:hover {
+  background-color: #FDDCC4;
+  border-color: #FDDCC4;
+  cursor: pointer;
 }
 
 .credit-card h4 {
