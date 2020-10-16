@@ -68,7 +68,7 @@ class Calculator {
           computation = (prev - current) / Math.pow(10, maxDecimalPlaces);
           break
         case '*':
-          computation = prev * current / Math.pow(10, maxDecimalPlaces);
+          computation = prev * current / Math.pow(100, maxDecimalPlaces);
           break
         case '+':
           computation = prev + current / Math.pow(10, maxDecimalPlaces);
