@@ -56,19 +56,20 @@ class Calculator {
     const decimalPlaces = x => ((x.toString().includes('.')) ? (x.toString().split('.').pop().length) : (0));
     if (String(current).includes('.') && String(prev).includes('.')) {
       let maxDecimalPlaces = Math.max(decimalPlaces(current), decimalPlaces(prev));
+      let firsAfterDot = decimalPlaces(current);
+      let secondAfterDot = decimalPlaces(prev);
       current = current * Math.pow(10, maxDecimalPlaces)
       prev = prev * Math.pow(10, maxDecimalPlaces)      
       switch (this.operation) {
         case '+':
           console.log(prev, current)
-          computation = (prev + current) / Math.pow(10, maxDecimalPlaces);
-          console.log(computation)
+          computation = (prev + current) / Math.pow(10, maxDecimalPlaces);          
           break
         case '-':
           computation = (prev - current) / Math.pow(10, maxDecimalPlaces);
           break
         case '÷':
-          computation = (prev / current) * Math.pow(1, maxDecimalPlaces);
+          computation = (prev / current);
           break
         case '*':
           computation = prev * current / Math.pow(100, maxDecimalPlaces);
