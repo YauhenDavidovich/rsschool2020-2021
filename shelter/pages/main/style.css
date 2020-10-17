@@ -254,6 +254,14 @@ a {
   margin: 0 auto;
 }
 
+@media screen and (max-width: 1279px) {
+  .about__content {
+    max-width: 43.0rem;
+    flex-direction: column-reverse;
+    padding-top: 6.6rem;
+  }
+}
+
 .about-text {
   margin-top: 1.5rem;
   display: flex;
@@ -287,6 +295,13 @@ a {
   line-height: 160%;
   color: #4C4C4C;
   padding-top: 2.5rem;
+}
+
+@media screen and (max-width: 1279px) {
+  .about__image {
+    padding-top: 8rem;
+    padding-left: 6.5rem;
+  }
 }
 
 .pets {

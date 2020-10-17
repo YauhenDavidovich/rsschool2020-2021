@@ -41,9 +41,10 @@ a {
     max-width: 120rem;
     justify-content: space-between;
     width: 100%;
+
     @media screen and (max-width: 1279px) {
-        width: 70.8rem;    
-    }    
+        width: 70.8rem;
+    }
 }
 
 
@@ -54,8 +55,9 @@ a {
     position: absolute;
     top: 6.1rem;
     display: flex;
+
     @media screen and (max-width: 1279px) {
-        top: 3.1rem;    
+        top: 3.1rem;
     }
 }
 
@@ -149,8 +151,9 @@ a {
     display: flex;
     padding-top: 18rem;
     background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+
     @media screen and (max-width: 1279px) {
-        padding-top: 15rem;    
+        padding-top: 15rem;
     }
 }
 
@@ -159,10 +162,11 @@ a {
     justify-content: space-between;
     width: 100%;
     max-width: 120rem;
+
     @media screen and (max-width: 1279px) {
         flex-direction: column;
         max-width: 70.8rem;
-        margin: 0 auto;    
+        margin: 0 auto;
         align-items: center;
     }
 }
@@ -174,8 +178,9 @@ a {
     max-width: 46rem;
     width: 100%;
     padding-bottom: 8rem;
+
     @media screen and (max-width: 1279px) {
-        max-width: 46rem;    
+        max-width: 46rem;
     }
 }
 
@@ -188,10 +193,11 @@ a {
     line-height: 130%;
     color: $color-light-xl;
     padding-top: 16.4rem;
+
     @media screen and (max-width: 1279px) {
-        padding-top: 0.1rem;   
+        padding-top: 0.1rem;
     }
-    
+
 }
 
 .content-section__subtitle {
@@ -218,13 +224,15 @@ a {
     line-height: 130%;
     letter-spacing: 0.1003rem;
     color: $color-dark-3xl;
+
     &:hover {
         background-color: $color-primary-light;
         cursor: pointer;
     }
+
     @media screen and (max-width: 1279px) {
-        margin-left: 12.6rem; 
-        margin-top: 4.3rem;   
+        margin-left: 12.6rem;
+        margin-top: 4.3rem;
     }
 }
 
@@ -232,19 +240,20 @@ a {
 .banner-image {
     @media screen and (max-width: 1279px) {
         width: 56.9rem;
-        height: 59.3rem; 
-        overflow: hidden;  
-        margin-left: 13.6rem; 
+        height: 59.3rem;
+        overflow: hidden;
+        margin-left: 13.6rem;
         margin-top: 2rem;
         vertical-align: bottom;
     }
 }
 
-.banner-image img{
+.banner-image img {
     @media screen and (max-width: 1279px) {
-        width: 100%;         
+        width: 100%;
     }
 }
+
 /////////About
 .about {
     background-color: $color-light-xl;
@@ -258,6 +267,12 @@ a {
     padding-top: 8rem;
     padding-bottom: 9.8rem;
     margin: 0 auto;
+
+    @media screen and (max-width: 1279px) {
+        max-width: 43.0rem;
+        flex-direction: column-reverse;
+        padding-top: 6.6rem
+    }
 }
 
 
@@ -298,6 +313,14 @@ a {
 }
 
 
+.about__image {
+    @media screen and (max-width: 1279px) {
+        padding-top: 8rem;
+        padding-left: 6.5rem;
+    }
+}
+
+//Pets
 .pets {
     background-color: $color-light-l;
 }
@@ -591,6 +614,7 @@ a {
     padding: 1rem 1.2rem 1rem 1.5rem;
     background-color: $color-primary;
     border-radius: 9px;
+
     &:hover {
         background-color: $color-primary-light;
         border-color: $color-primary-light;
