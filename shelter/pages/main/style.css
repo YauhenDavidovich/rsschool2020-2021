@@ -325,6 +325,12 @@ a {
   align-items: center;
 }
 
+@media screen and (max-width: 1279px) {
+  .pets__content {
+    max-width: 70.8rem;
+  }
+}
+
 .pets-slider__button_left {
   display: flex;
   justify-content: center;
@@ -348,6 +354,12 @@ a {
   background-color: #FDDCC4;
   border: 2px solid #FDDCC4;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1279px) {
+  .pets-slider__button_left {
+    margin-right: 1.2rem;
+  }
 }
 
 .pets-slider__button_right {
@@ -376,6 +388,12 @@ a {
   cursor: pointer;
 }
 
+@media screen and (max-width: 1279px) {
+  .pets-slider__button_right {
+    margin-left: 1.2rem;
+  }
+}
+
 .pets__title {
   font-family: Georgia;
   color: #545454;
@@ -395,6 +413,15 @@ a {
   width: 100%;
 }
 
+@media screen and (max-width: 1279px) {
+  .pets__cards {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 4rem;
+    justify-content: center;
+    max-width: 58rem;
+  }
+}
+
 .pets__card {
   display: flex;
   flex-direction: column;
@@ -403,6 +430,12 @@ a {
   height: 43.5rem;
   border-radius: 0.9rem;
   background-color: #FAFAFA;
+}
+
+@media screen and (max-width: 1279px) {
+  .pets__cards > .pets__card:nth-child(3) {
+    display: none;
+  }
 }
 
 .pets__card:hover {
@@ -470,6 +503,12 @@ a {
   background-color: #FDDCC4;
   border-color: #FDDCC4;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1279px) {
+  .pets__button {
+    width: 26rem;
+  }
 }
 
 .help {
