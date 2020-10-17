@@ -29,8 +29,7 @@ a {
 
 @media screen and (max-width: 1279px) {
   .wrapper {
-    width: 76.8rem;
-    background-color: white;
+    width: 70.8rem;
   }
 }
 
@@ -40,6 +39,12 @@ a {
   position: absolute;
   top: 6.1rem;
   display: flex;
+}
+
+@media screen and (max-width: 1279px) {
+  .header {
+    top: 3.1rem;
+  }
 }
 
 .header__content {
@@ -127,6 +132,12 @@ a {
   background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
 }
 
+@media screen and (max-width: 1279px) {
+  .start-screen {
+    padding-top: 15rem;
+  }
+}
+
 .start-screen__content {
   display: flex;
   justify-content: space-between;
@@ -137,6 +148,9 @@ a {
 @media screen and (max-width: 1279px) {
   .start-screen__content {
     flex-direction: column;
+    max-width: 70.8rem;
+    margin: 0 auto;
+    align-items: center;
   }
 }
 
@@ -149,6 +163,12 @@ a {
   padding-bottom: 8rem;
 }
 
+@media screen and (max-width: 1279px) {
+  .content-section {
+    max-width: 46rem;
+  }
+}
+
 .content-section__title {
   font-family: Georgia;
   font-style: normal;
@@ -157,6 +177,12 @@ a {
   line-height: 130%;
   color: #FFFFFF;
   padding-top: 16.4rem;
+}
+
+@media screen and (max-width: 1279px) {
+  .content-section__title {
+    padding-top: 0.1rem;
+  }
 }
 
 .content-section__subtitle {
@@ -188,6 +214,30 @@ a {
 .content-section__button:hover {
   background-color: #FDDCC4;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1279px) {
+  .content-section__button {
+    margin-left: 12.6rem;
+    margin-top: 4.3rem;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .banner-image {
+    width: 56.9rem;
+    height: 59.3rem;
+    overflow: hidden;
+    margin-left: 13.6rem;
+    margin-top: 2rem;
+    vertical-align: bottom;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .banner-image img {
+    width: 100%;
+  }
 }
 
 .about {
