@@ -105,9 +105,6 @@ a {
     width: 44.3rem;
     margin-bottom: 0.6rem;
 
-    @media screen and (max-width: 767px) {
-        display: none;
-    }
 }
 
 .list {
@@ -117,6 +114,25 @@ a {
     margin: 0;
     padding: 0;
     list-style-type: none;
+
+    @media screen and (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: fixed;
+        visibility: hidden;
+        top: 0;
+        left: -100%;
+        width: 32rem;
+        height: 100%;
+        margin: 0;
+        padding: 80px 0;
+
+        text-align: center;
+        background-color: $color-dark-3xl;
+        box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+        z-index: 17000;
+    }
 }
 
 .list__item {
@@ -130,6 +146,14 @@ a {
     font-size: 1.5rem;
     line-height: 160%;
     color: $color-light-l;
+
+    @media screen and (max-width: 767px) {
+        font-family: Arial;
+        font-weight: 400;
+        font-size: 3.2rem;
+        line-height: 160%;
+        color: $color-light-s;
+    }
 }
 
 .list__link-active {
@@ -209,26 +233,27 @@ a {
 }
 
 #menu__toggle:checked~.menu__btn>span {
-    transform: rotate(45deg);
+    transform: rotate(90deg);
+
 }
 
 #menu__toggle:checked~.menu__btn>span::before {
-    top: 0;
-    transform: rotate(0);
+    top: 0.8rem;
 }
 
 #menu__toggle:checked~.menu__btn>span::after {
-    top: 0;
-    transform: rotate(90deg);
+    top: -0.8rem;
 }
 
-#menu__toggle:checked~.menu__box {
+#menu__toggle:checked~.list {
     visibility: visible;
     left: 0;
+
 }
 
 
-//Burger button animation
+
+//Burger button
 .menu__btn>span,
 .menu__btn>span::before,
 .menu__btn>span::after {
