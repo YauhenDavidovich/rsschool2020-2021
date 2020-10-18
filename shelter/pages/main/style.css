@@ -594,8 +594,23 @@ a {
   justify-content: center;
 }
 
+@media screen and (max-width: 1279px) {
+  .donation-container {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 8.1rem;
+    margin-bottom: 9.8rem;
+  }
+}
+
 .donation__image {
   padding-top: 0.1rem;
+}
+
+@media screen and (max-width: 1279px) {
+  .donation__image {
+    padding-top: 6rem;
+  }
 }
 
 .donation__information {
@@ -676,12 +691,29 @@ a {
   margin-top: 4rem;
 }
 
+@media screen and (max-width: 1279px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    max-width: 70.8rem;
+    margin-top: 3rem;
+  }
+}
+
 .footer-content__wrapper {
   display: flex;
   justify-content: space-between;
   max-width: 73.3rem;
   width: 100%;
   padding-top: 1.7rem;
+}
+
+@media screen and (max-width: 1279px) {
+  .footer-content__wrapper {
+    max-width: 64rem;
+    padding-top: 0;
+    padding-right: 0.9rem;
+  }
 }
 
 .footer-content__contacts {
@@ -723,10 +755,28 @@ a {
   text-align: left;
 }
 
+@media screen and (max-width: 1279px) {
+  .footer-content_locations > h3 {
+    padding-left: 0.2rem;
+  }
+}
+
 .contact-link {
   display: flex;
   flex-direction: row;
   height: 3.2rem;
   margin-top: 4rem;
+}
+
+@media screen and (max-width: 1279px) {
+  .mail__pin {
+    padding-top: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .footer__image {
+    margin-top: 6.5rem;
+  }
 }
 /*# sourceMappingURL=style.css.map */
