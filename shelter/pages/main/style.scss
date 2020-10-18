@@ -41,6 +41,10 @@ a {
     max-width: 120rem;
     justify-content: space-between;
     width: 100%;
+
+    @media screen and (max-width: 1279px) {
+        width: 70.8rem;
+    }
 }
 
 
@@ -51,6 +55,10 @@ a {
     position: absolute;
     top: 6.1rem;
     display: flex;
+
+    @media screen and (max-width: 1279px) {
+        top: 3.1rem;
+    }
 }
 
 
@@ -143,6 +151,10 @@ a {
     display: flex;
     padding-top: 18rem;
     background: url(../../assets/images/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), #211F20;
+
+    @media screen and (max-width: 1279px) {
+        padding-top: 15rem;
+    }
 }
 
 .start-screen__content {
@@ -150,15 +162,26 @@ a {
     justify-content: space-between;
     width: 100%;
     max-width: 120rem;
+
+    @media screen and (max-width: 1279px) {
+        flex-direction: column;
+        max-width: 70.8rem;
+        margin: 0 auto;
+        align-items: center;
+    }
 }
 
 .content-section {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     max-width: 46rem;
     width: 100%;
     padding-bottom: 8rem;
+
+    @media screen and (max-width: 1279px) {
+        max-width: 46rem;
+    }
 }
 
 
@@ -169,6 +192,12 @@ a {
     font-size: 4.4rem;
     line-height: 130%;
     color: $color-light-xl;
+    padding-top: 16.4rem;
+
+    @media screen and (max-width: 1279px) {
+        padding-top: 0.1rem;
+    }
+
 }
 
 .content-section__subtitle {
@@ -195,6 +224,34 @@ a {
     line-height: 130%;
     letter-spacing: 0.1003rem;
     color: $color-dark-3xl;
+
+    &:hover {
+        background-color: $color-primary-light;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 1279px) {
+        margin-left: 12.6rem;
+        margin-top: 4.3rem;
+    }
+}
+
+
+.banner-image {
+    @media screen and (max-width: 1279px) {
+        width: 56.9rem;
+        height: 59.3rem;
+        overflow: hidden;
+        margin-left: 13.6rem;
+        margin-top: 2rem;
+        vertical-align: bottom;
+    }
+}
+
+.banner-image img {
+    @media screen and (max-width: 1279px) {
+        width: 100%;
+    }
 }
 
 /////////About
@@ -210,6 +267,12 @@ a {
     padding-top: 8rem;
     padding-bottom: 9.8rem;
     margin: 0 auto;
+
+    @media screen and (max-width: 1279px) {
+        max-width: 43.0rem;
+        flex-direction: column-reverse;
+        padding-top: 6.6rem
+    }
 }
 
 
@@ -250,6 +313,14 @@ a {
 }
 
 
+.about__image {
+    @media screen and (max-width: 1279px) {
+        padding-top: 8rem;
+        padding-left: 6.5rem;
+    }
+}
+
+//Pets
 .pets {
     background-color: $color-light-l;
 }
@@ -270,6 +341,10 @@ a {
     max-width: 120rem;
     width: 100%;
     align-items: center;
+
+    @media screen and (max-width: 1279px) {
+        max-width: 70.8rem;
+    }
 }
 
 
@@ -295,7 +370,11 @@ a {
         background-color: $color-primary-light;
         border: 2px solid $color-primary-light;
         cursor: pointer;
-    }    
+    }
+
+    @media screen and (max-width: 1279px) {
+        margin-right: 1.2rem;
+    }
 }
 
 .pets-slider__button_right {
@@ -322,6 +401,10 @@ a {
         border: 2px solid $color-primary-light;
         cursor: pointer;
     }
+
+    @media screen and (max-width: 1279px) {
+        margin-left: 1.2rem;
+    }
 }
 
 
@@ -343,6 +426,13 @@ a {
     justify-content: space-between;
     max-width: 99rem;
     width: 100%;
+
+    @media screen and (max-width: 1279px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 4rem;
+        justify-content: center;
+        max-width: 58rem;        
+    }
 }
 
 .pets__card {
@@ -353,6 +443,14 @@ a {
     height: 43.5rem;
     border-radius: 0.9rem;
     background-color: $color-light-s;
+
+}
+
+.pets__cards>.pets__card:nth-child(3) {
+    @media screen and (max-width: 1279px) {
+        display: none;
+    }
+
 }
 
 .pets__card:hover {
@@ -416,6 +514,16 @@ a {
     letter-spacing: 0.102rem;
     background-color: $color-primary;
     text-align: center;
+
+    &:hover {
+        background-color: $color-primary-light;
+        border-color: $color-primary-light;
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 1279px) {
+        width: 26rem;
+    }
 }
 
 ////Help
@@ -490,54 +598,87 @@ a {
 
 .donation-container {
     align-items: center;
-    column-gap: 1.875rem;
+    column-gap: 3rem;
     width: 100%;
-    margin-top: 5.0625rem;
-    margin-bottom: 6.3125rem;
+    margin-top: 8.2rem;
+    margin-bottom: 10.1rem;
     display: flex;
     justify-content: center;
 }
 
+.donation__image {
+    padding-top: 0.1rem;
+}
+
+.donation__information {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 38rem;
+    grid-row-gap: 2rem;
+}
+
+
 .donation__title {
     font-family: Georgia;
     font-weight: normal;
-    font-size: 2.1875rem;
+    font-size: 3.5rem;
     line-height: 130%;
-    letter-spacing: 0.06rem;
+    letter-spacing: 0.21rem;
     color: $color-dark-l;
     text-align: left;
 }
 
 .donation__subtitle {
-    font-size: 0.9375rem;
-    line-height: 110%;
-    letter-spacing: 0.05625rem;
-}
-
-.donation__card_link {
-    margin-right: auto;
-    display: flex;
-    align-items: center;
-    background-color: $color-primary;
-    border-radius: 0.9rem;
-}
-
-.donation__card_link a {
-    padding: 1rem 1.5rem;
-    border-radius: 0.9rem;
-    text-decoration: none;
-}
-
-
-.donation__card_link>a>span {
-    display: flex;
-    font-size: 1.25rem;
-    font-family: Georgia, serif;
+    font-family: Georgia;
     font-weight: normal;
-    line-height: 1.4375rem;
-    letter-spacing: 0.075rem;
-    color: #545454;
+    font-size: 1.5rem;
+    line-height: 110%;
+    letter-spacing: 0.09rem;
 }
+
+.credit-card {
+    display: flex;
+    flex-direction: row;
+    width: 34.9rem;
+    padding: 1rem 1.2rem 1rem 1.5rem;
+    background-color: $color-primary;
+    border-radius: 9px;
+
+    &:hover {
+        background-color: $color-primary-light;
+        border-color: $color-primary-light;
+        cursor: pointer;
+    }
+
+}
+
+.credit-card h4 {
+    margin: 0;
+    font-family: Georgia;
+    font-weight: normal;
+    line-height: 115%;
+    font-size: 2rem;
+    letter-spacing: 0.12rem;
+    padding-left: 1.5rem;
+    cursor: pointer;
+}
+
+
+.credit-card a {
+    color: $color-dark-l;
+}
+
+.donation__card_information {
+    font-family: Arial;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 1.2rem;
+    line-height: 1.8rem;
+    color: $color-dark-m;
+}
+
 
 //Footer
 
