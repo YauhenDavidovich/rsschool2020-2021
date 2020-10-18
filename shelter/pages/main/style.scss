@@ -341,6 +341,7 @@ a {
     max-width: 120rem;
     width: 100%;
     align-items: center;
+    overflow: hidden;
 
     @media screen and (max-width: 1279px) {
         max-width: 70.8rem;
@@ -431,7 +432,7 @@ a {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 4rem;
         justify-content: center;
-        max-width: 58rem;        
+        max-width: 58rem;
     }
 }
 
@@ -561,6 +562,14 @@ a {
     row-gap: 5.5rem;
     max-width: 86%;
     margin: 0 auto;
+
+    @media screen and (max-width: 1279px) {
+        display: grid;
+        max-width: 63rem;
+        grid-template-columns: 17rem 17rem 17rem;
+        grid-template-rows: 11.3rem 11.3rem 11.3rem;
+        column-gap: 6rem;
+    }
 }
 
 

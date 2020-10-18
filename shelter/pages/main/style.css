@@ -323,6 +323,7 @@ a {
   max-width: 120rem;
   width: 100%;
   align-items: center;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 1279px) {
@@ -542,6 +543,16 @@ a {
   row-gap: 5.5rem;
   max-width: 86%;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 1279px) {
+  .help-cards__wrapper {
+    display: grid;
+    max-width: 63rem;
+    grid-template-columns: 17rem 17rem 17rem;
+    grid-template-rows: 11.3rem 11.3rem 11.3rem;
+    column-gap: 6rem;
+  }
 }
 
 .help-cards__card {
