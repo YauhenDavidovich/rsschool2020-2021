@@ -361,10 +361,11 @@ a {
     font-size: 1.5rem;
     line-height: 160%;
     color: $color-dark-s;
+
     @media screen and (max-width: 767px) {
         text-align: center;
         margin-top: 4.2rem;
-    
+
     }
 }
 
@@ -407,8 +408,9 @@ a {
         overflow: hidden;
         margin-left: 13.6rem;
         margin-top: 2rem;
-        
+
     }
+
     @media screen and (max-width: 767px) {
         width: 26rem;
         margin-left: 4rem;
@@ -423,6 +425,7 @@ a {
         width: 100%;
         vertical-align: bottom;
     }
+
     @media screen and (max-width: 767px) {
         vertical-align: bottom;
         height: 100%;
@@ -448,12 +451,13 @@ a {
         flex-direction: column-reverse;
         padding-top: 6.6rem
     }
+
     @media screen and (max-width: 767px) {
         max-width: 27rem;
         flex-direction: column-reverse;
         padding-top: 2.7rem;
-        align-items: center;   
-        padding-bottom: 4rem; 
+        align-items: center;
+        padding-bottom: 4rem;
     }
 }
 
@@ -473,9 +477,10 @@ a {
     align-items: center;
     letter-spacing: 0.21rem;
     color: $color-dark-l;
+
     @media screen and (max-width: 767px) {
         font-size: 2.5rem;
-        line-height: 130%;        
+        line-height: 130%;
         letter-spacing: 0.15rem;
         text-align: center;
         padding-left: 0.2rem;
@@ -489,8 +494,10 @@ a {
     font-size: 1.5rem;
     line-height: 160%;
     color: $color-dark-xl;
+
     @media screen and (max-width: 767px) {
-        text-align: justify;}
+        text-align: justify;
+    }
 }
 
 .about-text__subtitle_second {
@@ -500,6 +507,7 @@ a {
     line-height: 160%;
     color: $color-dark-xl;
     padding-top: 2.5rem;
+
     @media screen and (max-width: 767px) {
         text-align: justify;
         padding-top: 2.2rem;
@@ -513,6 +521,7 @@ a {
         padding-top: 8rem;
         padding-left: 6.5rem;
     }
+
     @media screen and (max-width: 767px) {
         margin-top: 4.1rem;
         padding-top: 0rem;
@@ -541,6 +550,7 @@ a {
     align-items: center;
     width: 100%;
     padding-top: 8.1rem;
+
     @media screen and (max-width: 767px) {
         padding-top: 4.5rem;
     }
@@ -560,6 +570,7 @@ a {
     @media screen and (max-width: 1279px) {
         max-width: 70.8rem;
     }
+
     @media screen and (max-width: 767px) {
         max-width: 27rem;
     }
@@ -593,6 +604,7 @@ a {
     @media screen and (max-width: 1279px) {
         margin-right: 1.2rem;
     }
+
     @media screen and (max-width: 767px) {
         display: none;
     }
@@ -626,61 +638,63 @@ a {
     @media screen and (max-width: 1279px) {
         margin-left: 1.2rem;
     }
+
     @media screen and (max-width: 767px) {
         display: none;
     }
 }
 
 .pets-slider__button-m_left {
-    @media screen and (max-width: 767px) {    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 5.2rem;
-    width: 5.2rem;
-    border-radius: 50%;
-    border: 2px solid $color-primary;
-    outline: none;
-    font-family: Georgia;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 2.7rem;
-    line-height: 2.21rem;
-    letter-spacing: 0.06em;
-    background-color: transparent;    
+    @media screen and (max-width: 767px) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 5.2rem;
+        width: 5.2rem;
+        border-radius: 50%;
+        border: 2px solid $color-primary;
+        outline: none;
+        font-family: Georgia;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 2.7rem;
+        line-height: 2.21rem;
+        letter-spacing: 0.06em;
+        background-color: transparent;
 
-    &:hover {
-        background-color: $color-primary-light;
-        border: 2px solid $color-primary-light;
-        cursor: pointer;
+        &:hover {
+            background-color: $color-primary-light;
+            border: 2px solid $color-primary-light;
+            cursor: pointer;
+        }
     }
-}    
 }
+
 .pets-slider__button-m_right {
     @media screen and (max-width: 767px) {
-    transform: rotate(180deg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 5.2rem;
-    width: 5.2rem;
-    border-radius: 50%;
-    border: 2px solid $color-primary;
-    outline: none;
-    font-family: Georgia;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 2.7rem;
-    line-height: 2.21rem;
-    letter-spacing: 0.06em;
-    background-color: transparent;    
+        transform: rotate(180deg);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 5.2rem;
+        width: 5.2rem;
+        border-radius: 50%;
+        border: 2px solid $color-primary;
+        outline: none;
+        font-family: Georgia;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 2.7rem;
+        line-height: 2.21rem;
+        letter-spacing: 0.06em;
+        background-color: transparent;
 
-    &:hover {
-        background-color: $color-primary-light;
-        border: 2px solid $color-primary-light;
-        cursor: pointer;
+        &:hover {
+            background-color: $color-primary-light;
+            border: 2px solid $color-primary-light;
+            cursor: pointer;
+        }
     }
-}    
 }
 
 
@@ -695,11 +709,12 @@ a {
     text-align: center;
     padding-bottom: 5.9rem;
     padding-left: 0.2rem;
+
     @media screen and (max-width: 767px) {
         font-size: 2.5rem;
-        line-height: 130%;        
-        letter-spacing: 0.15rem;     
-        padding-bottom: 4.2rem;   
+        line-height: 130%;
+        letter-spacing: 0.15rem;
+        padding-bottom: 4.2rem;
     }
 }
 
@@ -716,6 +731,7 @@ a {
         justify-content: center;
         max-width: 58rem;
     }
+
     @media screen and (max-width: 767px) {
         grid-template-columns: repeat(1, 1fr);
         justify-content: center;
@@ -795,6 +811,7 @@ a {
 
 .pets-slider__buttons_mobile {
     display: none;
+
     @media screen and (max-width: 767px) {
         display: flex;
         justify-content: space-between;
@@ -830,6 +847,7 @@ a {
     @media screen and (max-width: 1279px) {
         width: 26rem;
     }
+
     @media screen and (max-width: 767px) {
         margin-top: 4.2rem;
         margin-bottom: 4.2rem;
@@ -852,6 +870,12 @@ a {
     text-align: center;
     padding-bottom: 5.9rem;
     padding-left: 0.2rem;
+
+    @media screen and (max-width: 767px) {
+        font-size: 2.5rem;
+        letter-spacing: 0.15rem;
+        padding-bottom: 4.2rem;
+    }
 }
 
 
@@ -860,6 +884,11 @@ a {
     padding-top: 8.1rem;
     padding-bottom: 10rem;
     align-items: center;
+
+    @media screen and (max-width: 767px) {
+        padding-top: 4.2rem;
+        padding-bottom: 4.2rem;
+    }
 }
 
 
@@ -878,6 +907,15 @@ a {
         grid-template-columns: 17rem 17rem 17rem;
         grid-template-rows: 11.3rem 11.3rem 11.3rem;
         column-gap: 6rem;
+
+        @media screen and (max-width: 767px) {
+            display: grid;
+            max-width: 29rem;
+            grid-template-columns: 13rem 13rem;
+            grid-template-rows: 8.7rem 8.7rem 8.7rem 8.7rem;
+            column-gap: 3rem;
+            row-gap: 3.0rem;
+        }
     }
 }
 
@@ -888,15 +926,45 @@ a {
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
+
+    @media screen and (max-width: 767px) {
+        max-height: 8.7rem;
+
+    }
 }
 
 
 .help-cards__card img {
     margin-bottom: 3rem;
+
+    @media screen and (max-width: 767px) {
+        max-width: 5rem;
+        max-height: 5rem;
+        margin-bottom: 2rem;
+    }
+
+}
+
+
+.help-cards__card:nth-child(4) img {
+    @media screen and (max-width: 767px) {
+        margin-bottom: 2.1rem;
+    }
+}
+
+.help-cards__card:nth-child(6) img {
+    @media screen and (max-width: 767px) {
+        margin-bottom: 2.2rem;
+    }
 }
 
 .help-cards__card:nth-child(8) img {
     margin-bottom: 3.3rem;
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 2.2rem;
+    }
+
 }
 
 
@@ -907,6 +975,12 @@ a {
     line-height: 115%;
     letter-spacing: 0.12rem;
     color: $color-dark-l;
+
+    @media screen and (max-width: 767px) {
+        font-size: 1.5rem;
+        letter-spacing: 0.09rem;
+    }
+
 }
 
 //Donation
@@ -929,6 +1003,13 @@ a {
         margin-top: 8.1rem;
         margin-bottom: 9.8rem;
     }
+
+    @media screen and (max-width: 767px) {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 4.2rem;
+        margin-bottom: 4rem;
+    }
 }
 
 .donation__image {
@@ -936,6 +1017,18 @@ a {
 
     @media screen and (max-width: 1279px) {
         padding-top: 6rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        max-width: 26rem;
+        padding-top: 4.1rem;
+    }
+}
+
+
+.donation__image img {
+    @media screen and (max-width: 767px) {
+        width: 100%;
     }
 }
 
@@ -946,6 +1039,11 @@ a {
     justify-content: center;
     width: 38rem;
     grid-row-gap: 2rem;
+
+    @media screen and (max-width: 767px) {
+        width: 28rem;
+        align-items: center;
+    }
 }
 
 
@@ -957,6 +1055,13 @@ a {
     letter-spacing: 0.21rem;
     color: $color-dark-l;
     text-align: left;
+
+    @media screen and (max-width: 767px) {
+        font-size: 2.5rem;
+        line-height: 130%;
+        letter-spacing: 0.15rem;
+        text-align: center;
+    }
 }
 
 .donation__subtitle {
@@ -965,6 +1070,11 @@ a {
     font-size: 1.5rem;
     line-height: 110%;
     letter-spacing: 0.09rem;
+
+    @media screen and (max-width: 767px) {
+        line-height: 160%;
+        letter-spacing: 0.01rem;
+    }
 }
 
 .credit-card {
@@ -981,6 +1091,10 @@ a {
         cursor: pointer;
     }
 
+    @media screen and (max-width: 767px) {
+        width: 28.1rem;
+    }
+
 }
 
 .credit-card h4 {
@@ -992,6 +1106,12 @@ a {
     letter-spacing: 0.12rem;
     padding-left: 1.5rem;
     cursor: pointer;
+
+    @media screen and (max-width: 767px) {
+        font-size: 1.5rem;
+        letter-spacing: 0.09rem;
+        line-height: 160%;
+    }
 }
 
 
@@ -1006,7 +1126,12 @@ a {
     font-size: 1.2rem;
     line-height: 1.8rem;
     color: $color-dark-m;
+
+    @media screen and (max-width: 767px) {
+        text-align: justify;
+    }
 }
+
 
 
 //Footer
@@ -1028,6 +1153,10 @@ a {
         max-width: 70.8rem;
         margin-top: 3rem;
     }
+
+    @media screen and (max-width: 767px) {
+        max-width: 30rem;
+    }
 }
 
 .footer-content__wrapper {
@@ -1042,15 +1171,27 @@ a {
         padding-top: 0;
         padding-right: 0.9rem;
     }
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+        align-items: center;
+        padding-right: 0;
+    }
 }
 
 
 .footer-content__contacts {
-    width: 27.9rem;
+    width: 27.9rem;    
 }
 
-.footer-content__locations {
+.footer-content_locations {
     width: 30.2rem;
+    @media screen and (max-width: 767px) {
+        margin-top: 4rem;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .icon {
@@ -1069,6 +1210,8 @@ a {
     font-weight: normal;
     font-size: 2rem;
     color: $color-primary;
+
+    @media screen and (max-width: 767px) {}
 }
 
 .contact-link h4>a {
@@ -1083,6 +1226,15 @@ a {
     letter-spacing: 0.21rem;
     color: $color-light-xl;
     text-align: left;
+    word-wrap: break-word;
+    max-width: 28rem;
+
+    @media screen and (max-width: 767px) {
+        font-size: 2.5rem;
+        line-height: 130%;
+        letter-spacing: 0.15rem;
+        text-align: center;
+    }
 }
 
 
@@ -1097,6 +1249,9 @@ a {
     flex-direction: row;
     height: 3.2rem;
     margin-top: 4rem;
+    @media screen and (max-width: 767px) {
+        justify-content: center;
+    }
 }
 
 
