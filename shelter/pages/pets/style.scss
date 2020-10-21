@@ -41,6 +41,15 @@ a {
     max-width: 120rem;
     justify-content: space-between;
     width: 100%;
+
+    @media screen and (max-width: 1279px) {
+        width: 70.8rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 30rem;
+        position: relative;
+    }
 }
 
 
@@ -53,7 +62,7 @@ a {
     position: sticky;
     top: 0;
     width: 100%;
-    display: flex;    
+    display: flex;
     z-index: 1000;
 }
 
@@ -121,7 +130,7 @@ a {
     font-weight: 400;
     font-size: 1.5rem;
     line-height: 160%;
-    color: $color-dark-l;    
+    color: $color-dark-l;
 }
 
 .list__link-active {
@@ -146,8 +155,11 @@ a {
     padding-bottom: 10.1rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;    
+    justify-content: center;
     align-items: center;
+    @media screen and (max-width: 1279px) {
+        padding-bottom: 7.6rem;
+    }
 }
 
 
@@ -165,12 +177,20 @@ a {
 }
 
 .pets__slider {
-    padding: 5.9rem 0;
+    margin: 5.9rem 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(2, 1fr);
     column-gap: 4rem;
     row-gap: 3rem;
+
+    @media screen and (max-width: 1279px) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        max-height: 136.5rem;
+        overflow: hidden;
+        margin: 2.9rem 0 4rem;
+    }
 }
 
 .pets__card {
@@ -196,7 +216,8 @@ a {
     line-height: 2.3rem;
     align-items: center;
     text-align: center;
-    letter-spacing: 0.11rem;
+    letter-spacing: 0.12rem;
+    padding-left: 0.2rem;
     color: $color-dark-l;
 }
 
@@ -267,6 +288,7 @@ a {
     border: 2px solid $color-dark-s;
     cursor: default;
 }
+
 //Footer
 
 .footer {
@@ -279,29 +301,65 @@ a {
     justify-content: space-between;
     width: 100%;
     margin-top: 4rem;
+
+    @media screen and (max-width: 1279px) {
+        flex-direction: column;
+        align-items: center;
+        max-width: 70.8rem;
+        margin-top: 3rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        max-width: 30rem;
+    }
 }
 
 .footer-content__wrapper {
     display: flex;
     justify-content: space-between;
-    max-width: 73.3rem;
+    max-width: 74rem;
     width: 100%;
     padding-top: 1.7rem;
+
+    @media screen and (max-width: 1279px) {
+        max-width: 64rem;
+        padding-top: 0;        
+    }
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+        align-items: center;
+        padding-right: 0;
+    }
 }
 
 
 .footer-content__contacts {
     width: 27.9rem;
 }
- 
-.footer-content__locations {
+
+.footer-content_locations {
     width: 30.2rem;
+
+    @media screen and (max-width: 767px) {
+        margin-top: 4rem;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 .icon {
     margin-right: 20px;
 }
 
+
+.footer-content_locations>.contact-link {
+    @media screen and (max-width: 767px) {
+        margin-top: 4.7rem;
+        text-align: left;
+    }
+
+}
 
 .contact-link h4 {
     align-self: center;
@@ -312,11 +370,13 @@ a {
     line-height: 2.3rem;
     letter-spacing: 0.12rem;
     font-weight: normal;
-    font-size: 2rem;    
-    color: $color-primary;     
+    font-size: 2rem;
+    color: $color-primary;
+
+    @media screen and (max-width: 767px) {}
 }
 
-.contact-link h4 > a {    
+.contact-link h4>a {
     color: $color-primary;
 }
 
@@ -328,18 +388,67 @@ a {
     letter-spacing: 0.21rem;
     color: $color-light-xl;
     text-align: left;
+    word-wrap: break-word;
+    max-width: 28rem;
+
+    @media screen and (max-width: 767px) {
+        font-size: 2.5rem;
+        line-height: 130%;
+        letter-spacing: 0.15rem;
+        text-align: center;
+
+    }
 }
 
+
+.footer-content_locations>h3 {
+    @media screen and (max-width: 1279px) {
+        padding-left: 0.2rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        padding-left: 2.3rem;
+    }
+}
 
 .contact-link {
     display: flex;
     flex-direction: row;
     height: 3.2rem;
     margin-top: 4rem;
+
+    @media screen and (max-width: 767px) {
+        justify-content: center;
+    }
+}
+
+
+.contact-link.second-column {
+    @media screen and (max-width: 767px) {
+        justify-content: left;
+    }
+}
+
+.mail__pin {
+    @media screen and (max-width: 1279px) {
+        padding-top: 0.3rem;
+    }
+}
+
+.footer__image {
+    @media screen and (max-width: 1279px) {
+        margin-top: 6.5rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-top: 4rem;
+        width: 26rem;
+    }
+
 }
 
 .footer__image img {
-    width: 30rem;
-    height: 31rem;
-    vertical-align: bottom;
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
 }
