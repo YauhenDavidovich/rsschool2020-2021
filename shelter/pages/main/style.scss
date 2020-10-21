@@ -1187,8 +1187,7 @@ a {
 .footer-content_locations {
     width: 30.2rem;
     @media screen and (max-width: 767px) {
-        margin-top: 4rem;
-        align-items: center;
+        margin-top: 4rem;        
         display: flex;
         flex-direction: column;
     }
@@ -1198,6 +1197,14 @@ a {
     margin-right: 20px;
 }
 
+
+.footer-content_locations > .contact-link {
+    @media screen and (max-width: 767px) {
+        margin-top: 4.7rem;
+        text-align: left;
+    }
+
+}
 
 .contact-link h4 {
     align-self: center;
@@ -1234,6 +1241,7 @@ a {
         line-height: 130%;
         letter-spacing: 0.15rem;
         text-align: center;
+        
     }
 }
 
@@ -1241,6 +1249,9 @@ a {
 .footer-content_locations>h3 {
     @media screen and (max-width: 1279px) {
         padding-left: 0.2rem;
+    }
+    @media screen and (max-width: 767px) {
+        padding-left: 2.3rem;
     }
 }
 
@@ -1255,6 +1266,12 @@ a {
 }
 
 
+.contact-link.second-column {
+    @media screen and (max-width: 767px) {
+        justify-content: left;
+    }
+}
+
 .mail__pin {
     @media screen and (max-width: 1279px) {
         padding-top: 0.3rem;
@@ -1265,5 +1282,15 @@ a {
     @media screen and (max-width: 1279px) {
         margin-top: 6.5rem;
     }
+    @media screen and (max-width: 767px) {
+        margin-top: 4rem;
+        width: 26rem;
+    }
 
+}
+
+.footer__image img{
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
 }
