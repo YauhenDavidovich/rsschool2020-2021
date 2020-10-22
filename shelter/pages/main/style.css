@@ -155,7 +155,7 @@ a {
     font-weight: 400;
     font-size: 3.2rem;
     line-height: 160%;
-    color: #FAFAFA;
+    color: #CDCDCD;
   }
 }
 
@@ -165,9 +165,21 @@ a {
   padding-top: 0.4rem;
 }
 
+@media screen and (max-width: 767px) {
+  .list__link-active {
+    color: #FAFAFA;
+  }
+}
+
 .list__link:hover {
   color: #FAFAFA;
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .list__link:hover {
+    color: #FAFAFA;
+  }
 }
 
 #menu__toggle {
@@ -257,7 +269,7 @@ a {
   right: 0;
   transition-duration: 500ms;
   transform: translateX(0%);
-  transition-timing-function: cubic-bezier(0.33, 0.35, 0.77, 1.25);
+  transition-timing-function: cubic-bezier(0.42, 0, 1, 1);
 }
 
 .menu__btn > span,
