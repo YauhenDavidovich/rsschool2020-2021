@@ -14,8 +14,23 @@
     height: 100vh;
     background-size: cover;
     color: #000000;
+    background-color: aqua;
+  }
+
+  .root {
+    font-size: 10px
+  }
+
+  .greating__name {
+    display: flex;
+    max-width: 500rem;
+    width: 100%;
+    justify-content: flex-start;
+    flex-direction: row;
   }
   
+
+
   .time {
     font-size: 8rem;
   }

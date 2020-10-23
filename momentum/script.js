@@ -9,19 +9,23 @@ const showAmPm = true;
 
 // Show Time
 function showTime() {
-  let options = { weekday: 'long', day: 'numeric', month: 'long' }
+  let options = {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long'
+  }
   let today = new Date(),
     hour = today.getHours(),
     min = today.getMinutes(),
     sec = today.getSeconds();
-    day = today.getDay();
-    data = today.getDate();
-    month = today.getMonth();
-    day = today.toLocaleDateString("en-US", options);
-    
+  day = today.getDay();
+  data = today.getDate();
+  month = today.getMonth();
+  day = today.toLocaleDateString("en-US", options);
 
-  
-  
+
+
+
 
   // Output Time
   time.innerHTML = `${hour}<span>:</span>${addZero(min)}<span>:</span>${addZero(
@@ -32,8 +36,8 @@ function showTime() {
 }
 
 function addZero(n) {
-    return (parseInt(n, 10) < 10 ? '0' : '') + n;
-  }
+  return (parseInt(n, 10) < 10 ? '0' : '') + n;
+}
 
 // Get Name
 function getName() {
@@ -46,9 +50,10 @@ function getName() {
 
 // Set Name
 function setName(e) {
+
   if (e.type === 'keypress') {
-    // Make sure enter is pressed
-    if (e.which == 13 && e.target.innerText == "" || e.keyCode == 13 && e.target.innerText == "") {
+    if (e.which == 13 && e.target.innerText == "" || (e.keyCode == 13 || e.type === 'mouseleave') && e.target.innerText == "") {
+      e.preventDefault();
       name.innerHTML = '[Type your name]';
     } else if (e.which == 13 || e.keyCode == 13 && e.target.innerText !== "") {
       localStorage.setItem('name', e.target.innerText);
@@ -59,10 +64,18 @@ function setName(e) {
   }
 }
 
+function outsideClickListener(e) {
+  if (!e.target.matches('.name') && name.innerText == "") {
+    name.innerText = '[Type your name]';
+  }
+}
+
+
+
 // Get Focus
 function getFocus() {
   if (localStorage.getItem('focus') === null) {
-    focus.textContent = '[Enter Focus]';
+    focus.textContent = '[Type your focus for today]';
   } else {
     focus.textContent = localStorage.getItem('focus');
   }
@@ -82,9 +95,14 @@ function setFocus(e) {
 }
 
 name.addEventListener('keypress', setName);
+document.addEventListener('click', outsideClickListener)
 name.addEventListener('blur', setName);
+
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
+
+
+
 
 
 localStorage.clear()
