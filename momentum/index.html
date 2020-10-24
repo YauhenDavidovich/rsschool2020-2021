@@ -6,32 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Momentum</title>
     <link rel="stylesheet" type="text/css" href="normalize.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
-    <time class="time">12:05:05 PM</time>    
+    <button class="bg__change"> </button>
+    <div class="clock-display">
+        <div class="clock-display-time"></div>
+        <div class="clock-display-days"></div>
+    </div>    
     <h1>
         <div class="greating__name">
-            <h2 class="greating">Good afternoon!</h2>
+            <h2 class="greeting">Good afternoon!</h2>
             <h2 class="name" contenteditable="true" onclick="this.innerText=''">'[Type your name]'</h2>
         </div>
-        </h1>
+    </h1>
     <h2>What is your focus for today?</h2>
     <h2 class="focus" contenteditable="true" onclick="this.innerText=''">[Type your focus for today]</h2>
- <div class="quote__wrapper">
-    <figure class="quote">
-        <blockquote>
-          You were not born a winner, and you were not born a loser. You are what you make yourself be.
-        </blockquote>  
-      </figure>
-      <button id="reload" class="quote__btn">  
-    </button> 
- </div> 
-  
+    
+    <div class="quote__wrapper">
+        <figure class="quote">
+            <blockquote>
+                You were not born a winner, and you were not born a loser. You are what you make yourself be.
+            </blockquote>
+        </figure>        
+    </div>
+    <div id="reload" class="quote__btn"><img src="./assets/icons/reload.svg">
+    </div>
 
-<script src="script.js"></script>
+
+    <script src="script.js"></script>
 
 </body>
 
