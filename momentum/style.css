@@ -26,11 +26,21 @@ body {
   font-size: 10px;
 }
 
-.greating__name {
+.wrapper {
+  display: flex;
+  flex-direction: column;
+    margin: 0 auto;
+    max-width: 120rem;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.greeting__name, .focus__content {
   display: flex;
   max-width: 500rem;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: row;
+  margin: 0 auto;
 }
 
 .time {
@@ -48,7 +58,9 @@ h2 {
 
 .quote__wrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
 }
 
 .quote {

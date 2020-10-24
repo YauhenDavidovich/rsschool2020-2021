@@ -23,15 +23,17 @@
             <div class="clock-display-days"></div>
         </div>
 
-        <h1>
-            <div class="greating__name">
+        <div class=greeting__content>
+            <div class="greeting__name">
                 <h2 class="greeting">Good afternoon!</h2>
                 <h2 class="name" contenteditable="true" onclick="this.innerText=''">'[Type your name]'</h2>
             </div>
-        </h1>
-        <h2>What is your focus for today?</h2>
-        <h2 class="focus" contenteditable="true" onclick="this.innerText=''">[Type your focus for today]</h2>
+            <div class="focus__content">
+                <h2>What is your focus for today?</h2>
+                <h2 class="focus" contenteditable="true" onclick="this.innerText=''">[Type your focus for today]</h2>
+            </div>
 
+        </div>
         <div class="quote__wrapper">
             <figure class="quote">
                 <blockquote>
@@ -39,8 +41,9 @@
                     be.
                 </blockquote>
             </figure>
+            <div id="reload" class="quote__btn"><img src="./assets/icons/reload.svg"></div>
         </div>
-        <div id="reload" class="quote__btn"><img src="./assets/icons/reload.svg"></div>
+        
     </div>
 
 
