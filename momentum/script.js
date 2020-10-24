@@ -1,7 +1,9 @@
 // DOM Elements
 const greeting = document.querySelector('.greeting'),
   name = document.querySelector('.name'),
-  focus = document.querySelector('.focus');
+  focus = document.querySelector('.focus'),
+  bgChangeNext = document.querySelector('.bg__change_next'),
+  bgChangePrev = document.querySelector('.bg__change_prev');
 
 
 showClock = () =>{
@@ -81,7 +83,7 @@ const base = './assets/images/';
 const images = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'];
 let i = 0;
 let n= 0;
-const timeOfADayy = ['evening/', 'morning/', 'night/']
+const timeOfADayy = ['morning/', 'day/','evening/', 'night/']
 
 function viewBgImage(data) {
   const body = document.querySelector('body');
@@ -92,29 +94,89 @@ function viewBgImage(data) {
     body.style.backgroundImage = `url(${src})`;
   }; 
 }
+
+
 function getImage() {
+  let shuffledArr = images.sort(function(){
+
+    return Math.random() - 0.5;
+  });
+  localStorage.setItem('image', JSON.stringify(shuffledArr));
   let today = new Date(),
     hour = today.getHours();
-  const index = i % images.length;
+  const index = i % shuffledArr.length;
   
-  const imageSrc = base + timeOfADayy[n] + images[index];
+  const imageSrc = base + timeOfADayy[n] + shuffledArr[index];
   if (hour < 12) {
     // Morning    
     n = 0;
   } else if (hour < 18) {
     n=1;
-  } else {
+  } else if (hour < 24) {
     n=2;
+  } else {
+    n=3;
   }
-
-
   viewBgImage(imageSrc);
   i++;
-  bgChange.disabled = true;
-  setTimeout(function() { bgChange.disabled = false }, 1000);
+  localStorage.setItem('image_index', JSON.stringify(i));
+  localStorage.setItem('hour', JSON.stringify(hour));
 } 
-const bgChange = document.querySelector('.bg__change');
-bgChange.addEventListener('click', getImage);
+
+
+// Next background image
+function nextImage() {  
+  const shuffledArr = JSON.parse(localStorage.getItem('image'));  
+  let hour = JSON.parse(localStorage.getItem('hour'));
+  let index = JSON.parse(localStorage.getItem('image_index'));;
+  console.log(hour, index)
+  const imageSrc = base + timeOfADayy[n] + shuffledArr[index];
+  if (hour < 12) {
+    // Morning    
+    n = 0;
+  } else if (hour < 18) {
+    n=1;
+  } else if (hour < 24) {
+    n=2;
+  } else {
+    n=3;
+  }
+  viewBgImage(imageSrc);
+  i++;
+  hour++;
+  if (hour > 23) {hour = 0;};
+  if (i > 19) {i = 0;};
+  localStorage.setItem('image_index', JSON.stringify(i));
+  localStorage.setItem('hour', JSON.stringify(hour));
+  bgChangeNext.disabled = true;
+  setTimeout(function() { bgChangeNext.disabled = false }, 1000);
+}
+
+
+function prevImage() {  
+  storedImageRow = localStorage.getItem('image');
+  let today = new Date(),
+    hour = today.getHours();
+  const index = i;
+  
+  const imageSrc = base + timeOfADayy[n] + storedImageRow[index];
+  if (hour < 12) {
+    // Morning    
+    n = 0;
+  } else if (hour < 18) {
+    n=1;
+  } else if (hour < 24) {
+    n=2;
+  } else {
+    n=3;
+  }
+  viewBgImage(imageSrc);
+  index++;
+  hour++;
+  bgChangePrev.disabled = true;
+  setTimeout(function() { bgChangePrev.disabled = false }, 1000);
+}
+
 
 
 
@@ -221,12 +283,15 @@ focus.addEventListener('keypress', setFocus);
 document.addEventListener('click', outsideFocusClickListener)
 focus.addEventListener('blur', setFocus);
 
+bgChangeNext.addEventListener('click', nextImage);
+bgChangePrev.addEventListener('click', prevImage);
+
 
 
 
 showClock();
 setBgGreet();
 getImage();
-localStorage.clear()
 getName();
 getFocus();
+// localStorage.clear()

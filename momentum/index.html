@@ -12,29 +12,37 @@
 </head>
 
 <body>
-    <button class="bg__change"> </button>
-    <div class="clock-display">
-        <div class="clock-display-time"></div>
-        <div class="clock-display-days"></div>
-    </div>    
-    <h1>
-        <div class="greating__name">
-            <h2 class="greeting">Good afternoon!</h2>
-            <h2 class="name" contenteditable="true" onclick="this.innerText=''">'[Type your name]'</h2>
+    <div class="wrapper">
+        <div class="bg__change-wrapper">
+            <div class="bg__change_prev"><img src="./assets/icons/arrow-prev.svg"></div>
+            <div class="bg__change_next"><img src="./assets/icons/arrow-next.svg"></div>
         </div>
-    </h1>
-    <h2>What is your focus for today?</h2>
-    <h2 class="focus" contenteditable="true" onclick="this.innerText=''">[Type your focus for today]</h2>
-    
-    <div class="quote__wrapper">
-        <figure class="quote">
-            <blockquote>
-                You were not born a winner, and you were not born a loser. You are what you make yourself be.
-            </blockquote>
-        </figure>        
+
+        <div class="clock-display">
+            <div class="clock-display-time"></div>
+            <div class="clock-display-days"></div>
+        </div>
+
+        <h1>
+            <div class="greating__name">
+                <h2 class="greeting">Good afternoon!</h2>
+                <h2 class="name" contenteditable="true" onclick="this.innerText=''">'[Type your name]'</h2>
+            </div>
+        </h1>
+        <h2>What is your focus for today?</h2>
+        <h2 class="focus" contenteditable="true" onclick="this.innerText=''">[Type your focus for today]</h2>
+
+        <div class="quote__wrapper">
+            <figure class="quote">
+                <blockquote>
+                    You were not born a winner, and you were not born a loser. You are what you make yourself
+                    be.
+                </blockquote>
+            </figure>
+        </div>
+        <div id="reload" class="quote__btn"><img src="./assets/icons/reload.svg"></div>
     </div>
-    <div id="reload" class="quote__btn"><img src="./assets/icons/reload.svg">
-    </div>
+
 
 
     <script src="script.js"></script>
