@@ -149,3 +149,50 @@ h2 {
   font-weight: 900;
   text-shadow: 0px 0px 19px rgba(150, 150, 150, 1);
 }
+
+/* weather */
+.weather-widget {
+  display: flex;
+  flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    max-width: 15rem;
+    width: 100%;
+}
+
+
+.city {     
+  margin: 1rem auto;  
+  font-size: 3rem;  
+  text-shadow: 0px 0px 19px rgba(150, 150, 150, 1)
+}
+.temperature {    
+  font-size: 6rem;
+  margin-bottom: 20px;
+}
+.weather-description {     
+  font-size: 1.5rem; 
+  color: #fff;  
+  text-shadow: 0px 0px 19px rgba(150, 150, 150, 0.904)
+  
+}
+.weather-icon {
+  font-size: 5rem;
+  color: #fff;
+  opacity: 0.9;
+  text-shadow: 0px 0px 19px rgba(150, 150, 150, 1)
+}
+.weather-icon:hover {
+  animation: shake 1.5s;
+}
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+}

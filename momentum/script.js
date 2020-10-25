@@ -1,5 +1,4 @@
-// DOM Elements
-const greeting = document.querySelector('.greeting'),
+const greet = document.querySelector('.greeting'),
   name = document.querySelector('.name'),
   focus = document.querySelector('.focus'),
   bgChangeNext = document.querySelector('.bg__change_next'),
@@ -67,13 +66,13 @@ function setBgGreet() {
 
   if (hour < 12) {
     // Morning    
-    greeting.innerText = 'Good Morning, ';
+    greet.innerText = 'Good Morning, ';
   } else if (hour < 18) {
     // Afternoon    
-    greeting.innerText = 'Good Afternoon, ';
+    greet.innerText = 'Good Afternoon, ';
   } else {
     // Evening    
-    greeting.innerText = 'Good Evening, ';
+    greet.innerText = 'Good Evening, ';
     document.body.style.color = 'white';
   }
 }
@@ -258,21 +257,48 @@ async function getQuote() {
   blockquote.textContent = data.value;  
 }
 
-document.addEventListener('DOMContentLoaded', getQuote);
-btnBlockquote.addEventListener('click', getQuote);
 
 
-document.querySelector('#reload').addEventListener('click',   function(event) {
+
+document.querySelector('.quote__btn').addEventListener('click',   function(event) {
   
   
-  document.querySelector('#reload').classList.add('spin');
+  document.querySelector('.quote__btn').classList.add('spin');
   setTimeout(function(){    
-    document.querySelector('#reload').classList.remove('spin');
+    document.querySelector('.quote__btn').classList.remove('spin');
   },400);
 });
 
 
+//Weather
+const weatherIcon = document.querySelector('.weather-icon');
+const temperature = document.querySelector('.temperature');
+const weatherDescription = document.querySelector('.weather-description');
+const city = document.querySelector('.city');
 
+async function getWeather() {
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=eng&appid=094d2f01c9172cdbf32222e4fee342c6&units=metric`;
+  const res = await fetch(url);
+  const data = await res.json();
+  
+  weatherIcon.className = 'weather-icon owf';
+  weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+  temperature.textContent = `${data.main.temp.toFixed(0)}°C`;
+  weatherDescription.textContent = data.weather[0].description;
+}
+
+function setCity(event) {
+  if (event.code === 'Enter') {
+    getWeather();
+    city.blur();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', getWeather);
+city.addEventListener('keypress', setCity);
+
+document.addEventListener('DOMContentLoaded', getQuote);
+btnBlockquote.addEventListener('click', getQuote);
 
 
 name.addEventListener('keypress', setName);
