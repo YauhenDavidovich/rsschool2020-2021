@@ -15,33 +15,43 @@
 <body>
     <div class="wrapper">
         <div class=weather-widget>
-            <div class="city" contenteditable="true">Minsk</div>
+            <div class="city" contenteditable="true" onclick="this.innerText=''" >Minsk</div>
+            <div class="weather_main-icon">
+                <div class="temperature"></div>
+                <i class="weather-icon owf"></i>
+            </div>
             <div class="temperature"></div>
-            <i class="weather-icon owf"></i>            
-            <div class="weather-description"></div>            
-        </div>
-        <div class="bg__change-wrapper">
-            <div class="bg__change_prev"><img src="./assets/icons/arrow-prev.svg"></div>
-            <div class="bg__change_next"><img src="./assets/icons/arrow-next.svg"></div>
+            <i class="weather-icon owf"></i>
+            <div class="weather-additional">
+                <div class="weather-description"></div>
+                <div class="pressure"></div>
+                <div class="humidity"></div>
+                <div class="wind"></div>
+            </div>
         </div>
 
         <div class="clock-display">
             <div class="clock-display-time"></div>
             <div class="clock-display-days"></div>
         </div>
+        <div class="main-content">
+            <div class=greeting__content>
+                <div class="greeting__name">
+                    <h2 class="greeting">Good afternoon! </h2>
+                    <h2 class="name" contenteditable="true" onclick="this.innerText=''">'[Type your name]'</h2>
+                </div>
+                <div class="focus__content">
+                    <h3>What is your focus for today? </h3>
+                    <h3 class="focus" contenteditable="true" onclick="this.innerText=''">[Type your focus for today]</h3>
+                </div>
+            </div>
 
-        <div class=greeting__content>
-            <div class="greeting__name">
-                <h2 class="greeting">Good afternoon!</h2>
-                <h2 class="name" contenteditable="true" onclick="this.innerText=''">'[Type your name]'</h2>
-            </div>
-            <div class="focus__content">
-                <h2>What is your focus for today?</h2>
-                <h2 class="focus" contenteditable="true" onclick="this.innerText=''">[Type your focus for today]</h2>
-            </div>
 
         </div>
         <div class="quote__wrapper">
+            <div class="bg__change-wrapper">
+                <div class="bg__change_next"><img src="./assets/icons/arrow-next.svg"></div>
+            </div>
             <figure class="quote">
                 <blockquote>
                     You were not born a winner, and you were not born a loser. You are what you make yourself
@@ -50,8 +60,8 @@
             </figure>
             <div id="reload" class="quote__btn"><img src="./assets/icons/reload.svg"></div>
         </div>
-
     </div>
+
 
 
 

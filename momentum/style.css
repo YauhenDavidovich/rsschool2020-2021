@@ -5,12 +5,12 @@
 }
 
 body {
-  font-family: "Quicksand", sans-serif;  
+  font-family: "Quicksand", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;  
+  text-align: center;
   background-size: 100%;
   color: whitesmoke;
   background: no-repeat;
@@ -18,7 +18,7 @@ body {
   height: 100vh;
   width: 100vw;
   background-size: cover;
-  background-position: center center;   
+  background-position: center center;
   transition: background-image 1s ease-in-out;
 }
 
@@ -29,26 +29,48 @@ body {
 .wrapper {
   display: flex;
   flex-direction: column;
-    margin: 0 auto;
-    max-width: 120rem;
-    justify-content: space-between;
-    width: 100%;
+  margin: 0 auto;
+  max-width: 120rem;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.greeting__name, .focus__content {
+.main-content {
+  margin-top: 4rem;
+  margin-bottom: 6rem;
+}
+
+
+.greeting__name,
+.focus__content {
   display: flex;
-  max-width: 500rem;
+  max-width: 100rem;
   justify-content: center;
-  flex-direction: row;
   margin: 0 auto;
 }
+
+.focus__content {
+  margin-top: 2rem;
+  flex-direction: column;
+}
+
+
 
 h1 {
   margin-bottom: 3rem;
   text-shadow: 0px 0px 19px rgba(150, 150, 150, 1);
+  display: none;
 }
 
 h2 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0px 0px 19px rgba(150, 150, 150, 1);
+  opacity: 1;
+}
+
+h3 {
+  font-size: 2rem;
   margin-bottom: 0.5rem;
   text-shadow: 0px 0px 19px rgba(150, 150, 150, 1);
   opacity: 1;
@@ -64,41 +86,41 @@ h2 {
 .quote {
   font: 1.2rem "Quicksand", sans-serif;
   margin: 1.2rem;
-  background-color: rgba(255,255,255,0.34);
+  background-color: rgba(77, 76, 76, 0.3);
   padding: 1rem;
-  border-radius: 1em;
+  border-radius: 1rem;
 }
 
-.quote__btn{    
+.quote__btn {
   border: 0;
   width: 3rem;
   margin: 1rem;
   height: 3rem;
   padding: 0;
-  opacity: 0.9;  
+  opacity: 0.9;
   outline: none;
 }
 
 .bg__change-wrapper {
-  display: flex;
-  margin: 0 auto;
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
   max-width: 12rem;
-  width: 100%;
-  justify-content: space-between;
+
 }
 
 
-.bg__change_next, .bg__change_prev{
-  border: 0;  
+.bg__change_next {
+  border: 0;
   width: 2rem;
   margin: 1rem;
   height: 2rem;
   padding: 0;
-  opacity: 0.9;  
+  opacity: 0.9;
   outline: none;
 }
 
-.bg__change_next img, .bg__change_prev img {
+.bg__change_next img {
   width: 100%;
   height: 100%;
 }
@@ -111,7 +133,7 @@ h2 {
 }
 
 .quote__btn:hover {
-  opacity: .3;
+  opacity: .7;
 }
 
 
@@ -122,19 +144,11 @@ h2 {
 
 
 /* Clock */
-.clock {
-  background: #fff;
-  color: #fff;
-  border-radius: 50px;
-  padding: 10px;
-  box-shadow: 0 20px 50px #000;
-}
-
-
-
-.clock-display {  
-  padding: 1rem;  
+.clock-display {
+  padding: 1rem;
   position: relative;
+  max-width: 40rem;
+  
 }
 
 .clock-display-time {
@@ -154,45 +168,80 @@ h2 {
 .weather-widget {
   display: flex;
   flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    max-width: 15rem;
-    width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  max-width: 15rem;
+  width: 100%;
 }
 
+.weather-additional {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  background-color: rgba(77, 76, 76, 0.1);
+  border-radius: 1rem;
+  padding: 1rem;
+}
 
-.city {     
-  margin: 1rem auto;  
-  font-size: 3rem;  
-  text-shadow: 0px 0px 19px rgba(150, 150, 150, 1)
-}
-.temperature {    
-  font-size: 6rem;
-  margin-bottom: 20px;
-}
-.weather-description {     
-  font-size: 1.5rem; 
-  color: #fff;  
-  text-shadow: 0px 0px 19px rgba(150, 150, 150, 0.904)
+.city {
   
+  font-size: 2.5rem;
+  text-shadow: 0px 0px 19px rgba(77, 76, 76, 1);
 }
+
+.weather_main-icon {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+}
+
+.temperature {
+  font-size: 6rem;
+  text-shadow: 0px 0px 25px rgba(77, 76, 76, 1);
+}
+
+.weather-description {
+  font-size: 1.5rem;
+  color: #fff;
+
+}
+
 .weather-icon {
   font-size: 5rem;
   color: #fff;
   opacity: 0.9;
-  text-shadow: 0px 0px 19px rgba(150, 150, 150, 1)
+  text-shadow: 0px 0px 25px rgba(77, 76, 76, 1);
 }
+
 .weather-icon:hover {
   animation: shake 1.5s;
 }
+
 @keyframes shake {
-  0% { transform: translate(1px, 1px) rotate(0deg); }
-  10% { transform: translate(-1px, -2px) rotate(-1deg); }
-  30% { transform: translate(3px, 2px) rotate(0deg); }
-  50% { transform: translate(-1px, 2px) rotate(-1deg); }
-  70% { transform: translate(3px, 1px) rotate(-1deg); }
-  90% { transform: translate(1px, 2px) rotate(0deg); }
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
 }
