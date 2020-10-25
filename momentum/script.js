@@ -163,68 +163,126 @@ function nextImage() {
 
 
 
+// // Get Name
+// function getName() {
+//   if (localStorage.getItem('name') === null) {
+//     name.textContent = '[Type your name]';
+//   } else {
+//     name.textContent = localStorage.getItem('name');
+//   }
+// }
+
+// // Set Name
+// function setName(e) {
+
+//   if (e.type === 'keypress') {
+//     if (e.which == 13 && e.target.innerText == "" || e.keyCode == 13 && e.target.innerText == "") {
+//       e.preventDefault();
+//       name.innerHTML = '[Type your name]';
+//     } else if (e.which == 13 || e.keyCode == 13 && e.target.innerText !== "") {
+//       localStorage.setItem('name', e.target.innerText);
+//       name.blur();
+//     }
+//   } else {
+//     localStorage.setItem('name', e.target.innerText);
+//   }
+// }
+
+// function outsideNameClickListener(e) {
+//   if (!e.target.matches('.name') && name.innerText == "") {
+//     name.innerText = '[Type your name]';
+//   }
+// }
+
+
+
 // Get Name
+let nameTemp = '';
+
 function getName() {
   if (localStorage.getItem('name') === null) {
     name.textContent = '[Type your name]';
+    localStorage.setItem('name', name.textContent);
+    nameTemp = name.textContent;
   } else {
     name.textContent = localStorage.getItem('name');
   }
 }
 
 // Set Name
-function setName(e) {
+function setName(event) {
 
-  if (e.type === 'keypress') {
-    if (e.which == 13 && e.target.innerText == "" || e.keyCode == 13 && e.target.innerText == "") {
-      e.preventDefault();
-      name.innerHTML = '[Type your name]';
-    } else if (e.which == 13 || e.keyCode == 13 && e.target.innerText !== "") {
-      localStorage.setItem('name', e.target.innerText);
+  if (event.type === 'keypress') {
+    if (event.which === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.textContent == "") {
+      event.preventDefault();
+      name.innerHTML = nameTemp;
+    } else if (event.which === 13 || event.keyCode === 13) {
+      localStorage.setItem('name', event.target.innerText);
+      nameTemp = event.target.innerText;
+      name.textContent = nameTemp;
       name.blur();
+      getName();
     }
   } else {
-    localStorage.setItem('name', e.target.innerText);
+    name.textContent = nameTemp;
   }
 }
 
 function outsideNameClickListener(e) {
   if (!e.target.matches('.name') && name.innerText == "") {
-    name.innerText = '[Type your name]';
+    name.innerHTML = localStorage.getItem('name'); 
   }
 }
 
 
+
+
+
+
 // Get Focus
+let focusTemp = '';
+
 function getFocus() {
   if (localStorage.getItem('focus') === null) {
     focus.textContent = '[Type your focus for today]';
+    localStorage.setItem('focus', focus.textContent);
+    focusTemp = focus.textContent;
   } else {
     focus.textContent = localStorage.getItem('focus');
   }
 }
 
 // Set Focus
-function setFocus(e) {
+function setFocus(event) {
 
-  if (e.type === 'keypress') {
-    if (e.which == 13 && e.target.innerText == "" || e.keyCode == 13 && e.target.innerText == "") {
-      e.preventDefault();
-      focus.innerHTML = '[Type your focus for today]';
-    } else if (e.which == 13 || e.keyCode == 13 && e.target.innerText !== "") {
-      localStorage.setItem('focus', e.target.innerText);
+  if (event.type === 'keypress') {
+    if (event.which === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.textContent == "") {
+      event.preventDefault();
+      focus.innerHTML = focusTemp;
+    } else if (event.which === 13 || event.keyCode === 13) {
+      localStorage.setItem('focus', event.target.innerText);
+      focusTemp = event.target.innerText;
+      focus.textContent = focusTemp;
       focus.blur();
+      getFocus();
     }
   } else {
-    localStorage.setItem('focus', e.target.innerText);
+    focus.textContent = focusTemp;
   }
 }
 
 function outsideFocusClickListener(e) {
   if (!e.target.matches('.focus') && focus.innerText == "") {
-    focus.innerText = '[Type your focus for today]';
+    focus.innerHTML = localStorage.getItem('focus'); 
+
   }
 }
+
+
+
+
+
+
 
 
 //Quotes
@@ -292,14 +350,13 @@ function setCity(event) {
     }
   } else {
     city.textContent = cityTemp;
-
   }
 }
 
 function outsideCityClickListener(e) {
   if (!e.target.matches('.city') && city.innerText == "") {
     city.innerHTML = localStorage.getItem('city');
-    city.Temp = e.target.innerText;
+    cityTemp = e.target.innerText;
 
   }
 }
