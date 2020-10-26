@@ -56,7 +56,7 @@ a {
 //Header
 .header {
     max-width: 100vw;
-    position: sticky;    
+    position: sticky;
     background-color: $color-light-xl;
     position: sticky;
     top: 0;
@@ -65,12 +65,12 @@ a {
     z-index: 1000;
 }
 
-.header__wrapper_buger-active { 
- @media screen and (max-width: 767px) {
-    position: sticky;    
-    margin-right:1rem;
-    margin-left: auto;
- }
+.header__wrapper_buger-active {
+    @media screen and (max-width: 767px) {
+        position: sticky;
+        margin-right: 1rem;
+        margin-left: auto;
+    }
 }
 
 .header__content {
@@ -110,31 +110,7 @@ a {
 
 }
 
-.logo-burger {
-    display: flex;
-    flex-direction: column;
-}
 
-.logo-burger__title {
-    font-family: Georgia;
-    font-size: 3.2rem;
-    font-weight: 400;
-    line-height: 110%;
-    letter-spacing: 0.19rem;
-    color: $color-dark-l;
-    margin: 0;
-}
-
-.logo-burger__subtitle {
-    font-family: Arial;
-    margin-top: 0.9rem;
-    margin-left: 0.5rem;
-    font-size: 1.3rem;
-    line-height: 1.5rem;
-    letter-spacing: 0.13rem;
-    color: $color-dark-3xl;
-
-}
 
 
 
@@ -172,23 +148,32 @@ a {
         height: 100%;
         margin: 0;
         padding: 80px 0;
-        transition-duration: 0.25s;        
+        transition-duration: 0.25s;
         transition-timing-function: cubic-bezier(.33, .35, .77, 1.25);
         text-align: center;
         background-color: $color-light-l;
         box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
-        z-index: 17000;        
+        z-index: 17000;
     }
 }
 
-.header__transparent {    
+.header__transparent {
     background-color: $color-dark-s !important;
 }
+
+
 
 .list__item {
     display: flex;
     align-items: center;
 }
+
+
+.not-active {
+    cursor: default;
+    pointer-events: none;
+}
+
 
 .list__link {
     font-family: Arial;
@@ -305,7 +290,7 @@ a {
     right: 0;
     transition-duration: 500ms;
     transform: translateX(0%);
-    transition-timing-function: linear;
+    transition-timing-function: cubic-bezier(.33, .35, .77, 1.25);
 
 }
 
@@ -314,8 +299,8 @@ a {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;       
-    z-index: 999;    
+    height: 100%;
+    z-index: 999;
     background: rgba(41, 41, 41, 0.6);
 }
 
@@ -669,8 +654,6 @@ a {
 }
 
 
-
-
 .dark__page {
     height: 100vh;
     width: 100vw;
@@ -687,7 +670,7 @@ a {
     height: 100%;
     width: 100%;
     background-color: rgba(41, 41, 41, 0.6);
-    z-index: 9999992;    
+    z-index: 9999992;
 }
 
 .popup-box {
@@ -874,4 +857,3 @@ a {
     font-weight: bold;
     z-index: 9999994;
 }
-

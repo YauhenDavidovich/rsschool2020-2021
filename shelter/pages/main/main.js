@@ -51,6 +51,7 @@ function popup(event) {
     }));
 }
 
+
 const burgerMenu = document.querySelector("input[name=burger-menu]");
 burgerMenu.addEventListener('change', function () {
   if (this.checked) {
@@ -75,3 +76,4 @@ burgerMenu.addEventListener('change', function () {
       burgerMenu.checked = false;
     }));
 });
+
