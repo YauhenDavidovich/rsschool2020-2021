@@ -172,6 +172,7 @@ a {
     color: $color-dark-3xl;
     border-bottom: solid 3px $color-primary;
     padding-top: 0.4rem;
+
     @media screen and (max-width: 767px) {
         color: $color-light-s;
     }
@@ -180,6 +181,7 @@ a {
 .list__link:hover {
     color: $color-dark-3xl;
     cursor: pointer;
+
     @media screen and (max-width: 767px) {
         color: $color-light-s;
     }
@@ -265,7 +267,7 @@ a {
     right: 0;
     transition-duration: 500ms;
     transform: translateX(0%);
-    transition-timing-function: cubic-bezier(.42,0,1,1);
+    transition-timing-function: cubic-bezier(.42, 0, 1, 1);
 }
 
 
@@ -303,12 +305,13 @@ a {
     @media screen and (max-width: 1279px) {
         padding-bottom: 7.6rem;
     }
+
     @media screen and (max-width: 767px) {
         padding-top: 4.1rem;
         max-width: 30rem;
         padding-bottom: 4.2rem;
     }
-    
+
 }
 
 
@@ -323,6 +326,7 @@ a {
     text-align: center;
     letter-spacing: 0.21rem;
     color: $color-dark-l;
+
     @media screen and (max-width: 767px) {
         font-size: 2.5rem;
         letter-spacing: 0.15rem;
@@ -345,6 +349,7 @@ a {
         overflow: hidden;
         margin: 2.9rem 0 4rem;
     }
+
     @media screen and (max-width: 767px) {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(3, 1fr);
@@ -411,6 +416,7 @@ a {
 .slider-buttons {
     display: flex;
     column-gap: 2rem;
+
     @media screen and (max-width: 767px) {
         column-gap: 1rem;
     }
@@ -651,12 +657,29 @@ a {
     border-radius: 0.9rem;
     z-index: 9999993;
     background-color: #fafafa;
+
+    @media screen and (max-width: 1279px) {
+        width: 63rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 24rem;
+    }
 }
 
 
 .popup-image {
     height: 50rem;
     width: 50rem;
+
+    @media screen and (max-width: 1279px) {
+        height: 35rem;
+        width: 35rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
 }
 
 
@@ -668,13 +691,50 @@ a {
 .card_place_popup {
     margin: 5rem 2rem auto 2.9rem;
     color: #000;
+
+    @media screen and (max-width: 1279px) {
+        margin: 1rem 0.9rem auto 1rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin: 1rem;
+        margin-bottom: auto;
+    }
 }
+
+.card__title_place_popup {
+    position: relative;
+    top: 0.1rem;
+    font-size: 3.5rem;
+    line-height: 4.55rem;
+    letter-spacing: 0.21rem;
+    margin-bottom: 1rem;
+
+    @media screen and (max-width: 1279px) {
+        top: 0;
+    }
+
+    @media screen and (max-width: 767px) {
+        left: 0.2rem;
+        text-align: center;
+    }
+}
+
 
 .card__subtitle_place_popup {
     font-size: 2rem;
     line-height: 2.3rem;
     letter-spacing: 0.12rem;
     margin-bottom: 4rem;
+
+    @media screen and (max-width: 1279px) {
+        margin-bottom: 2rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
 }
 
 
@@ -683,6 +743,18 @@ a {
     line-height: 1.7rem;
     letter-spacing: 0.09rem;
     margin-bottom: 4rem;
+
+    @media screen and (max-width: 1279px) {
+        font-size: 1.3rem;
+        line-height: 1.4rem;
+        letter-spacing: 0.06em;
+        margin-bottom: 1.9rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        text-align: justify;
+        margin-bottom: 2.5rem;
+    }
 }
 
 
@@ -692,11 +764,23 @@ a {
     letter-spacing: 0.09rem;
     list-style: disc outside;
     padding-left: 1.5rem;
+
+    @media screen and (max-width: 1279px) {
+        line-height: 1.7rem;
+    }
 }
 
 .card__list_item {
     color: #000;
     margin-bottom: 1rem;
+
+    @media screen and (max-width: 1279px) {
+        margin-bottom: 0.6rem;
+
+        &:last-child {
+            margin-bottom: 1rem;
+        }
+    }
 }
 
 
@@ -714,6 +798,10 @@ a {
     justify-content: center;
     align-items: center;
     z-index: 9999994;
+
+    @media screen and (max-width: 767px) {
+        right: -3rem;
+    }
 }
 
 
