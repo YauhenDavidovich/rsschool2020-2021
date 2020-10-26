@@ -56,8 +56,7 @@ a {
 //Header
 .header {
     max-width: 100vw;
-    position: sticky;
-    width: 100%;
+    position: sticky;    
     background-color: $color-light-xl;
     position: sticky;
     top: 0;
@@ -66,6 +65,13 @@ a {
     z-index: 1000;
 }
 
+.header__wrapper_buger-active { 
+ @media screen and (max-width: 767px) {
+    position: sticky;    
+    margin-right:1rem;
+    margin-left: auto;
+ }
+}
 
 .header__content {
     margin-top: 3.1rem;
@@ -80,6 +86,7 @@ a {
 .logo {
     display: flex;
     flex-direction: column;
+    z-index: 100000;
 }
 
 .logo__title {
@@ -102,6 +109,34 @@ a {
     color: $color-dark-3xl;
 
 }
+
+.logo-burger {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-burger__title {
+    font-family: Georgia;
+    font-size: 3.2rem;
+    font-weight: 400;
+    line-height: 110%;
+    letter-spacing: 0.19rem;
+    color: $color-dark-l;
+    margin: 0;
+}
+
+.logo-burger__subtitle {
+    font-family: Arial;
+    margin-top: 0.9rem;
+    margin-left: 0.5rem;
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+    letter-spacing: 0.13rem;
+    color: $color-dark-3xl;
+
+}
+
+
 
 .menu {
     display: flex;
@@ -137,14 +172,17 @@ a {
         height: 100%;
         margin: 0;
         padding: 80px 0;
-        transition-duration: 500ms;
-        transform: translateX(-100%);
+        transition-duration: 0.25s;        
         transition-timing-function: cubic-bezier(.33, .35, .77, 1.25);
         text-align: center;
-        background-color: $color-dark-3xl;
+        background-color: $color-light-l;
         box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
-        z-index: 17000;
+        z-index: 17000;        
     }
+}
+
+.header__transparent {    
+    background-color: $color-dark-s !important;
 }
 
 .list__item {
@@ -164,7 +202,7 @@ a {
         font-weight: 400;
         font-size: 3.2rem;
         line-height: 160%;
-        color: $color-dark-s;
+        color: $color-dark-l;
     }
 }
 
@@ -174,7 +212,7 @@ a {
     padding-top: 0.4rem;
 
     @media screen and (max-width: 767px) {
-        color: $color-light-s;
+        color: $color-dark-3xl;
     }
 }
 
@@ -223,7 +261,7 @@ a {
         position: absolute;
         width: 100%;
         height: 0.2rem;
-        background-color: $color-primary;
+        background-color: #000000;
     }
 }
 
@@ -271,7 +309,15 @@ a {
 
 }
 
-
+.burger__blackout_active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;       
+    z-index: 999;    
+    background: rgba(41, 41, 41, 0.6);
+}
 
 //Burger button
 .menu__btn>span,
@@ -641,7 +687,7 @@ a {
     height: 100%;
     width: 100%;
     background-color: rgba(41, 41, 41, 0.6);
-    z-index: 9999992;
+    z-index: 9999992;    
 }
 
 .popup-box {
@@ -803,6 +849,7 @@ a {
     z-index: 9999994;
     background-color: $color-primary-light;
     border: 2px solid $color-primary-light;
+
     &:hover {
         cursor: pointer;
         background-color: $color-primary;

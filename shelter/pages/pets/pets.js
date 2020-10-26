@@ -9,8 +9,8 @@ petsButtons.forEach(elem => elem.addEventListener('click', (event) => {
 function popup(event) {
   document.querySelector("html").style.overflowY = 'hidden';
   let name = event.target.closest('.pets__card').querySelector(".card__title").innerText,
-      i = pets.findIndex(elem => elem.name == name);
-      document.querySelector("body").insertAdjacentHTML('afterbegin', `
+    i = pets.findIndex(elem => elem.name == name);
+  document.querySelector("body").insertAdjacentHTML('afterbegin', `
   <div class='dark__page' id='dark__page'>
   <div class="dark__wrapper"></div>
     <div class="popup-box">
@@ -45,14 +45,24 @@ function popup(event) {
   });
   document.querySelectorAll('.dark__wrapper, .button_place_popup')
 
-  
-  .forEach(elem => elem.addEventListener('click', () => {
-    document.querySelector("html").style.overflowY = '';    
-    dark__page.remove();
-  }));
-
-
-  
+    .forEach(elem => elem.addEventListener('click', () => {
+      document.querySelector("html").style.overflowY = '';
+      dark__page.remove();
+    }));
 }
 
-
+const burgerMenu = document.querySelector("input[name=burger-menu]");
+burgerMenu.addEventListener( 'change', function() {
+    if(this.checked) {
+      document.querySelector("html").style.overflowY = 'hidden';      
+      document.querySelector("body").insertAdjacentHTML('afterbegin', `
+  <div class="burger__blackout_active"></div>`);  
+  document.querySelector('.header-wrapper').classList.add('header__wrapper_buger-active')
+  document.querySelector('.header').classList.add('header__transparent')
+    } else {
+      document.querySelector("html").style.overflowY = '';      
+      document.querySelector('.burger__blackout_active').remove();
+      document.querySelector('.header-wrapper').classList.remove('header__wrapper_buger-active')
+      document.querySelector('.header').classList.remove('header__transparent')
+    }
+});
