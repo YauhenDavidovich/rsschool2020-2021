@@ -614,3 +614,119 @@ a {
         width: 100%;
     }
 }
+
+
+
+
+.dark__page {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999991;
+}
+
+.dark__wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(41, 41, 41, 0.6);
+    z-index: 9999992;
+}
+
+.popup-box {
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    z-index: 9999993;
+}
+
+.popup-card {
+    width: 90rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 0.9rem;
+    z-index: 9999993;
+    background-color: #fafafa;
+}
+
+
+.popup-image {
+    height: 50rem;
+    width: 50rem;
+}
+
+
+.popup-image img {
+    height: 100%;
+    border-radius: 0.9rem;
+}
+
+.card_place_popup {
+    margin: 5rem 2rem auto 2.9rem;
+    color: #000;
+}
+
+.card__subtitle_place_popup {
+    font-size: 2rem;
+    line-height: 2.3rem;
+    letter-spacing: 0.12rem;
+    margin-bottom: 4rem;
+}
+
+
+.card__text_place_popup {
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    letter-spacing: 0.09rem;
+    margin-bottom: 4rem;
+}
+
+
+.card__list_place_popup {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    letter-spacing: 0.09rem;
+    list-style: disc outside;
+    padding-left: 1.5rem;
+}
+
+.card__list_item {
+    color: #000;
+    margin-bottom: 1rem;
+}
+
+
+.card__list_item::marker {
+    color: $color-primary;
+}
+
+
+.button_place_popup {
+    position: absolute;
+    top: -5.2rem;
+    right: -4.2rem;
+    width: 5.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999994;
+}
+
+
+.button_place_popup::after {
+    content: "×";
+    position: relative;
+    top: -0.2rem;
+    font-size: 2.8rem;
+    font-weight: bold;
+    z-index: 9999994;
+}
+
+.button_place_popup {
+    background-color: $color-primary-light;
+    border: 2px solid $color-primary-light;
+}
