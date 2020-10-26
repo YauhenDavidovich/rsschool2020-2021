@@ -60,12 +60,20 @@ a {
     position: absolute;
     top: 6.1rem;
     display: flex;
+    z-index: 2;
 
     @media screen and (max-width: 1279px) {
         top: 3.1rem;
     }
 }
 
+.header__wrapper_buger-active {
+    @media screen and (max-width: 767px) {
+        position: sticky;
+        margin-right: 1rem;
+        margin-left: auto;
+    }
+}
 
 .header__content {
     margin-top: 3.2rem;
@@ -80,6 +88,7 @@ a {
 .logo {
     display: flex;
     flex-direction: column;
+    z-index: 100000;
 }
 
 .logo__title {
@@ -110,6 +119,7 @@ a {
     align-items: center;
     width: 44.3rem;
     margin-bottom: 0.6rem;
+    z-index: 10000;
 
     @media screen and (max-width: 767px) {
         width: 0;
@@ -138,15 +148,20 @@ a {
         height: 100%;
         margin: 0;
         padding: 80px 0;
-        transition-duration: 500ms;
-        transform: translateX(-100%);
+        transition-duration: 0.25s;        
         transition-timing-function: cubic-bezier(.33, .35, .77, 1.25);
         text-align: center;
         background-color: $color-dark-3xl;
         box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
-        z-index: 17000;
+        z-index: 17000;  
     }
 }
+
+.not-active {
+    cursor: default;
+    pointer-events: none;
+}
+
 
 .list__item {
     display: flex;
@@ -270,7 +285,15 @@ a {
     transition-timing-function: cubic-bezier(.42,0,1,1);
 }
 
-
+.burger__blackout_active {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(41, 41, 41, 0.6);
+}
 
 //Burger button
 .menu__btn>span,
@@ -831,21 +854,24 @@ a {
 
 }
 
-.pets__button {
-    width: 26.1rem;
-    height: 5.2rem;
+.pets__button {       
     margin-top: 6rem;
     margin-bottom: 10rem;
-    border-radius: 10rem;
-    border: 2px solid $color-primary;
-    outline: none;
+    width: 26.1rem;
+    height: 5.2rem;
+    border-radius: 10rem;    
+    padding: 1.5rem 3.5rem;
+    background-color: #F1CDB3;
+    border: none;
     font-family: Georgia;
-    font-weight: normal;
+    font-weight: 400;
     font-size: 1.7rem;
-    line-height: 2.2rem;
-    letter-spacing: 0.102rem;
-    background-color: $color-primary;
+    line-height: 130%;
+    letter-spacing: 0.1003rem;
+    color: #292929;
+    text-decoration: none;
     text-align: center;
+    
 
     &:hover {
         background-color: $color-primary-light;
@@ -1316,4 +1342,209 @@ a {
     @media screen and (max-width: 767px) {
         width: 100%;
     }
+}
+
+
+.dark__page {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999991;
+}
+
+.dark__wrapper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(41, 41, 41, 0.6);
+    z-index: 9999992;
+}
+
+.popup-box {
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    z-index: 9999993;
+}
+
+.popup-card {
+    width: 90rem;
+    display: flex;
+    justify-content: center;
+    border-radius: 0.9rem;
+    z-index: 9999993;
+    background-color: #fafafa;
+
+    @media screen and (max-width: 1279px) {
+        width: 63rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 24rem;
+    }
+}
+
+
+.popup-image {
+    height: 50rem;
+    width: 50rem;
+
+    @media screen and (max-width: 1279px) {
+        height: 35rem;
+        width: 35rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+}
+
+
+.popup-image img {
+    height: 100%;
+    border-radius: 0.9rem;
+}
+
+.card_place_popup {
+    margin: 5rem 2rem auto 2.9rem;
+    color: #000;
+
+    @media screen and (max-width: 1279px) {
+        margin: 1rem 0.9rem auto 1rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin: 1rem;
+        margin-bottom: auto;
+    }
+}
+
+.card__title_place_popup {
+    position: relative;
+    top: 0.1rem;
+    font-size: 3.5rem;
+    line-height: 4.55rem;
+    letter-spacing: 0.21rem;
+    margin-bottom: 1rem;
+
+    @media screen and (max-width: 1279px) {
+        top: 0;
+    }
+
+    @media screen and (max-width: 767px) {
+        left: 0.2rem;
+        text-align: center;
+    }
+}
+
+
+.card__subtitle_place_popup {
+    font-size: 2rem;
+    line-height: 2.3rem;
+    letter-spacing: 0.12rem;
+    margin-bottom: 4rem;
+
+    @media screen and (max-width: 1279px) {
+        margin-bottom: 2rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+}
+
+
+.card__text_place_popup {
+    font-size: 1.5rem;
+    line-height: 1.7rem;
+    letter-spacing: 0.09rem;
+    margin-bottom: 4rem;
+
+    @media screen and (max-width: 1279px) {
+        font-size: 1.3rem;
+        line-height: 1.4rem;
+        letter-spacing: 0.06em;
+        margin-bottom: 1.9rem;
+    }
+
+    @media screen and (max-width: 767px) {
+        text-align: justify;
+        margin-bottom: 2.5rem;
+    }
+}
+
+
+.card__list_place_popup {
+    font-size: 1.5rem;
+    line-height: 1.8rem;
+    letter-spacing: 0.09rem;
+    list-style: disc outside;
+    padding-left: 1.5rem;
+
+    @media screen and (max-width: 1279px) {
+        line-height: 1.7rem;
+    }
+}
+
+.card__list_item {
+    color: #000;
+    margin-bottom: 1rem;
+
+    @media screen and (max-width: 1279px) {
+        margin-bottom: 0.6rem;
+
+        &:last-child {
+            margin-bottom: 1rem;
+        }
+    }
+}
+
+
+.card__list_item::marker {
+    color: $color-primary;
+}
+
+
+.button_place_popup {
+    position: absolute;
+    top: -5.2rem;
+    right: -4.2rem;
+    width: 5.2rem;
+    height: 5.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    z-index: 9999994;
+    background-color: $color-primary-light;
+    border: 2px solid $color-primary-light;
+
+    &:hover {
+        cursor: pointer;
+        background-color: $color-primary;
+
+    }
+
+    @media screen and (max-width: 767px) {
+        right: -3rem;
+    }
+}
+
+
+.button_place_popup_active {
+    background-color: $color-primary;
+}
+
+.button_place_popup::after {
+    content: "×";
+    position: relative;
+    top: -0.2rem;
+    font-size: 2.8rem;
+    font-weight: bold;
+    z-index: 9999994;
 }
