@@ -267,7 +267,8 @@ a {
     right: 0;
     transition-duration: 500ms;
     transform: translateX(0%);
-    transition-timing-function: cubic-bezier(.42, 0, 1, 1);
+    transition-timing-function: linear;
+
 }
 
 
@@ -794,16 +795,29 @@ a {
     top: -5.2rem;
     right: -4.2rem;
     width: 5.2rem;
+    height: 5.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 50%;
     z-index: 9999994;
+    background-color: $color-primary-light;
+    border: 2px solid $color-primary-light;
+    &:hover {
+        cursor: pointer;
+        background-color: $color-primary;
+
+    }
 
     @media screen and (max-width: 767px) {
         right: -3rem;
     }
 }
 
+
+.button_place_popup_active {
+    background-color: $color-primary;
+}
 
 .button_place_popup::after {
     content: "×";
@@ -814,7 +828,3 @@ a {
     z-index: 9999994;
 }
 
-.button_place_popup {
-    background-color: $color-primary-light;
-    border: 2px solid $color-primary-light;
-}

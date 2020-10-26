@@ -37,12 +37,22 @@ function popup(event) {
   `);
 
   document.querySelector('.dark__page').style.top = window.pageYOffset + 'px';
-
+  document.querySelector('.popup-card').addEventListener('mouseout', () => {
+    document.querySelector('.button_place_popup').classList.add('button_place_popup_active')
+  });
+  document.querySelector('.popup-card').addEventListener('mouseover', () => {
+    document.querySelector('.button_place_popup').classList.remove('button_place_popup_active')
+  });
   document.querySelectorAll('.dark__wrapper, .button_place_popup')
+
+  
   .forEach(elem => elem.addEventListener('click', () => {
     document.querySelector("html").style.overflowY = '';    
     dark__page.remove();
   }));
+
+
+  
 }
 
 
