@@ -75,3 +75,151 @@ burgerMenu.addEventListener('change', function () {
       burgerMenu.checked = false;
     }));
 });
+
+
+
+
+
+
+// let jsonArray = [];
+
+// for (let i = 0; i < 6; i++) {
+// function makeRandomArr(a, b) {
+//   return Math.random() - 0.5;
+// }
+// jsonObj.sort(makeRandomArr);
+// for (j = 0; j < jsonObj.length; j++) {
+//   jsonArray.push(jsonObj[j]);
+// }
+// }
+
+// let oneRight = document.querySelector('.oneRight');
+// let twoRight = document.querySelector('.twoRight');
+// let oneLeft = document.querySelector('.oneLeft');
+// let twoLeft = document.querySelector('.twoLeft');
+// let countSlide = [];
+
+
+
+
+// // PAGINATION
+
+// let quantityPages = 0;
+// let currentPage = document.querySelector('.currentPage');
+
+
+// if (window.innerWidth < 768) {
+// quantityPages = 16;
+// } else if (window.innerWidth < 1280) {
+// quantityPages = 8;
+// } else {
+// quantityPages = 6;
+// }
+
+// const changePage = function(event) {
+// if (event.currentTarget === oneRight) {
+//   +(currentPage.textContent) ++;
+// } else if (event.currentTarget === oneLeft) {
+//   +(currentPage.textContent) --;
+// } else if (event.currentTarget === twoRight) {
+//   currentPage.innerText = `${quantityPages}`;
+// } else if (event.currentTarget === twoLeft) {
+//   currentPage.innerText = 1;
+// }
+
+// if (+(currentPage.textContent) === 1) {
+//   oneLeft.setAttribute("disabled", "disabled");
+//   twoLeft.setAttribute("disabled", "disabled");
+//   oneRight.removeAttribute("disabled");
+//   twoRight.removeAttribute("disabled");
+// } else if (+(currentPage.textContent) === quantityPages) {
+//   oneRight.setAttribute("disabled", "disabled");
+//   twoRight.setAttribute("disabled", "disabled");
+//   oneLeft.removeAttribute("disabled");
+//   twoLeft.removeAttribute("disabled");
+// } else if (+(currentPage.textContent) > 1) {
+//   oneLeft.removeAttribute("disabled");
+//   twoLeft.removeAttribute("disabled");
+//   oneRight.removeAttribute("disabled");
+//   twoRight.removeAttribute("disabled");
+// }
+
+// generetionPage();
+// }
+
+// let arrElem = [];
+
+// const createArrElem = function(e) {
+// for (let j = 0; j < quantityPages; j++) {
+//   let i = 0;
+//   let countSlide = [];
+
+//   while (i < (48 / quantityPages)) {
+//       item = jsonObj[Math.floor(Math.random() * jsonObj.length)];
+//       if (!(countSlide.includes(item))) {
+//           countSlide.push(item);
+//           i++;
+//       }
+//   }
+
+//   arrElem.push(countSlide);
+
+//   countSlide = [];
+// }
+// }
+
+// let slideBlock = document.getElementsByClassName('pets-info');
+
+// let page;
+
+// function listenerPage() {
+// page = +(currentPage.textContent);
+// setInterval(listenerPage, 1000);
+// }
+
+// const generetionPage = function() {
+// for (let i = 0; i < arrElem[+(currentPage.textContent) - 1].length; i++) {
+//   slideBlock[i].innerHTML = `<img src=${arrElem[+(currentPage.textContent)-1][i].img}>
+//   <span class="name-pets">${arrElem[+(currentPage.textContent)-1][i].name}</span>
+//   <button class="name-pets-btn">Learn more</button>`;
+// }
+// }
+
+
+// const goMain = function() {
+// document.location.href = "../main/main.html";
+// }
+
+// const resize = function() {
+// if (window.innerWidth < 768) {
+//   quantityPages = 16;
+// } else if (window.innerWidth < 1280) {
+//   quantityPages = 8;
+// } else {
+//   quantityPages = 6;
+// }
+// }
+// document.addEventListener('DOMContentLoaded', generetionPage);
+// navBtn.addEventListener("click", activeNav);
+// wr.addEventListener("click", activeNav);
+
+
+// for (let i = 0; i < petsBlock.length; i++) {
+// petsBlock[i].addEventListener("click", createPopup);
+// }
+
+
+// wrBlockPopup.addEventListener("click", createPopup);
+// document.querySelector(".btnPopup").addEventListener("click", createPopup);
+// wrBlockPopup.addEventListener("mouseover", changeStyleBtnPopup);
+
+// oneRight.addEventListener("click", changePage);
+// twoRight.addEventListener("click", changePage);
+// oneLeft.addEventListener("click", changePage);
+// twoLeft.addEventListener("click", changePage);
+// logo.addEventListener("click", goMain);
+
+// window.addEventListener('resize', resize);
+
+// createArrElem();
+// listenerPage();
