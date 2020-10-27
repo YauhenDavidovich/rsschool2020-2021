@@ -60,6 +60,9 @@ showClock = () => {
 
 
 // Set Greeting
+
+let backgroundImageIndex = 0
+
 function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
@@ -75,18 +78,55 @@ function setBgGreet() {
     greet.innerText = 'Good Evening, ';
     document.body.style.color = 'white';
   }
+  backgroundImageIndex = hour;
+  viewBgImage(base + backgroundImages[hour])
 }
+
+function checkHours(callback) {
+  const today = new Date(),
+    minutes = today.getMinutes(),
+    seconds = today.getSeconds()
+
+  if (minutes === 0 && seconds === 0) {
+    callback()
+  }
+
+  setTimeout(() => {
+    checkHours(callback)
+  }, 1000)
+}
+
 
 // Set Background
 const base = './assets/images/';
 const images = ['01.jpg', '02.jpg', '03.jpg', '05.jpg', '06.jpg', '07.jpg', '08.jpg', '09.jpg', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.jpg', '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg'];
 let i = 0;
 let n = 0;
-const timeOfADayy = ['morning/', 'day/', 'evening/', 'night/']
+let backgroundImages = [];
+let src = []
 
-function viewBgImage(data) {
+
+function createImagesArray() {
+  images.sort(() => Math.random() - 0.5)
+  src = images.slice(0, 6).map((item) => 'night/' + item)
+  backgroundImages = backgroundImages.concat(src)
+
+  images.sort(() => Math.random() - 0.5)
+  src = images.slice(0, 6).map((item) => 'morning/' + item)
+  backgroundImages = backgroundImages.concat(src)
+
+  images.sort(() => Math.random() - 0.5)
+  src = images.slice(0, 6).map((item) => 'day/' + item)
+  backgroundImages = backgroundImages.concat(src)
+
+  images.sort(() => Math.random() - 0.5)
+  src = images.slice(0, 6).map((item) => 'evening/' + item)
+  backgroundImages = backgroundImages.concat(src)
+}
+
+
+function viewBgImage(src) {
   const body = document.querySelector('body');
-  const src = data;
   const img = document.createElement('img');
   img.src = src;
   img.onload = () => {
@@ -96,105 +136,25 @@ function viewBgImage(data) {
 
 
 function getImage() {
-  let shuffledArr = images.sort(function () {
 
-    return Math.random() - 0.5;
-  });
-  localStorage.setItem('image', JSON.stringify(shuffledArr));
-  let today = new Date(),
-    hour = today.getHours();
-  const index = i % shuffledArr.length;
-
-  const imageSrc = base + timeOfADayy[n] + shuffledArr[index];
-  if (hour < 12) {
-    // Morning    
-    n = 0;
-  } else if (hour < 18) {
-    n = 1;
-  } else if (hour < 24) {
-    n = 2;
-  } else {
-    n = 3;
-  }
+  let today = new Date();
+  const hour = today.getHours();
+  const imageSrc = base + backgroundImages[hour];
   viewBgImage(imageSrc);
-  i++;
-  localStorage.setItem('image_index', JSON.stringify(i));
-  localStorage.setItem('hour', JSON.stringify(hour));
 }
 
 
 // Next background image
 function nextImage() {
-  const shuffledArr = JSON.parse(localStorage.getItem('image'));
-  let hour = JSON.parse(localStorage.getItem('hour'));
-  let index = JSON.parse(localStorage.getItem('image_index'));;
-  console.log(hour, index)
-  const imageSrc = base + timeOfADayy[n] + shuffledArr[index];
-  if (hour < 12) {
-    // Morning    
-    n = 0;
-  } else if (hour < 18) {
-    n = 1;
-  } else if (hour < 24) {
-    n = 2;
+  if (backgroundImageIndex === 23) {
+    backgroundImageIndex = 0
   } else {
-    n = 3;
+    backgroundImageIndex += 1
   }
-  viewBgImage(imageSrc);
-  i++;
-  hour++;
-  if (hour > 23) {
-    hour = 0;
-  };
-  if (i > 19) {
-    i = 0;
-  };
-  localStorage.setItem('image_index', JSON.stringify(i));
-  localStorage.setItem('hour', JSON.stringify(hour));
-  bgChangeNext.disabled = true;
-  setTimeout(function () {
-    bgChangeNext.disabled = false
-  }, 1000);
+
+  const index = backgroundImageIndex
+  viewBgImage(base + backgroundImages[index])
 }
-
-
-
-
-
-
-
-// // Get Name
-// function getName() {
-//   if (localStorage.getItem('name') === null) {
-//     name.textContent = '[Type your name]';
-//   } else {
-//     name.textContent = localStorage.getItem('name');
-//   }
-// }
-
-// // Set Name
-// function setName(e) {
-
-//   if (e.type === 'keypress') {
-//     if (e.which == 13 && e.target.innerText == "" || e.keyCode == 13 && e.target.innerText == "") {
-//       e.preventDefault();
-//       name.innerHTML = '[Type your name]';
-//     } else if (e.which == 13 || e.keyCode == 13 && e.target.innerText !== "") {
-//       localStorage.setItem('name', e.target.innerText);
-//       name.blur();
-//     }
-//   } else {
-//     localStorage.setItem('name', e.target.innerText);
-//   }
-// }
-
-// function outsideNameClickListener(e) {
-//   if (!e.target.matches('.name') && name.innerText == "") {
-//     name.innerText = '[Type your name]';
-//   }
-// }
-
-
 
 // Get Name
 let nameTemp = '';
@@ -230,13 +190,9 @@ function setName(event) {
 
 function outsideNameClickListener(e) {
   if (!e.target.matches('.name') && name.innerText == "") {
-    name.innerHTML = localStorage.getItem('name'); 
+    name.innerHTML = localStorage.getItem('name');
   }
 }
-
-
-
-
 
 
 // Get Focus
@@ -273,16 +229,10 @@ function setFocus(event) {
 
 function outsideFocusClickListener(e) {
   if (!e.target.matches('.focus') && focus.innerText == "") {
-    focus.innerHTML = localStorage.getItem('focus'); 
+    focus.innerHTML = localStorage.getItem('focus');
 
   }
 }
-
-
-
-
-
-
 
 
 //Quotes
@@ -297,7 +247,6 @@ async function getQuote() {
   const data = await res.json();
   blockquote.textContent = data.value;
 }
-
 
 
 
@@ -362,59 +311,58 @@ function outsideCityClickListener(e) {
 }
 
 
-
-
 async function getWeather() {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=eng&appid=094d2f01c9172cdbf32222e4fee342c6&units=metric`;
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.textContent}&lang=eng&appid=094d2f01c9172cdbf32222e4fee342c6&units=metric`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
 
-      weatherIcon.className = 'weather-icon owf';
-      weatherIcon.classList.add(`owf-${data.weather[0].id}`);
-      temperature.textContent = `${data.main.temp.toFixed(0)}°C`;
-      pressure.textContent = `Pressure ${data.main.pressure.toFixed(0)} hPa`;
-      humidity.textContent = `Humidity ${data.main.humidity.toFixed(0)} %`;
-      wind.textContent = `Wind ${data.wind.speed.toFixed(0)} meter/sec`;
-      weatherDescription.textContent = data.weather[0].description;
-    } catch {
-      temperature.textContent = ''
-      humidity.textContent = ''
-      wind.textContent = ''
-      weatherDescription.textContent = "City wasn't found!"
-      pressure.textContent = '';
-    }
+    weatherIcon.className = 'weather-icon owf';
+    weatherIcon.classList.add(`owf-${data.weather[0].id}`);
+    temperature.textContent = `${data.main.temp.toFixed(0)}°C`;
+    pressure.textContent = `Pressure ${data.main.pressure.toFixed(0)} hPa`;
+    humidity.textContent = `Humidity ${data.main.humidity.toFixed(0)} %`;
+    wind.textContent = `Wind ${data.wind.speed.toFixed(0)} meter/sec`;
+    weatherDescription.textContent = data.weather[0].description;
+  } catch {
+    temperature.textContent = ''
+    humidity.textContent = ''
+    wind.textContent = ''
+    weatherDescription.textContent = "City wasn't found!"
+    pressure.textContent = '';
+  }
 
 }
 
-    document.addEventListener('DOMContentLoaded', getWeather);
-    city.addEventListener('keypress', setCity);
-    document.addEventListener('click', outsideCityClickListener);
-    city.addEventListener('blur', setCity);
+document.addEventListener('DOMContentLoaded', getWeather);
+city.addEventListener('keypress', setCity);
+document.addEventListener('click', outsideCityClickListener);
+city.addEventListener('blur', setCity);
 
-    document.addEventListener('DOMContentLoaded', getQuote);
-    btnBlockquote.addEventListener('click', getQuote);
-
-
-    name.addEventListener('keypress', setName);
-    document.addEventListener('click', outsideNameClickListener)
-    name.addEventListener('blur', setName);
-
-    focus.addEventListener('keypress', setFocus);
-    document.addEventListener('click', outsideFocusClickListener)
-    focus.addEventListener('blur', setFocus);
-
-    bgChangeNext.addEventListener('click', nextImage);
+document.addEventListener('DOMContentLoaded', getQuote);
+btnBlockquote.addEventListener('click', getQuote);
 
 
+name.addEventListener('keypress', setName);
+document.addEventListener('click', outsideNameClickListener)
+name.addEventListener('blur', setName);
 
+focus.addEventListener('keypress', setFocus);
+document.addEventListener('click', outsideFocusClickListener)
+focus.addEventListener('blur', setFocus);
 
+bgChangeNext.addEventListener('click', nextImage);
 
-    showClock();
-    getWeather();
-    setBgGreet();
-    getImage();
-    getCity();
-    getWeather();
-    getName();
-    getFocus();
+showClock();
+
+createImagesArray();
+getWeather();
+setBgGreet();
+getImage();
+getCity();
+getWeather();
+getName();
+getFocus();
+checkHours(() => {
+  setBgGreet()
+})
