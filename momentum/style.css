@@ -7,7 +7,7 @@
 
 body {
   font-family: "Quicksand", sans-serif;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   min-height: 55rem;
   position: relative;
   color: #fff;
@@ -17,7 +17,10 @@ body {
   transition: background-image 1s ease-in-out;
   text-align: center;
   overflow:hidden; 
+  
 }
+
+
 
 .root {
   font-size: 10px;
@@ -31,7 +34,7 @@ body {
   justify-content: space-between;
   width:100%;
   overflow:hidden; 
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .main-content {
@@ -117,7 +120,7 @@ h3 {
   padding: 0;
   opacity: 0.9;
   outline: none;
-  position: absolute;
+  position: fixed;
   right: 2rem;
   bottom: 2rem;
   max-width: 12rem;
@@ -350,10 +353,6 @@ h3 {
 }
 
 
-
-
-
-
 @media (max-width: 630px) {
   .wrapper {
     max-width: 31rem;
@@ -457,9 +456,9 @@ h3 {
   }
 
   .bg__change_next {
-    position: absolute;    
+    position: fixed;    
     right: 1rem;
-    top: calc(100vh - 9%);
+    bottom: 2rem;
   }
 
   .main-content {
