@@ -157,7 +157,7 @@ function nextImage() {
 }
 
 // Get Name
-let nameTemp = '';
+let nameTemp = '[Type your name]';
 
 function getName() {
   if (localStorage.getItem('name') === null) {
@@ -196,7 +196,7 @@ function outsideNameClickListener(e) {
 
 
 // Get Focus
-let focusTemp = '';
+let focusTemp = '[Type your focus for today]';
 
 function getFocus() {
   if (localStorage.getItem('focus') === null) {
