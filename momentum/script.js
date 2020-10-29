@@ -166,6 +166,7 @@ function getName() {
     nameTemp = name.textContent;
   } else {
     name.textContent = localStorage.getItem('name');
+    nameTemp = name.textContent;
   }
 }
 
@@ -205,6 +206,7 @@ function getFocus() {
     focusTemp = focus.textContent;
   } else {
     focus.textContent = localStorage.getItem('focus');
+    focusTemp = focus.textContent;
   }
 }
 
