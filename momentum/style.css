@@ -95,7 +95,7 @@ h3 {
 }
 
 .quote {
-  font: 1.2rem "Quicksand", sans-serif;
+  font: 1.4rem "Quicksand", sans-serif;
   margin: 0 3em;
   background-color: rgba(77, 76, 76, 0.3);
   padding: 1rem;
@@ -348,7 +348,7 @@ h3 {
 
   .weather-additional {
     display: flex;
-    font-size: 1rem;
+    font-size: 1.4rem;
     flex-direction: column;
     text-align: left;
     background-color: rgba(77, 76, 76, 0.1);
@@ -396,7 +396,7 @@ h3 {
   }
 
   .clock-display-days {    
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-weight: 900;
     text-shadow: 0px 0px 19px rgba(150, 150, 150, 1);
   }
@@ -412,7 +412,7 @@ h3 {
   }
 
   .city {
-    font-size: 1rem;
+    font-size: 1.4rem;
     text-shadow: 0px 0px 19px rgba(77, 76, 76, 1);
   }
 
@@ -494,4 +494,10 @@ h3 {
     flex-direction: column;
     margin: 0 auto;
   }
+}
+
+.name:hover, .focus:hover, .city:hover, .bg__change_next:hover, .quote__btn:hover{
+  cursor: pointer;
+  opacity: 0.5;
+
 }
