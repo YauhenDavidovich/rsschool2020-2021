@@ -66,8 +66,10 @@ let backgroundImageIndex = 0
 function setBgGreet() {
   let today = new Date(),
     hour = today.getHours();
-
-  if (hour < 12) {
+  if (hour < 6) {
+    // Night 
+    greet.innerText = 'Good Night, ';
+  } else if (hour < 12) {
     // Morning    
     greet.innerText = 'Good Morning, ';
   } else if (hour < 18) {
@@ -174,7 +176,7 @@ function getName() {
 function setName(event) {
 
   if (event.type === 'keypress') {
-    if (event.which === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.innerText.trim() === "" || event.which === 13 && event.target.innerText.trim() === ""){
+    if (event.which === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.innerText.trim() === "" || event.which === 13 && event.target.innerText.trim() === "") {
       event.preventDefault();
       name.innerHTML = nameTemp;
     } else if (event.which === 13 || event.keyCode === 13) {
