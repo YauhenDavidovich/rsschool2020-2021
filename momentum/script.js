@@ -271,7 +271,7 @@ const wind = document.querySelector('.wind');
 
 
 // Get City
-let cityTemp = '';
+let cityTemp = 'Minsk';
 
 function getCity() {
   if (localStorage.getItem('city') === null) {
@@ -280,6 +280,7 @@ function getCity() {
     cityTemp = city.textContent;
   } else {
     city.textContent = localStorage.getItem('city');
+    cityTemp = city.textContent;
   }
 }
 
@@ -305,8 +306,6 @@ function setCity(event) {
 function outsideCityClickListener(e) {
   if (!e.target.matches('.city') && city.innerText == "") {
     city.innerHTML = localStorage.getItem('city');
-    cityTemp = e.target.innerText;
-
   }
 }
 
