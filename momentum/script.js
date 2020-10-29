@@ -173,7 +173,7 @@ function getName() {
 function setName(event) {
 
   if (event.type === 'keypress') {
-    if (event.which === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.textContent == "") {
+    if (event.which === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.innerText.trim() === "" || event.which === 13 && event.target.innerText.trim() === ""){
       event.preventDefault();
       name.innerHTML = nameTemp;
     } else if (event.which === 13 || event.keyCode === 13) {
@@ -212,7 +212,7 @@ function getFocus() {
 function setFocus(event) {
 
   if (event.type === 'keypress') {
-    if (event.which === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.textContent == "") {
+    if (event.which === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.innerText.trim() === "" || event.which === 13 && event.target.innerText.trim() === "") {
       event.preventDefault();
       focus.innerHTML = focusTemp;
     } else if (event.which === 13 || event.keyCode === 13) {
@@ -287,7 +287,7 @@ function getCity() {
 function setCity(event) {
 
   if (event.type === 'keypress') {
-    if (event.which === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.textContent == "") {
+    if (event.which === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.textContent == "" || event.keyCode === 13 && event.target.innerText.trim() === "" || event.which === 13 && event.target.innerText.trim() === "") {
       event.preventDefault();
       city.innerHTML = cityTemp;
     } else if (event.which === 13 || event.keyCode === 13) {
