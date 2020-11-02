@@ -5,11 +5,11 @@
 
 html {
   font-size: 100%;
-  font-family: 'Ubuntu', Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
-  background: #e0e0e0;
+  background: #afd5e4;
 }
 
 main {
@@ -30,13 +30,13 @@ transform:translate(-50%);
   justify-content: center;
   bottom: 0;
   overflow: hidden;
-  background: #2c2c2c;
+  background: rgb(80, 190, 209);
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  border: 3px solid #222;
+  
 }
 
 .keyboard__row {
@@ -63,6 +63,7 @@ transform:translate(-50%);
   user-select: none;
 }
 
+
 [data-fn="false"].active {
   box-shadow: inset 0px 1px 2px 1px rgba(0,0,0,.9), inset 0 0 20px 2em rgba(255,255,255,.2);
 }
@@ -81,8 +82,7 @@ transform:translate(-50%);
   color: #244618;
 }
 
-[data-fn="true"] {
-  background: rgb(78, 78, 78) radial-gradient(circle at 0 0, rgba(136, 134, 134, 0.65), rgba(167, 167, 167, 0.35));
+[data-fn="true"] {  
   box-shadow: inset rgba(0,0,0,.75) -1px -1px 2px, inset rgba(161, 160, 160, 0.9) 1px 1px 2px, rgba(0,0,0,.8) 1px 1px 2px -1px;
 }
 
@@ -131,16 +131,8 @@ transform:translate(-50%);
   width: 76px;
 }
 
-[data-code="ArrowLeft"],
-[data-code="ArrowUp"],
-[data-code="ArrowDown"],
-[data-code="ArrowRight"] {
-  background: rgb(125, 253, 75);
-}
-
-
 .active {
-  background: rgb(60, 212, 0);
+  background: rgb(80, 190, 209);
 }
 
 .letter {
@@ -166,8 +158,9 @@ transform:translate(-50%);
 
 textarea.output {
   resize: none;
-  width: 100%;
+  width: 80%;
   height: 200px;
+  margin: 0 auto;
   padding: 10px;
   box-sizing: border-box;
   font-size: 18px;
