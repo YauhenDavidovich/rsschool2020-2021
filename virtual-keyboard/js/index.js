@@ -3,8 +3,7 @@ const ru = [
   {
     small: 'CapsLock',
     shift: null,
-    code: 'CapsLock',
-    audio: '../../assets/sounds/caps.mp3'
+    code: 'CapsLock',    
   },
   {
     small: 'ё',
@@ -74,8 +73,7 @@ const ru = [
   {
     small: 'Backspace',
     shift: null,
-    code: 'Backspace',
-    audio: '../../assets/sounds/delete.wav',
+    code: 'Backspace',    
   },
   {
     small: 'Delete',
@@ -718,7 +716,7 @@ const main = create('main', '',
   create('h3', 'subtitle', 'with voice input'),
   create('p', 'hint', 'Для переключения языка используй <kbd>Ctrl</kbd> + <kbd>Alt</kbd>.'),
   create('p', 'hint', 'Для голосового ввода нажмите клавишу <kbd>Win</kbd> на виртуальной клавиатуре.'),
-  create('p', 'hint', 'ДЛя включения виртуальной клавиатуры нажми кнопку ON/OFF'),
+  create('p', 'hint', 'Для включения виртуальной клавиатуры нажми кнопку ON/OFF'),
   create('button', 'kbOnOff', 'ON/OFF')
 ]);
 
@@ -1085,10 +1083,12 @@ document.querySelector('.kbOnOff').addEventListener('click', function (event) {
 if (document.querySelector('.keyboard').classList.contains('keyboard-active')) {
   document.querySelector('.keyboard').classList.remove("keyboard-active");
   document.querySelector('.keyboard').classList.add("keyboard-hide");
+  document.querySelector('.kbOnOff').classList.remove("active");
 
 } else if (document.querySelector('.keyboard').classList.contains('keyboard-hide')) {
   document.querySelector('.keyboard').classList.remove("keyboard-hide");
   document.querySelector('.keyboard').classList.add("keyboard-active");
+  document.querySelector('.kbOnOff').classList.add("active");
 }
 });
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
