@@ -1,10 +1,8 @@
-/* eslint-disable */
 const ru = [
   {
     small: 'CapsLock',
     shift: null,
-    code: 'CapsLock',
-    audio: '../../assets/sounds/caps.mp3'
+    code: 'CapsLock',    
   },
   {
     small: 'ё',
@@ -74,14 +72,12 @@ const ru = [
   {
     small: 'Backspace',
     shift: null,
-    code: 'Backspace',
-    audio: '../../assets/sounds/delete.wav',
+    code: 'Backspace',    
   },
   {
     small: 'Delete',
     shift: null,
-    code: 'Delete',
-    audio: 'Delete',
+    code: 'Delete',    
   },
   {
     small: 'Tab',
@@ -717,7 +713,7 @@ const main = create('main', '',
   [create('h1', 'title', 'Virtual Keyboard'),
     create('h3', 'subtitle', 'with voice input'),
     create('p', 'hint', 'Для переключения языка используй <kbd>Ctrl</kbd> + <kbd>Alt</kbd>.'),
-    create('p', 'hint', 'Голосовой ввод текста пока что стартует автоматически.')]);
+    create('p', 'hint', 'Для голосового ввода нажмите клавишу <kbd>Win</kbd> на виртуальной клавиатуре.')]);
 
 class Keyboard {
   constructor(rowsOrder) {
@@ -733,9 +729,7 @@ class Keyboard {
       ['rows', 5],
       ['cols', 50],
       ['spellcheck', false],
-      ['autocorrect', 'off']);
-      this.output = create('div', 'wrapper', null, main)
-      ;
+      ['autocorrect', 'off']);  
     
     this.container = create('div', 'keyboard', null, main, ['language', langCode]);
     document.body.prepend(main);
@@ -784,8 +778,7 @@ class Keyboard {
     // НАЖАТИЕ КНОПКИ
     if (type.match(/keydown|mousedown/)) {
       if (!type.match(/mouse/)) e.preventDefault();
-
-
+      
       if (code.match(/Shift/)) this.shiftKey = true;
 
       if (this.shiftKey) this.switchUpperCase(true);
@@ -794,8 +787,10 @@ class Keyboard {
 
       if (code.match(/Control/)) this.ctrKey = true;
       if (code.match(/Alt/)) this.altKey = true;
+      if (code.match(/Win/)) this.winKey = true;
       if (code.match(/Control/) && this.altKey) this.switchLanguage();
       if (code.match(/Alt/) && this.ctrKey) this.switchLanguage();
+      if (code.match(/Win/)) this.speechRecognition();
 
       keyObj.div.classList.add('active');
 
@@ -988,6 +983,41 @@ class Keyboard {
     }
     this.output.setSelectionRange(cursorPos, cursorPos);
   }
+  speechRecognition = () => {
+    console.log('start speech')
+    window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  
+  const recognition = new SpeechRecognition();
+  recognition.interimResults = true;
+  if (lang === 'ru') {
+    recognition.lang = 'ru-Ru';
+    console.log(recognition.lang)
+  } else if (lang === 'en') {
+    recognition.lang = 'en-US'; 
+    console.log(recognition.lang)
+  }
+  
+  
+  
+  const words = document.querySelector('.output');  
+  recognition.addEventListener('result', e => {
+    const transcript = Array.from(e.results)
+      .map(result => result[0])
+      .map(result => result.transcript)
+      .join('');
+  
+      const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '💩');
+      
+      console.log('poopScript')
+  
+      if (e.results[0].isFinal) {  
+        words.value += " " + poopScript;
+      }
+  });
+  
+  recognition.addEventListener('end', recognition.start);  
+  recognition.start();
+  }
 }
 
 class Key {
@@ -1027,32 +1057,11 @@ new Keyboard(rowsOrder).init(lang).generateLayout();
 
 
 
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-const recognition = new SpeechRecognition();
-recognition.interimResults = true;
-recognition.lang = 'en-US';
-
-
-const words = document.querySelector('.output');
-
-
-recognition.addEventListener('result', e => {
-  const transcript = Array.from(e.results)
-    .map(result => result[0])
-    .map(result => result.transcript)
-    .join('');
-
-    const poopScript = transcript.replace(/poop|poo|shit|dump/gi, '💩');
-    
-    console.log('poopScript')
-
-    if (e.results[0].isFinal) {  
-      words.value += " " + poopScript;
-    }
-});
-
-recognition.addEventListener('end', recognition.start);
-
-recognition.start();
 alert("Уважаемый проверяющий! Огромная просьба к тебе отложить проверку этого таска до 04.11.2020. Буду очень признателен!")
+
+
+
+
+
+
