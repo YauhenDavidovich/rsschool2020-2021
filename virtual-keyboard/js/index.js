@@ -720,7 +720,11 @@ const main = create('main', '',
     create('p', 'hint', 'Для включения виртуальной клавиатуры нажми кнопку ON/OFF'),
     create('button', 'kbOnOff', 'ON/OFF')
   ]);
-
+  window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  let recognition = new SpeechRecognition();
+  recognition.interimResults = false;
+  recognition.continuous = true;
+  
 class Keyboard {
   constructor(rowsOrder) {
     this.rowsOrder = rowsOrder;
@@ -838,10 +842,10 @@ class Keyboard {
 
       if (code.match(/Win/) && !this.isWin) {
         this.isWin = true;
-        this.speechRecognition(true);
+        this.speechRecognition();
       } else if (code.match(/Win/) && this.isWin) {
         this.isWin = false;
-        this.speechRecognition(false);
+        this.speechRecognition();
         keyObj.div.classList.remove('active');
       }
 
@@ -976,11 +980,10 @@ class Keyboard {
     });
     if (this.isCaps) this.switchUpperCase(true);
   }
-  speechRecognition(isTrue) {
-    console.log(this.container.dataset.language)
-
-    const recognition = new SpeechRecognition();
-    recognition.interimResults = true;
+  speechRecognition() {
+    
+    let recognition = new SpeechRecognition();
+    console.log(this.container.dataset.language)   
 
     if (this.container.dataset.language === 'ru') {
       recognition.lang = 'ru-Ru';
@@ -988,29 +991,37 @@ class Keyboard {
     } else {
       recognition.lang = 'en-US';
       console.log(recognition.lang)
+    }    
+  
+  recognition.addEventListener('result', event => {
+    if (event.results[0].isFinal) {
+        const inputField = document.querySelector(".output");
+        inputField.focus();
+        const recArray = event.results[event.results.length - 1];
+        const recLine = recArray[0].transcript;    
+        console.log(recLine)    
+        inputField.value += recLine;        
+        
     }
+});
 
-    const words = document.querySelector('.output');
-    recognition.addEventListener('result', e => {
-      const transcript = Array.from(e.results)
-        .map(result => result[0])
-        .map(result => result.transcript)
-        .join('');
 
-      if (e.results[0].isFinal) {
-        words.value += " " + transcript;
-      }
-    });
 
-    recognition.addEventListener('end', recognition.start);
-    if (isTrue) {
-
-      recognition.start();
-
+    if (this.isWin) {         
+      console.log('start') 
+      recognition.continuous = true;                     
+      recognition.start();     
+            
     } else {
-      console.log("recognition stop")
-      recognition.stop();
-    }
+      console.log('stop')
+      recognition.abort();
+      recognition = undefined;
+        
+      
+    }     
+         
+
+    
   }
 
   printToOutput(keyObj, symbol) {
@@ -1104,6 +1115,8 @@ const lang = get('kbLang', '"ru"');
 
 new Keyboard(rowsOrder).init(lang).generateLayout();
 
+
+
 document.querySelector('.kbOnOff').addEventListener('click', function (event) {
   if (document.querySelector('.keyboard').classList.contains('keyboard-active')) {
     document.querySelector('.keyboard').classList.remove("keyboard-active");
@@ -1116,4 +1129,3 @@ document.querySelector('.kbOnOff').addEventListener('click', function (event) {
     document.querySelector('.kbOnOff').classList.add("active");
   }
 });
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
