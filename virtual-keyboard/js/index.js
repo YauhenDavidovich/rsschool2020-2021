@@ -774,7 +774,7 @@ class Keyboard {
     
     console.log(url)
     let audio = document.createElement("audio");
-    audio.setAttribute('src', url);
+    audio.src = url;
     audio.load();
     audio.play();
     audio = undefined;
