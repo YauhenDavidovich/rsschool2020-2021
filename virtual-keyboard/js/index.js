@@ -1,9 +1,8 @@
 /* eslint-disable */
-const ru = [
-  {
+const ru = [{
     small: 'CapsLock',
     shift: null,
-    code: 'CapsLock',    
+    code: 'CapsLock',
   },
   {
     small: 'ё',
@@ -73,7 +72,7 @@ const ru = [
   {
     small: 'Backspace',
     shift: null,
-    code: 'Backspace',    
+    code: 'Backspace',
   },
   {
     small: 'Delete',
@@ -328,8 +327,7 @@ const ru = [
   },
 ];
 
-const en = [
-  {
+const en = [{
     small: '`',
     shift: '~',
     code: 'Backquote',
@@ -656,7 +654,10 @@ const en = [
   },
 ];
 
-let language = { ru, en }  
+let language = {
+  ru,
+  en
+}
 
 
 function set(name, value) {
@@ -712,13 +713,13 @@ function create(el, classNames, child, parent, ...dataAttr) {
 
 
 const main = create('main', '',
-[create('h1', 'title', 'Virtual Keyboard'),
-  create('h3', 'subtitle', 'with voice input'),
-  create('p', 'hint', 'Для переключения языка используй <kbd>Ctrl</kbd> + <kbd>Alt</kbd>.'),
-  create('p', 'hint', 'Для голосового ввода нажмите клавишу <kbd>Win</kbd> на виртуальной клавиатуре.'),
-  create('p', 'hint', 'Для включения виртуальной клавиатуры нажми кнопку ON/OFF'),
-  create('button', 'kbOnOff', 'ON/OFF')
-]);
+  [create('h1', 'title', 'Virtual Keyboard'),
+    create('h3', 'subtitle', 'with voice input'),
+    create('p', 'hint', 'Для переключения языка используй <kbd>Ctrl</kbd> + <kbd>Alt</kbd>.'),
+    create('p', 'hint', 'Для голосового ввода нажмите клавишу <kbd>Win</kbd> на виртуальной клавиатуре.'),
+    create('p', 'hint', 'Для включения виртуальной клавиатуры нажми кнопку ON/OFF'),
+    create('button', 'kbOnOff', 'ON/OFF')
+  ]);
 
 class Keyboard {
   constructor(rowsOrder) {
@@ -766,41 +767,49 @@ class Keyboard {
     e.stopPropagation();
     const keyDiv = e.target.closest('.keyboard__key');
     if (!keyDiv) return;
-    const { dataset: { code } } = keyDiv;
+    const {
+      dataset: {
+        code
+      }
+    } = keyDiv;
     keyDiv.addEventListener('mouseleave', this.resetButtonState);
-    this.handleEvent({ code, type: e.type });
+    this.handleEvent({
+      code,
+      type: e.type
+    });
   };
   playSound = (url) => {
-    
-    console.log(url)
     let audio = document.createElement("audio");
     audio.src = url;
     audio.load();
     audio.play();
     audio = undefined;
-}
+  }
   // Ф-я обработки событий
 
   handleEvent = (e) => {
     if (e.stopPropagation) e.stopPropagation();
-    const { code, type } = e;
+    const {
+      code,
+      type
+    } = e;
     const keyObj = this.keyButtons.find((key) => key.code === code);
     if (!keyObj) return;
     this.output.focus();
 
 
-    
+
     // НАЖАТИЕ КНОПКИ
     if (type.match(/keydown|mousedown/)) {
-      
-        const specialSounds = ['Delete', 'Backspace', 'Enter', 'ShiftLeft', 'ShiftRight','CapsLock'];
-        if (specialSounds.indexOf(code) !== -1) {
-          console.log(`${code.toLowerCase()}`)
-            this.playSound(`./assets/sounds/${code.toLowerCase()}.mp3`);
-        } else {
-            this.playSound(`./assets/sounds/keyPress${this.container.dataset.language}.mp3`);
-        }
-      
+
+      const specialSounds = ['Delete', 'Backspace', 'Enter', 'ShiftLeft', 'ShiftRight', 'CapsLock'];
+      if (specialSounds.indexOf(code) !== -1) {
+        console.log(`${code.toLowerCase()}`)
+        this.playSound(`./assets/sounds/${code.toLowerCase()}.mp3`);
+      } else {
+        this.playSound(`./assets/sounds/keyPress${this.container.dataset.language}.mp3`);
+      }
+
 
       if (!type.match(/mouse/)) e.preventDefault();
 
@@ -814,8 +823,8 @@ class Keyboard {
       if (code.match(/Control/)) this.ctrKey = true;
       if (code.match(/Alt/)) this.altKey = true;
       if (code.match(/Control/) && this.altKey) this.switchLanguage();
-      if (code.match(/Alt/) && this.ctrKey) this.switchLanguage();      
-      
+      if (code.match(/Alt/) && this.ctrKey) this.switchLanguage();
+
       keyObj.div.classList.add('active');
 
       if (code.match(/Caps/) && !this.isCaps) {
@@ -828,31 +837,27 @@ class Keyboard {
       }
 
       if (code.match(/Win/) && !this.isWin) {
-        this.isWin = true;        
+        this.isWin = true;
         this.speechRecognition(true);
-      } else if (code.match(/Win/) && this.isWin) {        
+      } else if (code.match(/Win/) && this.isWin) {
         this.isWin = false;
         this.speechRecognition(false);
         keyObj.div.classList.remove('active');
       }
 
 
-      // Определяем, какой символ мы пишем в консоль (спец или основной)
+
       if (!this.isCaps) {
-        // если не зажат капс, смотрим не зажат ли шифт
         this.printToOutput(keyObj, this.shiftKey ? keyObj.shift : keyObj.small);
       } else if (this.isCaps) {
-        // если зажат капс
         if (this.shiftKey) {
-          // и при этом зажат шифт - то для кнопки со спецсимволом даем верхний регистр
           this.printToOutput(keyObj, keyObj.sub.innerHTML ? keyObj.shift : keyObj.small);
         } else {
-          // и при этом НЕ зажат шифт - то для кнопки без спецсивмола даем верхний регистр
           this.printToOutput(keyObj, !keyObj.sub.innerHTML ? keyObj.shift : keyObj.small);
         }
       }
       this.keysPressed[keyObj.code] = keyObj;
-    // ОТЖАТИЕ КНОПКИ
+      // ОТЖАТИЕ КНОПКИ
     } else if (e.type.match(/keyup|mouseup/)) {
       this.resetPressedButtons(code);
       // if (code.match(/Shift/) && !this.keysPressed[code])
@@ -863,12 +868,19 @@ class Keyboard {
       if (code.match(/Control/)) this.ctrKey = false;
       if (code.match(/Alt/)) this.altKey = false;
 
-      if (!code.match(/Caps|Win/)) {        
-        keyObj.div.classList.remove('active')};
+      if (!code.match(/Caps|Win/)) {
+        keyObj.div.classList.remove('active')
+      };
     }
   }
 
-  resetButtonState = ({ target: { dataset: { code } } }) => {
+  resetButtonState = ({
+    target: {
+      dataset: {
+        code
+      }
+    }
+  }) => {
     if (code.match('Shift')) {
       this.shiftKey = false;
       this.switchUpperCase(false);
@@ -882,67 +894,58 @@ class Keyboard {
 
   resetPressedButtons = (targetCode) => {
     if (!this.keysPressed[targetCode]) return;
-    if ((!this.isCaps)||(!this.isWin)) {
+    if ((!this.isCaps) || (!this.isWin)) {
       console.log(this.isWin)
       console.log("remove active")
-      };
+    };
     this.keysPressed[targetCode].div.removeEventListener('mouseleave', this.resetButtonState);
     delete this.keysPressed[targetCode];
   }
 
   switchUpperCase(isTrue) {
-    // Флаг - чтобы понимать, мы поднимаем регистр или опускаем
     if (isTrue) {
-      // Мы записывали наши кнопки в keyButtons, теперь можем легко итерироваться по ним
       this.keyButtons.forEach((button) => {
-        // Если у кнопки есть спецсивол - мы должны переопределить стили
         if (button.sub) {
-          // Если только это не капс, тогда поднимаем у спецсимволов
+
           if (this.shiftKey) {
             button.sub.classList.add('sub-active');
             button.letter.classList.add('sub-inactive');
           }
         }
-        // Не трогаем функциональные кнопки
-        // И если капс, и не шифт, и именно наша кнопка без спецсимвола
         if (!button.isFnKey && this.isCaps && !this.shiftKey && !button.sub.innerHTML) {
-          // тогда поднимаем регистр основного символа letter
+
           button.letter.innerHTML = button.shift;
-        // Если капс и зажат шифт
         } else if (!button.isFnKey && this.isCaps && this.shiftKey) {
-          // тогда опускаем регистр для основного симовла letter
+
           button.letter.innerHTML = button.small;
-        // а если это просто шифт - тогда поднимаем регистр у основного символа
-        // только у кнопок, без спецсимвола --- там уже выше отработал код для них
+
         } else if (!button.isFnKey && !button.sub.innerHTML) {
           button.letter.innerHTML = button.shift;
         }
       });
     } else {
-      // опускаем регистр в обратном порядке
+
       this.keyButtons.forEach((button) => {
-        // Не трогаем функциональные кнопки
-        // Если есть спецсимвол
         if (button.sub.innerHTML && !button.isFnKey) {
-          // то возвращаем в исходное
+
           button.sub.classList.remove('sub-active');
           button.letter.classList.remove('sub-inactive');
-          // если не зажат капс
+
           if (!this.isCaps) {
-            // то просто возвращаем основным символам нижний регистр
+
             button.letter.innerHTML = button.small;
           } else if (!this.isCaps) {
-            // если капс зажат - то возвращаем верхний регистр
+
             button.letter.innerHTML = button.shift;
           }
-        // если это кнопка без спецсимвола (снова не трогаем функциональные)
+
         } else if (!button.isFnKey) {
-          // то если зажат капс
+
           if (this.isCaps) {
-            // возвращаем верхний регистр
+
             button.letter.innerHTML = button.shift;
           } else {
-            // если отжат капс - возвращаем нижний регистр
+
             button.letter.innerHTML = button.small;
           }
         }
@@ -953,10 +956,10 @@ class Keyboard {
   switchLanguage = () => {
     const langAbbr = Object.keys(language);
     let langIdx = langAbbr.indexOf(this.container.dataset.language);
-    this.keyBase = langIdx + 1 < langAbbr.length ? language[langAbbr[langIdx += 1]]
-      : language[langAbbr[langIdx -= langIdx]];
+    this.keyBase = langIdx + 1 < langAbbr.length ? language[langAbbr[langIdx += 1]] :
+      language[langAbbr[langIdx -= langIdx]];
 
-    this.container.dataset.language = langAbbr[langIdx];    
+    this.container.dataset.language = langAbbr[langIdx];
     set('kbLang', langAbbr[langIdx]);
 
     this.keyButtons.forEach((button) => {
@@ -974,37 +977,37 @@ class Keyboard {
     if (this.isCaps) this.switchUpperCase(true);
   }
   speechRecognition(isTrue) {
-    console.log(this.container.dataset.language)    
-  
+    console.log(this.container.dataset.language)
+
     const recognition = new SpeechRecognition();
     recognition.interimResults = true;
-    
+
     if (this.container.dataset.language === 'ru') {
       recognition.lang = 'ru-Ru';
       console.log(recognition.lang)
-    } else  {
-      recognition.lang = 'en-US'; 
+    } else {
+      recognition.lang = 'en-US';
       console.log(recognition.lang)
-    }   
-    
-    const words = document.querySelector('.output');  
+    }
+
+    const words = document.querySelector('.output');
     recognition.addEventListener('result', e => {
       const transcript = Array.from(e.results)
         .map(result => result[0])
         .map(result => result.transcript)
-        .join('');     
-    
-        if (e.results[0].isFinal) {  
-          words.value += " " + transcript;
-        }
-    });
-    
-    recognition.addEventListener('end', recognition.start);  
-    if(isTrue) {      
-    
-    recognition.start();
+        .join('');
 
-    } else {      
+      if (e.results[0].isFinal) {
+        words.value += " " + transcript;
+      }
+    });
+
+    recognition.addEventListener('end', recognition.start);
+    if (isTrue) {
+
+      recognition.start();
+
+    } else {
       console.log("recognition stop")
       recognition.stop();
     }
@@ -1026,11 +1029,15 @@ class Keyboard {
         cursorPos += 1;
       },
       ArrowUp: () => {
-        const positionFromLeft = this.output.value.slice(0, cursorPos).match(/(\n).*$(?!\1)/g) || [[1]];
+        const positionFromLeft = this.output.value.slice(0, cursorPos).match(/(\n).*$(?!\1)/g) || [
+          [1]
+        ];
         cursorPos -= positionFromLeft[0].length;
       },
       ArrowDown: () => {
-        const positionFromLeft = this.output.value.slice(cursorPos).match(/^.*(\n).*(?!\1)/) || [[1]];
+        const positionFromLeft = this.output.value.slice(cursorPos).match(/^.*(\n).*(?!\1)/) || [
+          [1]
+        ];
         cursorPos += positionFromLeft[0].length;
       },
       Enter: () => {
@@ -1059,19 +1066,23 @@ class Keyboard {
 }
 
 class Key {
-  constructor({ small, shift, code}) {
+  constructor({
+    small,
+    shift,
+    code
+  }) {
     this.code = code;
     this.small = small;
     this.shift = shift;
     this.isFnKey = Boolean(small.match(/Ctrl|arr|Alt|Shift|Tab|Back|Del|Enter|Caps|Win/));
-    
+
 
     if (shift && shift.match(/[^a-zA-Zа-яА-ЯёЁ0-9]/)) {
       this.sub = create('div', 'sub', this.shift);
     } else {
       this.sub = create('div', 'sub', '');
     }
-    
+
 
     this.letter = create('div', 'letter', small);
     this.div = create('div', 'keyboard__key', [this.sub, this.letter], null, ['code', this.code],
@@ -1094,25 +1105,15 @@ const lang = get('kbLang', '"ru"');
 new Keyboard(rowsOrder).init(lang).generateLayout();
 
 document.querySelector('.kbOnOff').addEventListener('click', function (event) {
-if (document.querySelector('.keyboard').classList.contains('keyboard-active')) {
-  document.querySelector('.keyboard').classList.remove("keyboard-active");
-  document.querySelector('.keyboard').classList.add("keyboard-hide");
-  document.querySelector('.kbOnOff').classList.remove("active");
+  if (document.querySelector('.keyboard').classList.contains('keyboard-active')) {
+    document.querySelector('.keyboard').classList.remove("keyboard-active");
+    document.querySelector('.keyboard').classList.add("keyboard-hide");
+    document.querySelector('.kbOnOff').classList.remove("active");
 
-} else if (document.querySelector('.keyboard').classList.contains('keyboard-hide')) {
-  document.querySelector('.keyboard').classList.remove("keyboard-hide");
-  document.querySelector('.keyboard').classList.add("keyboard-active");
-  document.querySelector('.kbOnOff').classList.add("active");
-}
+  } else if (document.querySelector('.keyboard').classList.contains('keyboard-hide')) {
+    document.querySelector('.keyboard').classList.remove("keyboard-hide");
+    document.querySelector('.keyboard').classList.add("keyboard-active");
+    document.querySelector('.kbOnOff').classList.add("active");
+  }
 });
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-
-
-
-
-
-
-
-
-
