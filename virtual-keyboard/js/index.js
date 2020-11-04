@@ -882,7 +882,9 @@ class Keyboard {
 
   resetPressedButtons = (targetCode) => {
     if (!this.keysPressed[targetCode]) return;
-    if ((!this.isCaps)||(!this.isWin)) {      
+    if ((!this.isCaps)||(!this.isWin)) {
+      console.log(this.isWin)
+      console.log("remove active")
       };
     this.keysPressed[targetCode].div.removeEventListener('mouseleave', this.resetButtonState);
     delete this.keysPressed[targetCode];
@@ -972,8 +974,6 @@ class Keyboard {
     if (this.isCaps) this.switchUpperCase(true);
   }
   speechRecognition(isTrue) {
-    if(isTrue) {
-      
     console.log(this.container.dataset.language)    
   
     const recognition = new SpeechRecognition();
@@ -1000,12 +1000,13 @@ class Keyboard {
     });
     
     recognition.addEventListener('end', recognition.start);  
+    if(isTrue) {      
+    
     recognition.start();
 
-    } else {
+    } else {      
       console.log("recognition stop")
       recognition.stop();
-
     }
   }
 
