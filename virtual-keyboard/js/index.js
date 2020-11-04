@@ -725,6 +725,7 @@ class Keyboard {
     this.rowsOrder = rowsOrder;
     this.keysPressed = {};
     this.isCaps = false;
+    this.isWin = false;
   }
 
   init(langCode) {
@@ -801,10 +802,6 @@ class Keyboard {
         }
       
 
-
-
-
-
       if (!type.match(/mouse/)) e.preventDefault();
 
 
@@ -812,13 +809,12 @@ class Keyboard {
 
       if (this.shiftKey) this.switchUpperCase(true);
 
-      if (code.match(/Control|Alt|Caps/) && e.repeat) return;
+      if (code.match(/Control|Alt|Caps|Win/) && e.repeat) return;
 
       if (code.match(/Control/)) this.ctrKey = true;
       if (code.match(/Alt/)) this.altKey = true;
       if (code.match(/Control/) && this.altKey) this.switchLanguage();
-      if (code.match(/Alt/) && this.ctrKey) this.switchLanguage();
-      if (code.match(/Win/))  this.speechRecognition();
+      if (code.match(/Alt/) && this.ctrKey) this.switchLanguage();      
       
       keyObj.div.classList.add('active');
 
@@ -831,7 +827,14 @@ class Keyboard {
         keyObj.div.classList.remove('active');
       }
 
-      
+      if (code.match(/Win/) && !this.isWin) {
+        this.isWin = true;        
+        this.speechRecognition(true);
+      } else if (code.match(/Win/) && this.isWin) {        
+        this.isWin = false;
+        this.speechRecognition(false);
+        keyObj.div.classList.remove('active');
+      }
 
 
       // Определяем, какой символ мы пишем в консоль (спец или основной)
@@ -860,7 +863,8 @@ class Keyboard {
       if (code.match(/Control/)) this.ctrKey = false;
       if (code.match(/Alt/)) this.altKey = false;
 
-      if (!code.match(/Caps/)) keyObj.div.classList.remove('active');
+      if (!code.match(/Caps|Win/)) {        
+        keyObj.div.classList.remove('active')};
     }
   }
 
@@ -878,7 +882,8 @@ class Keyboard {
 
   resetPressedButtons = (targetCode) => {
     if (!this.keysPressed[targetCode]) return;
-    if (!this.isCaps) this.keysPressed[targetCode].div.classList.remove('active');
+    if ((!this.isCaps)||(!this.isWin)) {      
+      };
     this.keysPressed[targetCode].div.removeEventListener('mouseleave', this.resetButtonState);
     delete this.keysPressed[targetCode];
   }
@@ -966,34 +971,42 @@ class Keyboard {
     });
     if (this.isCaps) this.switchUpperCase(true);
   }
-  speechRecognition = () => {
+  speechRecognition(isTrue) {
+    if(isTrue) {
+      
     console.log(this.container.dataset.language)    
   
-  const recognition = new SpeechRecognition();
-  recognition.interimResults = true;
-  
-  if (this.container.dataset.language === 'ru') {
-    recognition.lang = 'ru-Ru';
-    console.log(recognition.lang)
-  } else  {
-    recognition.lang = 'en-US'; 
-    console.log(recognition.lang)
-  }   
-  
-  const words = document.querySelector('.output');  
-  recognition.addEventListener('result', e => {
-    const transcript = Array.from(e.results)
-      .map(result => result[0])
-      .map(result => result.transcript)
-      .join('');     
-  
-      if (e.results[0].isFinal) {  
-        words.value += " " + transcript;
-      }
-  });
-  
-  recognition.addEventListener('end', recognition.start);  
-  recognition.start();
+    const recognition = new SpeechRecognition();
+    recognition.interimResults = true;
+    
+    if (this.container.dataset.language === 'ru') {
+      recognition.lang = 'ru-Ru';
+      console.log(recognition.lang)
+    } else  {
+      recognition.lang = 'en-US'; 
+      console.log(recognition.lang)
+    }   
+    
+    const words = document.querySelector('.output');  
+    recognition.addEventListener('result', e => {
+      const transcript = Array.from(e.results)
+        .map(result => result[0])
+        .map(result => result.transcript)
+        .join('');     
+    
+        if (e.results[0].isFinal) {  
+          words.value += " " + transcript;
+        }
+    });
+    
+    recognition.addEventListener('end', recognition.start);  
+    recognition.start();
+
+    } else {
+      console.log("recognition stop")
+      recognition.stop();
+
+    }
   }
 
   printToOutput(keyObj, symbol) {
@@ -1092,8 +1105,6 @@ if (document.querySelector('.keyboard').classList.contains('keyboard-active')) {
 }
 });
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-
 
 
 
