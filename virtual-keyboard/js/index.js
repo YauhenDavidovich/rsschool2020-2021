@@ -807,7 +807,7 @@ class Keyboard {
         console.log(`${code.toLowerCase()}`)
         this.playSound(`./assets/sounds/${code.toLowerCase()}.mp3`);
       } else {
-        this.playSound(`./assets/sounds/keyPress${this.container.dataset.language}.mp3`);
+        this.playSound(`./assets/sounds/key_${this.container.dataset.language}.mp3`);
       }
 
 
