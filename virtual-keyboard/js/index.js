@@ -1093,8 +1093,6 @@ if (document.querySelector('.keyboard').classList.contains('keyboard-active')) {
 });
 window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-alert("Уважаемый проверяющий! Огромная просьба к тебе отложить проверку этого таска до 04.11.2020. Буду очень признателен!")
-
 
 
 
