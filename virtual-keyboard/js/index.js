@@ -716,8 +716,8 @@ const main = create('main', '',
   [create('h1', 'title', 'Virtual Keyboard'),
     create('h3', 'subtitle', 'with voice input'),
     create('p', 'hint', 'Для переключения языка используй <kbd>Ctrl</kbd> + <kbd>Alt</kbd>.'),
-    create('p', 'hint', 'Для голосового ввода нажмите клавишу <kbd>Win</kbd> на виртуальной клавиатуре.'),
-    create('p', 'hint', 'Для включения виртуальной клавиатуры нажми кнопку ON/OFF'),
+    create('p', 'hint', 'Для голосового ввода нажми клавишу <kbd>Win</kbd> на виртуальной клавиатуре.'),
+    create('p', 'hint', 'Для включения виртуальной клавиатуры нажми кнопку ON/OFF ниже'),
     create('button', 'kbOnOff', 'ON/OFF')
   ]);
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;

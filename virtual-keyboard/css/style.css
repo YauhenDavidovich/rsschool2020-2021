@@ -17,6 +17,13 @@ main {
   margin: 0 auto;
 }
 
+kbd {
+  font: bold;
+  font-size: 18px;
+  color: red;
+}
+
+
 .kbOnOff {
   position: fixed;
   left: 50%;
