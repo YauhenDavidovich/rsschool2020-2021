@@ -13,6 +13,15 @@ const empty = {  //epmty chip pozition
     step: 0,
 }
 
+function playSound(url) {    
+    let audio = document.createElement("audio");
+    audio.src = url;
+    audio.load();
+    audio.play();
+    audio = undefined;
+}
+
+
 const numbers = [...Array(15).keys()]  //array of random numbers
 //.sort(() => Math.random()-0.5)
 
@@ -35,7 +44,8 @@ function move(index) {
     chip.left = emptyLeft;
     chip.top = emptyTop;
     empty.step ++;
-    console.log(empty.step)
+    console.log(empty.step);
+    playSound(`./assets/sounds/move.wav`);
 
     const isFinished = chips.every(chip => {
         console.log(chip.value, chip.top, chip.left)
@@ -46,6 +56,7 @@ function move(index) {
 congratulation.className = 'congrat';
 congratulation.innerHTML = `Ура! Вы решили головоломку за  ${empty.step} ходов`;
         board.append(congratulation);
+        playSound(`./assets/sounds/win.wav`);
     }
 }
 

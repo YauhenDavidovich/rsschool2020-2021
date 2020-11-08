@@ -30,7 +30,7 @@
   }
 
   .congrat {
-    color: #87ff8e;
+    color: rgb(182, 202, 218);
     position: absolute;
     z-index: 99;
     background: rgba(0, 0, 0, .8);
