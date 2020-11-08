@@ -5,10 +5,16 @@ const chip = document.querySelector('.chip');
 
 const chipsize = 100;
 
+
 const empty = {  //epmty chip pozition
+    value: 0,
     top: 0,
-    left: 0
+    left: 0,
+    step: 0,
 }
+
+const numbers = [...Array(15).keys()]  //array of random numbers
+//.sort(() => Math.random()-0.5)
 
 function move(index) {
     const chip = chips[index]
@@ -28,7 +34,23 @@ function move(index) {
     empty.top = chip.top;
     chip.left = emptyLeft;
     chip.top = emptyTop;
+    empty.step ++;
+    console.log(empty.step)
+
+    const isFinished = chips.every(chip => {
+        console.log(chip.value, chip.top, chip.left)
+        return chip.value === chip.top * 4 + chip.left;
+    })
+    if (isFinished) {
+        const congratulation = document.createElement('div');
+congratulation.className = 'congrat';
+congratulation.innerHTML = `Ура! Вы решили головоломку за  ${empty.step} ходов`;
+        board.append(congratulation);
+    }
 }
+
+
+
 
 const chips = [] //storage for chips positions
 chips.push(empty)
@@ -36,12 +58,14 @@ chips.push(empty)
 for (let i=1; i<=15; i++) {    
     const chip = document.createElement('div');
     chip.className = 'chip';
-    chip.innerHTML = i;
+    const value = numbers[i-1] + 1;
+    chip.innerHTML = value; //get chip index from array of ramdom numbers
 
     const left = i % 4;
     const top = (i - left)/4;
 
     chips.push({
+        value: value,
         left: left,
         top: top,
         element: chip
@@ -58,3 +82,4 @@ for (let i=1; i<=15; i++) {
         move(i)
     })
 }
+
