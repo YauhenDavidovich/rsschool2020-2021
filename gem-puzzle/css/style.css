@@ -1,0 +1,29 @@
+.board {    
+    position: relative;
+    margin: auto;
+    width: 400px; 
+    height: 400px;   
+    background: rgb(15,   76,   129);
+    box-sizing: border-box;    
+    border: 1px solid rgb(182, 202, 218);
+    transition: all .5s ease-in;
+    -webkit-transition: all .5s ease-in;
+    -moz-transition: all .5s ease-in;
+    -ms-transition: all .5s ease-in;
+    -o-transition: all .5s ease-in;
+  }
+  
+  .chip {
+      width: 100px;
+      height: 100px;
+    border: 1px solid rgb(182, 202, 218);
+    box-sizing: border-box;
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    background: rgb(245, 184, 149);
+    user-select: none; 
+    cursor: pointer;    
+  }
