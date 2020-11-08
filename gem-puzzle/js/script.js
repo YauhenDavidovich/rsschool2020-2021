@@ -12,6 +12,12 @@ const empty = {  //epmty chip pozition
 
 function move(index) {
     const chip = chips[index]
+    const leftDiff = Math.abs(empty.left - chip.left);
+    const toptDiff = Math.abs(empty.top - chip.top);
+
+    if (leftDiff + toptDiff > 1) {
+        return
+    } 
     chip.element.style.left = `${empty.left*chipsize}px`;
     chip.element.style.top = `${empty.top*chipsize}px`;
 

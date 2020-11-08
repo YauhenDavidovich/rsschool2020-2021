@@ -5,12 +5,7 @@
     height: 400px;   
     background: rgb(15,   76,   129);
     box-sizing: border-box;    
-    border: 1px solid rgb(182, 202, 218);
-    transition: all .5s ease-in;
-    -webkit-transition: all .5s ease-in;
-    -moz-transition: all .5s ease-in;
-    -ms-transition: all .5s ease-in;
-    -o-transition: all .5s ease-in;
+    border: 1px solid rgb(182, 202, 218);    
   }
   
   .chip {
@@ -26,4 +21,9 @@
     background: rgb(245, 184, 149);
     user-select: none; 
     cursor: pointer;    
+    transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -ms-transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
   }
