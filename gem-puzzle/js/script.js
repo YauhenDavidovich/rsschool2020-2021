@@ -21,8 +21,7 @@ function playSound(url) {
   audio = undefined;
 }
 
-const numbers = [...Array(15).keys()];
-// .sort(() => Math.random() - 0.5); //array of random numbers
+const numbers = [...Array(15).keys()].sort(() => Math.random() - 0.5); //array of random numbers
 
 function move(index) {
   const chip = chips[index + 1];
