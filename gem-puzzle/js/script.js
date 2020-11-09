@@ -78,12 +78,93 @@ for (let i = 0; i <= 14; i++) {
 
   chip.style.left = `${left * chipsize}px`;
   chip.style.top = `${top * chipsize}px`;
-  //   console.log(value, top, left);
-
+  chip.setAttribute('draggable', true); 
   board.append(chip);
+
 
   chip.addEventListener('click', () => {
     //move chip to empty place
     move(i);
   });
 }
+
+
+
+// chip.onmousedown = function(event) {
+//     console.log('start drag & drop')
+
+//     let shiftX = event.clientX - chip.getBoundingClientRect().left;
+//     let shiftY = event.clientY - chip.getBoundingClientRect().top;
+  
+//     chip.style.position = 'absolute';
+//     chip.style.zIndex = 1000;
+//     board.append(chip);
+  
+//     moveAt(event.pageX, event.pageY);
+  
+//     // переносит мяч на координаты (pageX, pageY),
+//     // дополнительно учитывая изначальный сдвиг относительно указателя мыши
+//     function moveAt(pageX, pageY) {
+//       chip.style.left = pageX - shiftX + 'px';
+//       chip.style.top = pageY - shiftY + 'px';
+//     }
+  
+//     function onMouseMove(event) {
+//       moveAt(event.pageX, event.pageY);
+//     }
+  
+//     // передвигаем мяч при событии mousemove
+//     document.addEventListener('mousemove', onMouseMove);
+  
+//     // отпустить мяч, удалить ненужные обработчики
+//     chip.onmouseup = function() {
+//       document.removeEventListener('mousemove', onMouseMove);
+//       chip.onmouseup = null;
+//     };
+  
+//   };
+  
+//   chip.ondragstart = function() {
+//     return false;
+//   };
+
+
+
+// // потенциальная цель переноса, над которой мы пролетаем прямо сейчас
+// let currentDroppable = null;
+
+// function onMouseMove(event) {
+//   moveAt(event.pageX, event.pageY);
+
+//   chip.hidden = true;
+//   let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
+//   chip.hidden = false;
+
+//   // событие mousemove может произойти и когда указатель за пределами окна
+//   // (мяч перетащили за пределы экрана)
+
+//   // если clientX/clientY за пределами окна, elementFromPoint вернёт null
+//   if (!elemBelow) return;
+
+//   // потенциальные цели переноса помечены классом droppable (может быть и другая логика)
+//   let droppableBelow = elemBelow.closest('.chip');
+
+//   if (currentDroppable != droppableBelow) {
+//     // мы либо залетаем на цель, либо улетаем из неё
+//     // внимание: оба значения могут быть null
+//     //   currentDroppable=null,
+//     //     если мы были не над droppable до этого события (например, над пустым пространством)
+//     //   droppableBelow=null,
+//     //     если мы не над droppable именно сейчас, во время этого события
+
+//     if (currentDroppable) {
+//       // логика обработки процесса "вылета" из droppable (удаляем подсветку)
+//       leaveDroppable(currentDroppable);
+//     }
+//     currentDroppable = droppableBelow;
+//     if (currentDroppable) {
+//       // логика обработки процесса, когда мы "влетаем" в элемент droppable
+//       enterDroppable(currentDroppable);
+//     }
+//   }
+// }
