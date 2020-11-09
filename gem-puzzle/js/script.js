@@ -46,17 +46,15 @@ function move(index) {
   empty.step++;
   playSound(`./assets/sounds/move.wav`);
 
-  for (let i = 1; i < chips.length; i++) {
-    //check whether all chips on their places
-    if (chips[i].value !== chip.top * 4 + chip.left + 1) {
-      continue;
-    } else if (chips[i].value === chip.top * 4 + chip.left + 1) {
-      const congratulation = document.createElement('div');
-      congratulation.className = 'congrat';
-      congratulation.innerHTML = `Ура! Вы решили головоломку за  ${empty.step} ходов`;
-      board.append(congratulation);
-      playSound(`./assets/sounds/win.wav`);
-    }
+  const isFinished = chips.slice(1).every((chip) => {
+    console.log(chip.value, chip.top, chip.left);
+    return chip.value === chip.top * 4 + chip.left + 1;
+  });
+  if (isFinished) {
+    const congratulation = document.createElement('div');
+    congratulation.className = 'congrat';
+    congratulation.innerHTML = `Ура! Вы решили головоломку за  ${empty.step} ходов`;
+    board.append(congratulation);
   }
 }
 
