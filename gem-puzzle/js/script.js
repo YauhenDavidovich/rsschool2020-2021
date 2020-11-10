@@ -28,7 +28,8 @@ function playSound(url) {
 
 
 function generataSolvebaleGame() {
-    numbers = [...Array(15).keys()].sort(() => Math.random() - 0.5); //array of random numbers
+    numbers = [...Array(15).keys()]
+    // .sort(() => Math.random() - 0.5); //array of random numbers
     let sum = 0;  
   for (let i = 0; i < numbers.length; i++) {      
       let k = i + 1;
@@ -41,7 +42,7 @@ function generataSolvebaleGame() {
       
     
   };
-  sum = sum + 4;  
+  sum = sum + 4;  //add row number of empty chip
   console.log('sum is: ', sum);
   if (sum % 2 !== 0) {
     //if not solvable, randomize again
@@ -51,6 +52,8 @@ function generataSolvebaleGame() {
 
 }
 
+
+
 function startGame() {
 
 generataSolvebaleGame()
@@ -59,7 +62,7 @@ generataSolvebaleGame()
 
 for (let i = 0; i <= 14; i++) {
     const chip = document.createElement('div');
-    chip.className = 'chip';
+    chip.className = 'chip chip__image';    
     const value = numbers[i] + 1;
     chip.innerHTML = value; //get chip index from array of ramdom numbers
   
@@ -75,6 +78,10 @@ for (let i = 0; i <= 14; i++) {
   
     chip.style.left = `${left * chipsize}px`;
     chip.style.top = `${top * chipsize}px`;
+    console.log(i,left,top,`${left*(-25)}%`,`${top*(-25)}%`)
+    chip.style.backgroundSize = '400px 400px'
+    chip.style.backgroundPositionX = `${-((value-1) % 4)*(chipsize)}px`;
+    chip.style.backgroundPositionY = `${-((value-1) - (value-1) % 4) / 4*(chipsize)}px`;    
     chip.setAttribute('draggable', true); 
     board.append(chip);
   
