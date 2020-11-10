@@ -5,6 +5,8 @@ const chip = document.querySelector('.chip');
 
 const chipsize = 100;
 
+let numbers = []
+
 const empty = {
   //epmty chip pozition
   value: 0,
@@ -12,6 +14,9 @@ const empty = {
   left: 3,
   step: 0,
 };
+
+const chips = []; //storage for chips positions
+chips.push(empty);7
 
 function playSound(url) {
   let audio = document.createElement('audio');
@@ -21,7 +26,68 @@ function playSound(url) {
   audio = undefined;
 }
 
-const numbers = [...Array(15).keys()].sort(() => Math.random() - 0.5); //array of random numbers
+
+function generataSolvebaleGame() {
+    numbers = [...Array(15).keys()].sort(() => Math.random() - 0.5); //array of random numbers
+    let sum = 0;  
+  for (let i = 0; i < numbers.length; i++) {      
+      let k = i + 1;
+      while (k < numbers.length) {
+        if (numbers[k] < numbers[i]) {
+          sum ++;
+        };
+        k++;
+      };
+      
+    
+  };
+  sum = sum + 4;  
+  console.log('sum is: ', sum);
+  if (sum % 2 !== 0) {
+    //if not solvable, randomize again
+    console.log('cant solve');
+    generataSolvebaleGame();
+  };
+
+}
+
+function startGame() {
+
+generataSolvebaleGame()
+
+
+
+for (let i = 0; i <= 14; i++) {
+    const chip = document.createElement('div');
+    chip.className = 'chip';
+    const value = numbers[i] + 1;
+    chip.innerHTML = value; //get chip index from array of ramdom numbers
+  
+    const left = i % 4;
+    const top = (i - left) / 4;
+  
+    chips.push({
+      value: value,
+      left: left,
+      top: top,
+      element: chip,
+    });
+  
+    chip.style.left = `${left * chipsize}px`;
+    chip.style.top = `${top * chipsize}px`;
+    chip.setAttribute('draggable', true); 
+    board.append(chip);
+  
+  
+    chip.addEventListener('click', () => {
+      //move chip to empty place
+      move(i);
+    });
+  }
+}
+
+
+
 
 function move(index) {
   const chip = chips[index + 1];
@@ -57,37 +123,12 @@ function move(index) {
   }
 }
 
-const chips = []; //storage for chips positions
-chips.push(empty);
-
-for (let i = 0; i <= 14; i++) {
-  const chip = document.createElement('div');
-  chip.className = 'chip';
-  const value = numbers[i] + 1;
-  chip.innerHTML = value; //get chip index from array of ramdom numbers
-
-  const left = i % 4;
-  const top = (i - left) / 4;
-
-  chips.push({
-    value: value,
-    left: left,
-    top: top,
-    element: chip,
-  });
-
-  chip.style.left = `${left * chipsize}px`;
-  chip.style.top = `${top * chipsize}px`;
-  chip.setAttribute('draggable', true); 
-  board.append(chip);
 
 
-  chip.addEventListener('click', () => {
-    //move chip to empty place
-    move(i);
-  });
-}
 
+
+
+startGame()
 
 
 // chip.onmousedown = function(event) {
