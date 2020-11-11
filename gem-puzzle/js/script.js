@@ -1,11 +1,25 @@
+const nav = document.createElement('nav');
+nav.className = 'nav';
+document.body.append(nav);
+
+const startButton = document.createElement('button');
+startButton.className = 'button__start';
+startButton.innerText = 'New Game';
+nav.append(startButton);
+
+const soundButton = document.createElement('i');
+soundButton.className = 'material-icons button__sound on';
+soundButton.innerText = 'volume_down';
+nav.append(soundButton);
+
 const board = document.createElement('div');
 board.className = 'board';
 document.body.append(board);
-const chip = document.querySelector('.chip');
 
+const chip = document.querySelector('.chip');
 const chipsize = 100;
 
-let numbers = []
+let numbers = [];
 
 const empty = {
   //epmty chip pozition
@@ -16,7 +30,8 @@ const empty = {
 };
 
 const chips = []; //storage for chips positions
-chips.push(empty);7
+chips.push(empty);
+7;
 
 function playSound(url) {
   let audio = document.createElement('audio');
@@ -26,75 +41,63 @@ function playSound(url) {
   audio = undefined;
 }
 
-
 function generataSolvebaleGame() {
-    numbers = [...Array(15).keys()]
-    // .sort(() => Math.random() - 0.5); //array of random numbers
-    let sum = 0;  
-  for (let i = 0; i < numbers.length; i++) {      
-      let k = i + 1;
-      while (k < numbers.length) {
-        if (numbers[k] < numbers[i]) {
-          sum ++;
-        };
-        k++;
-      };
-      
-    
-  };
-  sum = sum + 4;  //add row number of empty chip
+  numbers = [...Array(15).keys()].sort(() => Math.random() - 0.5); //array of random numbers
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    let k = i + 1;
+    while (k < numbers.length) {
+      if (numbers[k] < numbers[i]) {
+        sum++;
+      }
+      k++;
+    }
+  }
+  sum = sum + 4; //add row number of empty chip
   console.log('sum is: ', sum);
   if (sum % 2 !== 0) {
     //if not solvable, randomize again
     console.log('cant solve');
     generataSolvebaleGame();
-  };
-
+  }
 }
 
-
-
 function startGame() {
+  generataSolvebaleGame();
 
-generataSolvebaleGame()
-
-
-
-for (let i = 0; i <= 14; i++) {
+  for (let i = 0; i <= 14; i++) {
     const chip = document.createElement('div');
-    chip.className = 'chip chip__image';    
+    chip.className = 'chip chip__image';
     const value = numbers[i] + 1;
     chip.innerHTML = value; //get chip index from array of ramdom numbers
-  
+
     const left = i % 4;
     const top = (i - left) / 4;
-  
+
     chips.push({
       value: value,
       left: left,
       top: top,
       element: chip,
     });
-  
+
     chip.style.left = `${left * chipsize}px`;
     chip.style.top = `${top * chipsize}px`;
-    console.log(i,left,top,`${left*(-25)}%`,`${top*(-25)}%`)
-    chip.style.backgroundSize = '400px 400px'
-    chip.style.backgroundPositionX = `${-((value-1) % 4)*(chipsize)}px`;
-    chip.style.backgroundPositionY = `${-((value-1) - (value-1) % 4) / 4*(chipsize)}px`;    
-    chip.setAttribute('draggable', true); 
+    console.log(i, left, top, `${left * -25}%`, `${top * -25}%`);
+    chip.style.backgroundSize = '400px 400px';
+    chip.style.backgroundPositionX = `${-((value - 1) % 4) * chipsize}px`;
+    chip.style.backgroundPositionY = `${
+      (-(value - 1 - ((value - 1) % 4)) / 4) * chipsize
+    }px`;
+    chip.setAttribute('draggable', true);
     board.append(chip);
-  
-  
+
     chip.addEventListener('click', () => {
       //move chip to empty place
       move(i);
     });
   }
 }
-
-
-
 
 function move(index) {
   const chip = chips[index + 1];
@@ -116,7 +119,9 @@ function move(index) {
   chip.left = emptyLeft;
   chip.top = emptyTop;
   empty.step++;
-  playSound(`./assets/sounds/move.wav`);
+  if (soundButton.classList.contains('on')) {
+    playSound(`./assets/sounds/move.wav`);
+  }
 
   const isFinished = chips.slice(1).every((chip) => {
     console.log(chip.value, chip.top, chip.left);
@@ -127,56 +132,62 @@ function move(index) {
     congratulation.className = 'congrat';
     congratulation.innerHTML = `Ура! Вы решили головоломку за  ${empty.step} ходов`;
     board.append(congratulation);
+    if (soundButton.classList.contains('on')) {
+      playSound(`./assets/sounds/win.wav`);
+    }
   }
 }
 
+startGame();
 
-
-
-
-
-startGame()
-
+soundButton.addEventListener('click', () => {
+  if (soundButton.classList.contains('on')) {
+    soundButton.classList.remove('on');
+    soundButton.innerHTML = `<i class="material-icons">volume_off</i>`;
+  } else {
+    // playSound();
+    soundButton.classList.add('on');
+    soundButton.innerHTML = `<i class="material-icons">volume_down</i>`;
+  }
+});
 
 // chip.onmousedown = function(event) {
 //     console.log('start drag & drop')
 
 //     let shiftX = event.clientX - chip.getBoundingClientRect().left;
 //     let shiftY = event.clientY - chip.getBoundingClientRect().top;
-  
+
 //     chip.style.position = 'absolute';
 //     chip.style.zIndex = 1000;
 //     board.append(chip);
-  
+
 //     moveAt(event.pageX, event.pageY);
-  
+
 //     // переносит мяч на координаты (pageX, pageY),
 //     // дополнительно учитывая изначальный сдвиг относительно указателя мыши
 //     function moveAt(pageX, pageY) {
 //       chip.style.left = pageX - shiftX + 'px';
 //       chip.style.top = pageY - shiftY + 'px';
 //     }
-  
+
 //     function onMouseMove(event) {
 //       moveAt(event.pageX, event.pageY);
 //     }
-  
+
 //     // передвигаем мяч при событии mousemove
 //     document.addEventListener('mousemove', onMouseMove);
-  
+
 //     // отпустить мяч, удалить ненужные обработчики
 //     chip.onmouseup = function() {
 //       document.removeEventListener('mousemove', onMouseMove);
 //       chip.onmouseup = null;
 //     };
-  
+
 //   };
-  
+
 //   chip.ondragstart = function() {
 //     return false;
 //   };
-
-
 
 // // потенциальная цель переноса, над которой мы пролетаем прямо сейчас
 // let currentDroppable = null;
