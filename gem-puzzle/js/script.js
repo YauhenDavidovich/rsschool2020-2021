@@ -1,8 +1,15 @@
+let boardSize = 5;
+const empty = {
+    //epmty chip pozition
+    value: 0,
+    top: boardSize-1,
+    left: boardSize-1,
+    step: 0,
+};
 const nav = document.createElement('nav');
 nav.className = 'nav';
 document.body.append(nav);
 
-let boardSize = 16;
 
 const startButton = document.createElement('button');
 startButton.className = 'button__start on';
@@ -14,6 +21,12 @@ newButton.className = 'button__new';
 newButton.innerText = 'New';
 nav.append(newButton);
 
+const counter = document.createElement('div');
+counter.className = "counter";
+counter.innerHTML = `<span class="description">Moves </span><span class="counter">${empty.step}</span></div>`;
+nav.append(counter)
+
+
 const soundButton = document.createElement('i');
 soundButton.className = 'material-icons button__sound on';
 soundButton.innerText = 'volume_down';
@@ -21,156 +34,169 @@ nav.append(soundButton);
 
 const board = document.createElement('div');
 board.className = 'board';
+board.style.width = `${boardSize * 100}px`;
+board.style.height = `${boardSize * 100}px`;
 document.body.append(board);
 
 const chip = document.querySelector('.chip');
+
 const chipsize = 100;
 
 let numbers = [];
 
-const empty = {
-  //epmty chip pozition
-  value: 0,
-  top: 3,
-  left: 3,
-  step: 0,
-};
+
 
 const chips = []; //storage for chips positions
 chips.push(empty);
-7;
+
 
 function playSound(url) {
-  let audio = document.createElement('audio');
-  audio.src = url;
-  audio.load();
-  audio.play();
-  audio = undefined;
+    let audio = document.createElement('audio');
+    audio.src = url;
+    audio.load();
+    audio.play();
+    audio = undefined;
 }
 
 function generataSolvebaleGame() {
-  numbers = [...Array(15).keys()].sort(() => Math.random() - 0.5); //array of random numbers
-  let sum = 0;
-  for (let i = 0; i < numbers.length; i++) {
-    let k = i + 1;
-    while (k < numbers.length) {
-      if (numbers[k] < numbers[i]) {
-        sum++;
-      }
-      k++;
+    let arrayLength = boardSize * boardSize - 1;
+    console.log(arrayLength)
+    numbers = [...Array(arrayLength).keys()]
+    .sort(() => Math.random() - 0.5); //array of random numbers
+    let sum = 0;
+    for (let i = 0; i < numbers.length; i++) {
+        let k = i + 1;
+        while (k < numbers.length) {
+            if (numbers[k] < numbers[i]) {
+                sum++;
+            }
+            k++;
+        }
     }
-  }
-  sum = sum + 4; //add row number of empty chip
-  console.log('sum is: ', sum);
-  if (sum % 2 !== 0) {
-    //if not solvable, randomize again
-    console.log('cant solve');
-    generataSolvebaleGame();
-  }
+    sum = sum + boardSize; //add row number of empty chip
+    console.log('sum is: ', sum);
+    if (boardSize % 2 !==0) {
+        if (sum % 2 === 0) {
+            //if not solvable, randomize again
+            console.log('cant solve');
+            generataSolvebaleGame(boardSize);
+        }
+    } else if (boardSize % 2 === 0) {
+        if (sum % 2 !== 0) {
+            //if not solvable, randomize again
+            console.log('cant solve');
+            generataSolvebaleGame(boardSize);
+        }
+    }
+    
 }
 
-function createGame() {
-  generataSolvebaleGame();
+function createBoard(boardSize) {
+    generataSolvebaleGame();
 
-  for (let i = 0; i <= 14; i++) {
-    const chip = document.createElement('div');
-    chip.className = 'chip chip__image';
-    const value = numbers[i] + 1;
-    chip.innerHTML = value; //get chip index from array of ramdom numbers
+    for (let i = 0; i <= (boardSize * boardSize - 2); i++) {
+        const chip = document.createElement('div');
+        chip.className = 'chip chip__image';
+        const value = numbers[i] + 1;
+        chip.innerHTML = value; //get chip index from array of ramdom numbers
 
-    const left = i % 4;
-    const top = (i - left) / 4;
+        const left = i % boardSize;
+        const top = (i - left) / boardSize;
 
-    chips.push({
-      value: value,
-      left: left,
-      top: top,
-      element: chip,
-    });
+        chips.push({
+            value: value,
+            left: left,
+            top: top,
+            element: chip,
+        });
 
-    chip.style.left = `${left * chipsize}px`;
-    chip.style.top = `${top * chipsize}px`;
+        chip.style.left = `${left * chipsize}px`;
+        chip.style.top = `${top * chipsize}px`;
 
-    chip.style.backgroundSize = '400px 400px';
-    chip.style.backgroundPositionX = `${-((value - 1) % 4) * chipsize}px`;
-    chip.style.backgroundPositionY = `${
-      (-(value - 1 - ((value - 1) % 4)) / 4) * chipsize
+        chip.style.backgroundSize = `${boardSize * chipsize}px`;
+        chip.style.backgroundPositionX = `${-((value - 1) % boardSize) * chipsize}px`;
+        chip.style.backgroundPositionY = `${
+      (-(value - 1 - ((value - 1) % boardSize)) / boardSize) * chipsize
     }px`;
 
-    chip.setAttribute('draggable', true);
-    board.append(chip);
 
-    chip.addEventListener('click', () => {
-      //move chip to empty place
-      move(i);
-    });
-  }
+        board.append(chip);
+
+        chip.addEventListener('click', () => {
+            //move chip to empty place
+            move(i);
+        });
+    }
 }
 
 function move(index) {
-  const chip = chips[index + 1];
-  const leftDiff = Math.abs(empty.left - chip.left);
-  const toptDiff = Math.abs(empty.top - chip.top);
+    const chip = chips[index + 1];
+    const leftDiff = Math.abs(empty.left - chip.left);
+    const toptDiff = Math.abs(empty.top - chip.top);
 
-  if (leftDiff + toptDiff > 1) {
-    console.log('cant move');
-    return;
-  }
-  chip.element.style.left = `${empty.left * chipsize}px`;
-  chip.element.style.top = `${empty.top * chipsize}px`;
-
-  const emptyLeft = empty.left; //bufer chip position
-  const emptyTop = empty.top;
-  empty.left = chip.left;
-  empty.top = chip.top;
-  chip.left = emptyLeft;
-  chip.top = emptyTop;
-  empty.step++;
-  if (soundButton.classList.contains('on')) {
-    playSound(`./assets/sounds/move.wav`);
-  }
-
-  const isFinished = chips.slice(1).every((chip) => {
-    console.log(chip.value, chip.top, chip.left);
-    return chip.value === chip.top * 4 + chip.left + 1;
-  });
-  if (isFinished) {
-    const congratulation = document.createElement('div');
-    congratulation.className = 'modal';
-    congratulation.innerHTML = `Ура! Вы решили головоломку за  ${empty.step} ходов`;
-    board.append(congratulation);
-    if (soundButton.classList.contains('on')) {
-      playSound(`./assets/sounds/win.wav`);
+    if (leftDiff + toptDiff > 1) {
+        console.log('cant move');
+        return;
     }
-  }
+    chip.element.style.left = `${empty.left * chipsize}px`;
+    chip.element.style.top = `${empty.top * chipsize}px`;
+
+    const emptyLeft = empty.left; //bufer chip position
+    const emptyTop = empty.top;
+    empty.left = chip.left;
+    empty.top = chip.top;
+    chip.left = emptyLeft;
+    chip.top = emptyTop;
+    empty.step++;
+    counter.innerHTML = `<span class="counter__description">Moves </span><span class="counter__count">${empty.step}</span></div>`;
+    if (soundButton.classList.contains('on')) {
+        playSound(`./assets/sounds/move.wav`);
+    }
+
+    const isFinished = chips.slice(1).every((chip) => {
+        console.log(chip.value, chip.top, chip.left);
+        return chip.value === chip.top * boardSize + chip.left + 1;
+    });
+    if (isFinished) {
+        const congratulation = document.createElement('div');
+        congratulation.className = 'modal';
+        congratulation.innerHTML = `Ура! Вы решили головоломку за  ${empty.step} ходов`;
+        board.append(congratulation);
+        if (soundButton.classList.contains('on')) {
+            playSound(`./assets/sounds/win.wav`);
+        }
+    }
 }
 
-createGame();
+window.addEventListener("DOMContentLoaded", createBoard(5));
+
+
+
 
 soundButton.addEventListener('click', () => {
-  if (soundButton.classList.contains('on')) {
-    soundButton.classList.remove('on');
-    soundButton.innerHTML = `<i class="material-icons">volume_off</i>`;
-  } else {
-    soundButton.classList.add('on');
-    soundButton.innerHTML = `<i class="material-icons">volume_down</i>`;
-  }
+    if (soundButton.classList.contains('on')) {
+        soundButton.classList.remove('on');
+        soundButton.innerHTML = `<i class="material-icons">volume_off</i>`;
+    } else {
+        soundButton.classList.add('on');
+        soundButton.innerHTML = `<i class="material-icons">volume_down</i>`;
+    }
 });
 
 startButton.addEventListener('click', () => {
-  if (startButton.classList.contains('on')) {
-    startButton.classList.remove('on');
-    startButton.innerText = 'Pause';
-    const modal = document.createElement('div');
-    modal.className = 'modal';
-    modal.innerHTML = `<ol><li>Resume</li><li>New Game</li></ol>`;
-    board.append(modal);
-  } else {
-    startButton.classList.add('on');
-    startButton.innerText = 'Start';
-  }
+    if (startButton.classList.contains('on')) {
+        startButton.classList.remove('on');
+        startButton.innerText = 'Pause';
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.innerHTML = `<ol><li>Resume</li><li>New Game</li></ol>`;
+        board.append(modal);
+    } else {
+        startButton.classList.add('on');
+        startButton.innerText = 'Start';
+    }
 
-  startGame();
+    startGame();
 });
 
 // chip.onmousedown = function(event) {

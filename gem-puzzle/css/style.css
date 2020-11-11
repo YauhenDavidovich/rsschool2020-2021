@@ -52,9 +52,7 @@
 
 .board {
   position: relative;
-  margin: auto;
-  width: 400px;
-  height: 400px;
+  margin: auto;  
   background: rgb(15, 76, 129);
   border: 1px solid rgb(182, 202, 218);
 }
@@ -69,6 +67,7 @@
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+  -webkit-text-stroke: 1px  rgba(182, 202, 218, 0.39);
   background: rgb(245, 184, 149);
   user-select: none;
   cursor: pointer;
