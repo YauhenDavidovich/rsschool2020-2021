@@ -33,6 +33,11 @@
 }
 
 .button__start {
+  width: 80px;
+  cursor: pointer;
+}
+
+.button__new {
   max-width: 80px;
   cursor: pointer;
 }
@@ -40,6 +45,11 @@
 .button__sound {
   cursor: pointer;
 }
+
+.button__image {
+  cursor: pointer;
+}
+
 .board {
   position: relative;
   margin: auto;
@@ -77,7 +87,7 @@
   background-repeat: no-repeat;
 }
 
-.congrat {
+.modal {
   color: rgb(182, 202, 218);
   position: absolute;
   z-index: 99;

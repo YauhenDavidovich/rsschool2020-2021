@@ -2,10 +2,17 @@ const nav = document.createElement('nav');
 nav.className = 'nav';
 document.body.append(nav);
 
+let boardSize = 16;
+
 const startButton = document.createElement('button');
-startButton.className = 'button__start';
-startButton.innerText = 'New Game';
+startButton.className = 'button__start on';
+startButton.innerText = 'Start';
 nav.append(startButton);
+
+const newButton = document.createElement('button');
+newButton.className = 'button__new';
+newButton.innerText = 'New';
+nav.append(newButton);
 
 const soundButton = document.createElement('i');
 soundButton.className = 'material-icons button__sound on';
@@ -62,7 +69,7 @@ function generataSolvebaleGame() {
   }
 }
 
-function startGame() {
+function createGame() {
   generataSolvebaleGame();
 
   for (let i = 0; i <= 14; i++) {
@@ -83,12 +90,13 @@ function startGame() {
 
     chip.style.left = `${left * chipsize}px`;
     chip.style.top = `${top * chipsize}px`;
-    console.log(i, left, top, `${left * -25}%`, `${top * -25}%`);
+
     chip.style.backgroundSize = '400px 400px';
     chip.style.backgroundPositionX = `${-((value - 1) % 4) * chipsize}px`;
     chip.style.backgroundPositionY = `${
       (-(value - 1 - ((value - 1) % 4)) / 4) * chipsize
     }px`;
+
     chip.setAttribute('draggable', true);
     board.append(chip);
 
@@ -103,7 +111,6 @@ function move(index) {
   const chip = chips[index + 1];
   const leftDiff = Math.abs(empty.left - chip.left);
   const toptDiff = Math.abs(empty.top - chip.top);
-  console.log(chip.value, chip.top, chip.left);
 
   if (leftDiff + toptDiff > 1) {
     console.log('cant move');
@@ -129,7 +136,7 @@ function move(index) {
   });
   if (isFinished) {
     const congratulation = document.createElement('div');
-    congratulation.className = 'congrat';
+    congratulation.className = 'modal';
     congratulation.innerHTML = `Ура! Вы решили головоломку за  ${empty.step} ходов`;
     board.append(congratulation);
     if (soundButton.classList.contains('on')) {
@@ -138,17 +145,32 @@ function move(index) {
   }
 }
 
-startGame();
+createGame();
 
 soundButton.addEventListener('click', () => {
   if (soundButton.classList.contains('on')) {
     soundButton.classList.remove('on');
     soundButton.innerHTML = `<i class="material-icons">volume_off</i>`;
   } else {
-    // playSound();
     soundButton.classList.add('on');
     soundButton.innerHTML = `<i class="material-icons">volume_down</i>`;
   }
+});
+
+startButton.addEventListener('click', () => {
+  if (startButton.classList.contains('on')) {
+    startButton.classList.remove('on');
+    startButton.innerText = 'Pause';
+    const modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = `<ol><li>Resume</li><li>New Game</li></ol>`;
+    board.append(modal);
+  } else {
+    startButton.classList.add('on');
+    startButton.innerText = 'Start';
+  }
+
+  startGame();
 });
 
 // chip.onmousedown = function(event) {
