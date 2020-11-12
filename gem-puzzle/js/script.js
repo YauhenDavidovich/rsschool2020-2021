@@ -1,4 +1,4 @@
-let boardSize = 5;
+let boardSize = 4;
 const empty = {
     //epmty chip pozition
     value: 0,
@@ -13,13 +13,19 @@ document.body.append(nav);
 
 const startButton = document.createElement('button');
 startButton.className = 'button__start on';
-startButton.innerText = 'Start';
+startButton.innerText = 'Pause';
 nav.append(startButton);
 
 const newButton = document.createElement('button');
 newButton.className = 'button__new';
 newButton.innerText = 'New';
 nav.append(newButton);
+
+let eleTimer = document.createElement('div');
+eleTimer.className = "stopwatch";
+eleTimer.innerHTML= "00 : 00 : 00";
+nav.append(eleTimer);
+
 
 const counter = document.createElement('div');
 counter.className = "counter";
@@ -125,6 +131,7 @@ function createBoard(boardSize) {
         chip.addEventListener('click', () => {
             //move chip to empty place
             move(i);
+            timeTicker.start();
         });
     }
 }
@@ -158,6 +165,7 @@ function move(index) {
         return chip.value === chip.top * boardSize + chip.left + 1;
     });
     if (isFinished) {
+        timeTicker.stop();
         const congratulation = document.createElement('div');
         congratulation.className = 'modal';
         congratulation.innerHTML = `Ура! Вы решили головоломку за  ${empty.step} ходов`;
@@ -168,7 +176,7 @@ function move(index) {
     }
 }
 
-window.addEventListener("DOMContentLoaded", createBoard(5));
+window.addEventListener("DOMContentLoaded", createBoard(4));
 
 
 
@@ -186,18 +194,84 @@ soundButton.addEventListener('click', () => {
 startButton.addEventListener('click', () => {
     if (startButton.classList.contains('on')) {
         startButton.classList.remove('on');
-        startButton.innerText = 'Pause';
+        startButton.innerText = 'Start';
         const modal = document.createElement('div');
         modal.className = 'modal';
         modal.innerHTML = `<ol><li>Resume</li><li>New Game</li></ol>`;
         board.append(modal);
+        timeTicker.stop();
     } else {
         startButton.classList.add('on');
-        startButton.innerText = 'Start';
-    }
+        startButton.innerText = 'Pause';
+        let modal = document.querySelector('.modal');
+        modal.parentNode.removeChild(modal);
 
-    startGame();
+        timeTicker.start();
+    }
+    
 });
+
+
+
+//stopwatch
+let eleBtnStart = document.querySelector("#btnStart");
+let eleBtnStop = document.querySelector("#btnStop");
+let eleBtnReset = document.querySelector("#btnReset");
+
+
+let timeTicker = (() => {
+  let hours = 0;
+  let minutes = 0;
+  let seconds = 0;
+  let timerTick;
+  return {
+    start : () => {
+      if(!timerTick) {
+      timerTick = setInterval(() => {
+        seconds++;
+        if(seconds == 60) {
+          minutes += 1;
+          seconds = 0;
+          if(minutes == 60) {
+            hours += 1;
+            minutes = 0;
+          }
+        }
+        eleTimer.innerHTML = `
+${hours.toString().length == 1 ? "0" + hours : hours}
+: ${minutes.toString().length == 1 ? "0" + minutes : minutes}
+: ${seconds.toString().length == 1 ? "0" + seconds : seconds}`;
+      },25);
+      }
+    },
+    stop : () => {
+      if(timerTick) {
+      clearInterval(timerTick);
+        timerTick = false;
+      }
+    },
+    reset : () => {
+      seconds = minutes = hours = 0;
+      clearInterval(timerTick);
+      timerTick = false;
+      eleTimer.innerHTML = `<br />0${hours} : 0${minutes} : 0${seconds}`;
+    }
+  }
+})();
+
+
+
+
+
+
+// eleBtnReset.addEventListener('click', () => {
+//   timeTicker.reset();
+// })
+
+
+
+
+
 
 // chip.onmousedown = function(event) {
 //     console.log('start drag & drop')

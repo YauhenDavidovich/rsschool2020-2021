@@ -33,7 +33,7 @@
 }
 
 .button__start {
-  width: 80px;
+  width: 60px;
   cursor: pointer;
 }
 
@@ -67,7 +67,8 @@
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  -webkit-text-stroke: 1px  rgba(182, 202, 218, 0.39);
+  color:  rgb(219, 0, 11);
+  text-shadow: 1px 0 0 rgb(248, 244, 244), 0 -1px 0 rgb(248, 244, 244), 0 1px 0 rgb(248, 244, 244), -1px 0 0 rgb(248, 244, 244);
   background: rgb(245, 184, 149);
   user-select: none;
   cursor: pointer;
@@ -80,7 +81,7 @@
 }
 
 .chip__image {
-  background-image: url('../assets/images/1.jpg');
+  background-image: url('../assets/images/2.jpg');
   border: none;
   background-size: 400px 400px;
   background-repeat: no-repeat;
@@ -104,3 +105,8 @@
   -ms-transition: all 0.1s ease-in;
   -o-transition: all 0.1s ease-in;
 }
+
+
+.stopwatch:before {
+    content:'Time '
+  }
