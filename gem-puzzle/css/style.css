@@ -33,14 +33,10 @@
 }
 
 .button__start {
-  width: 80px;
+  width: 60px;
   cursor: pointer;
 }
 
-.button__new {
-  max-width: 80px;
-  cursor: pointer;
-}
 
 .button__sound {
   cursor: pointer;
@@ -50,9 +46,28 @@
   cursor: pointer;
 }
 
+.greeting__button {
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    width: 200px;
+    height: 40px;
+    color: black;
+    background-color: rgb(182, 202, 218);;
+    margin-bottom: 10px;
+}
+
+.greeting__button:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
 .board {
   position: relative;
-  margin: auto;  
+  margin: auto;
   background: rgb(15, 76, 129);
   border: 1px solid rgb(182, 202, 218);
 }
@@ -67,7 +82,9 @@
   justify-content: center;
   align-items: center;
   font-size: 2rem;
-  -webkit-text-stroke: 1px  rgba(182, 202, 218, 0.39);
+  color: rgb(219, 0, 11);
+  text-shadow: 1px 0 0 rgb(248, 244, 244), 0 -1px 0 rgb(248, 244, 244),
+    0 1px 0 rgb(248, 244, 244), -1px 0 0 rgb(248, 244, 244);
   background: rgb(245, 184, 149);
   user-select: none;
   cursor: pointer;
@@ -80,7 +97,7 @@
 }
 
 .chip__image {
-  background-image: url('../assets/images/1.jpg');
+  background-image: url('../assets/images/2.jpg');
   border: none;
   background-size: 400px 400px;
   background-repeat: no-repeat;
@@ -103,4 +120,54 @@
   -moz-transition: all 0.1s ease-in;
   -ms-transition: all 0.1s ease-in;
   -o-transition: all 0.1s ease-in;
+}
+
+.modal__greeting, .modal__choose_board {
+  color: rgb(182, 202, 218);
+  position: absolute;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.8);
+  left: 0;
+  top: 0;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  transition: all 0.1s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -ms-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+}
+
+
+.button__choose_board {
+    text-align: center;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+    width: 50px;
+    height: 40px;
+    color: black;
+    background-color: rgb(245, 184, 149);
+    margin-bottom: 10px;
+}
+
+.resume {
+    width: 100px;
+    background-color: rgb(182, 202, 218);
+}
+
+.resume:hover, .button__choose_board:hover {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.stopwatch:before {
+  content: 'Time ';
 }
