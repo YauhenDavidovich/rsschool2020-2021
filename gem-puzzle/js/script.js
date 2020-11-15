@@ -1,10 +1,12 @@
 let boardSize = 4;
+let chipsize = 100;
 const empty = {
     //epmty chip pozition
     value: 0,
     top: boardSize - 1,
     left: boardSize - 1,
     step: 0,
+    gameStart: false,
 };
 const nav = document.createElement('nav');
 nav.className = 'nav';
@@ -13,15 +15,11 @@ document.body.append(nav);
 const board = document.createElement('div');
 board.className = 'board';
 
-const startButton = document.createElement('button');
+const startButton = document.createElement('div');
 startButton.className = 'button__start on';
 startButton.innerText = 'Pause';
 nav.append(startButton);
 
-// const newButton = document.createElement('button');
-// newButton.className = 'button__new';
-// newButton.innerText = 'New';
-// nav.append(newButton);
 
 let eleTimer = document.createElement('div');
 eleTimer.className = 'stopwatch';
@@ -38,15 +36,14 @@ soundButton.className = 'material-icons button__sound on';
 soundButton.innerText = 'volume_down';
 nav.append(soundButton);
 
+
 function generateBoard(boardSize = 4) {
-    board.style.width = `${boardSize * 100}px`;
-    board.style.height = `${boardSize * 100}px`;
+    board.style.width = `${boardSize * chipsize}px`;
+    board.style.height = `${boardSize * chipsize}px`;
     document.body.append(board);
 }
 
 const chip = document.querySelector('.chip');
-
-const chipsize = 100;
 
 let numbers = [];
 
@@ -93,12 +90,23 @@ function generataSolvebaleGame() {
     }
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+
 function createBoard(boardSize) {
     generataSolvebaleGame();
+
+    let backgroundImage = getRandomInt(1, 21)
 
     for (let i = 0; i <= boardSize * boardSize - 2; i++) {
         const chip = document.createElement('div');
         chip.className = 'chip chip__image';
+
+        chip.style.backgroundImage = `url('assets/images/${backgroundImage}.jpg')`;
         const value = numbers[i] + 1;
         chip.innerHTML = value; //get chip index from array of ramdom numbers
 
@@ -111,9 +119,12 @@ function createBoard(boardSize) {
             top: top,
             element: chip,
         });
+        chip.style.width = `${chipsize}px`;
+        chip.style.height = `${chipsize}px`;
 
         chip.style.left = `${left * chipsize}px`;
         chip.style.top = `${top * chipsize}px`;
+
 
         chip.style.backgroundSize = `${boardSize * chipsize}px`;
         chip.style.backgroundPositionX = `${
@@ -164,7 +175,7 @@ function move(index) {
     if (isFinished) {
         const congratulation = document.createElement('div');
         congratulation.className = 'modal';
-        congratulation.innerHTML = `Ура! Вы решили головоломку за  ${empty.step} ходов`;
+        congratulation.innerHTML = `Ура!<br> Вы решили головоломку <br>за ${eleTimer.innerHTML} мс <br> использовав ${empty.step} ходов`;
         board.append(congratulation);
         timeTicker.stop();
         if (soundButton.classList.contains('on')) {
@@ -174,6 +185,7 @@ function move(index) {
 }
 
 function greeting() {
+    startButton.classList.add('dissabled')
     const modalGreeting = document.createElement('div');
     modalGreeting.className = 'modal__greeting';
     modalGreeting.innerHTML = `<div class="button__new greeting__button" id="button__new">New Game</div>
@@ -182,6 +194,9 @@ function greeting() {
     board.append(modalGreeting);
     const newButton = document.getElementById("button__new");
     newButton.addEventListener("click", chooseBoard)
+    if (empty.gameStart) {
+        startButton.classList.remove('dissabled');
+    }
 }
 
 
@@ -196,19 +211,24 @@ function clearBoard() {
 
 function startGame(n) {
     boardSize = n;
-        clearBoard();
-        empty.top = n-1
-        empty.left = n-1;
-        generateBoard(n)
-        createBoard(n);
-        timeTicker.start()
+    chipsize = parseFloat(100 * 4 / n);
+    clearBoard();
+    empty.top = n - 1
+    empty.left = n - 1;
+    generateBoard(n)
+    createBoard(n);
+    empty.gameStart = true;
+    timeTicker.start()
+    startButton.classList.remove('dissabled');
+    startButton.classList.add('on');
+    startButton.innerText = 'Pause';
 
 }
 
 function chooseBoard() {
     const modalChooseBoard = document.createElement('div');
     modalChooseBoard.className = 'modal__choose_board';
-    modalChooseBoard.innerHTML = `<div class="button__choose_board resume" id="resume">Resume</div>
+    modalChooseBoard.innerHTML = `<div class="button__choose_board resume" id="resume">Back</div>
     <div class="button__choose_board three-x-tree" id="x3">3x3</div>
     <div class="button__choose_board four-x-four" id="x4">4x4</div>
     <div class="button__choose_board five-x-five" id="x5">5x5</div>
@@ -216,8 +236,17 @@ function chooseBoard() {
     <div class="button__choose_board seven-x-seven" id="x7">7x7</div>
     <div class="button__choose_board eight-x-eight" id="x8">8x8</div>`;
     document.querySelector(".modal__greeting").remove();
-
     board.append(modalChooseBoard);
+    startButton.classList.add('dissabled');
+
+    const backFromBoardSize = document.getElementById("resume");
+
+
+    backFromBoardSize.addEventListener("click", () => {
+        document.querySelector(".modal__choose_board").remove();
+
+        greeting();
+    });
 
     const threeBoard = document.getElementById("x3");
     threeBoard.addEventListener("click", () => startGame(3));
@@ -233,7 +262,7 @@ function chooseBoard() {
 
     const sevenBoard = document.getElementById("x7");
     sevenBoard.addEventListener("click", () => startGame(7));
-    
+
     const eightBoard = document.getElementById("x8");
     eightBoard.addEventListener("click", () => startGame(8));
 }
@@ -253,18 +282,21 @@ soundButton.addEventListener('click', () => {
 });
 
 startButton.addEventListener('click', () => {
-    if (startButton.classList.contains('on')) {
+    if (startButton.classList.contains('dissabled')) {
+        return;
+    } else if (startButton.classList.contains('on')) {
         startButton.classList.remove('on');
         startButton.innerText = 'Resume';
-        const modal = document.createElement('div');
-        modal.className = 'modal';
-        modal.innerHTML = `<div>Game is paused!</div>`;
-        board.append(modal);
+        greeting();
+        // const modal = document.createElement('div');
+        // modal.className = 'modal';
+        // modal.innerHTML = `<div>Game is paused!</div>`;
+        // board.append(modal);
         timeTicker.stop();
     } else {
         startButton.classList.add('on');
         startButton.innerText = 'Pause';
-        let modal = document.querySelector('.modal');
+        let modal = document.querySelector('.modal__greeting');
         modal.parentNode.removeChild(modal);
         timeTicker.start();
     }
