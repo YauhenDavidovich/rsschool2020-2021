@@ -35,6 +35,14 @@
 .button__start {
   width: 60px;
   cursor: pointer;
+  height: 30px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(182, 202, 218);
+}
+
+.button__start.on {
+  background: rgb(245, 184, 149);
 }
 
 

@@ -93,12 +93,17 @@ function generataSolvebaleGame() {
     }
 }
 
+
+
 function createBoard(boardSize) {
     generataSolvebaleGame();
+    let backgroundImage = Math.floor(Math.random() * Math.floor(20));
 
     for (let i = 0; i <= boardSize * boardSize - 2; i++) {
         const chip = document.createElement('div');
         chip.className = 'chip chip__image';
+
+        chip.style.backgroundImage = `url('assets/images/${backgroundImage}.jpg')`;
         const value = numbers[i] + 1;
         chip.innerHTML = value; //get chip index from array of ramdom numbers
 
