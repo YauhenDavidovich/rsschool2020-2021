@@ -1,4 +1,5 @@
 let boardSize = 4;
+let chipsize = 100;
 const empty = {
     //epmty chip pozition
     value: 0,
@@ -38,15 +39,14 @@ soundButton.className = 'material-icons button__sound on';
 soundButton.innerText = 'volume_down';
 nav.append(soundButton);
 
+
 function generateBoard(boardSize = 4) {
-    board.style.width = `${boardSize * 100}px`;
-    board.style.height = `${boardSize * 100}px`;
+    board.style.width = `${boardSize * chipsize}px`;
+    board.style.height = `${boardSize * chipsize}px`;
     document.body.append(board);
 }
 
 const chip = document.querySelector('.chip');
-
-const chipsize = 100;
 
 let numbers = [];
 
@@ -111,9 +111,12 @@ function createBoard(boardSize) {
             top: top,
             element: chip,
         });
+        chip.style.width = `${chipsize}px`;
+        chip.style.height = `${chipsize}px`;
 
         chip.style.left = `${left * chipsize}px`;
         chip.style.top = `${top * chipsize}px`;
+        
 
         chip.style.backgroundSize = `${boardSize * chipsize}px`;
         chip.style.backgroundPositionX = `${
@@ -164,7 +167,7 @@ function move(index) {
     if (isFinished) {
         const congratulation = document.createElement('div');
         congratulation.className = 'modal';
-        congratulation.innerHTML = `Ура! Вы решили головоломку за  ${empty.step} ходов`;
+        congratulation.innerHTML = `Ура!<br> Вы решили головоломку <br>за ${eleTimer.innerHTML} мс <br> использовав ${empty.step} ходов`;
         board.append(congratulation);
         timeTicker.stop();
         if (soundButton.classList.contains('on')) {
@@ -196,6 +199,7 @@ function clearBoard() {
 
 function startGame(n) {
     boardSize = n;
+    chipsize = parseFloat(100*4/n);
         clearBoard();
         empty.top = n-1
         empty.left = n-1;
