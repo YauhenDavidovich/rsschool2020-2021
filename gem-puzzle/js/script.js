@@ -1,5 +1,6 @@
 let boardSize = 4;
 let chipsize = 100;
+
 const empty = {
     //epmty chip pozition
     value: 0,
@@ -189,10 +190,16 @@ function greeting() {
     const modalGreeting = document.createElement('div');
     modalGreeting.className = 'modal__greeting';
     modalGreeting.innerHTML = `<div class="button__new greeting__button" id="button__new">New Game</div>
-  <div class="button__load greeting__button">Load Game</div>
+  <div class="button__load greeting__button" id="button__load">Load Game</div>
   <div class="button__score greeting__button">Score</div>`;
     board.append(modalGreeting);
     const newButton = document.getElementById("button__new");
+    newButton.addEventListener("click", chooseBoard)
+    if (empty.gameStart) {
+        startButton.classList.remove('dissabled');
+    }
+
+    const loadButton = document.getElementById("button__new");
     newButton.addEventListener("click", chooseBoard)
     if (empty.gameStart) {
         startButton.classList.remove('dissabled');
@@ -303,10 +310,6 @@ startButton.addEventListener('click', () => {
 });
 
 //stopwatch
-let eleBtnStart = document.querySelector('#btnStart');
-let eleBtnStop = document.querySelector('#btnStop');
-let eleBtnReset = document.querySelector('#btnReset');
-
 let timeTicker = (() => {
     let hours = 0;
     let minutes = 0;
@@ -339,93 +342,27 @@ ${hours.toString().length == 1 ? '0' + hours : hours}
                 timerTick = false;
                 console.log('stop clock');
             }
-        },
-        reset: () => {
-            seconds = minutes = hours = 0;
-            clearInterval(timerTick);
-            timerTick = false;
-            eleTimer.innerHTML = `<br />0${hours} : 0${minutes} : 0${seconds}`;
-        },
+        },        
     };
 })();
 
-// eleBtnReset.addEventListener('click', () => {
-//   timeTicker.reset();
-// })
 
-// chip.onmousedown = function(event) {
-//     console.log('start drag & drop')
 
-//     let shiftX = event.clientX - chip.getBoundingClientRect().left;
-//     let shiftY = event.clientY - chip.getBoundingClientRect().top;
+function getCity() {
+    if (localStorage.getItem('score') === null) {
+      city.textContent = 'Minsk';
+      localStorage.setItem('city', city.textContent);
+      cityTemp = city.textContent;
+    } else {
+      city.textContent = localStorage.getItem('city');
+      cityTemp = city.textContent;
+    }
+  }
 
-//     chip.style.position = 'absolute';
-//     chip.style.zIndex = 1000;
-//     board.append(chip);
+// Put the object into storage
+// localStorage.setItem('empty', JSON.stringify(empty));
 
-//     moveAt(event.pageX, event.pageY);
+// Retrieve the object from storage
+// const retrievedObject = localStorage.getItem('testObject');
 
-//     // переносит мяч на координаты (pageX, pageY),
-//     // дополнительно учитывая изначальный сдвиг относительно указателя мыши
-//     function moveAt(pageX, pageY) {
-//       chip.style.left = pageX - shiftX + 'px';
-//       chip.style.top = pageY - shiftY + 'px';
-//     }
-
-//     function onMouseMove(event) {
-//       moveAt(event.pageX, event.pageY);
-//     }
-
-//     // передвигаем мяч при событии mousemove
-//     document.addEventListener('mousemove', onMouseMove);
-
-//     // отпустить мяч, удалить ненужные обработчики
-//     chip.onmouseup = function() {
-//       document.removeEventListener('mousemove', onMouseMove);
-//       chip.onmouseup = null;
-//     };
-
-//   };
-
-//   chip.ondragstart = function() {
-//     return false;
-//   };
-
-// // потенциальная цель переноса, над которой мы пролетаем прямо сейчас
-// let currentDroppable = null;
-
-// function onMouseMove(event) {
-//   moveAt(event.pageX, event.pageY);
-
-//   chip.hidden = true;
-//   let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-//   chip.hidden = false;
-
-//   // событие mousemove может произойти и когда указатель за пределами окна
-//   // (мяч перетащили за пределы экрана)
-
-//   // если clientX/clientY за пределами окна, elementFromPoint вернёт null
-//   if (!elemBelow) return;
-
-//   // потенциальные цели переноса помечены классом droppable (может быть и другая логика)
-//   let droppableBelow = elemBelow.closest('.chip');
-
-//   if (currentDroppable != droppableBelow) {
-//     // мы либо залетаем на цель, либо улетаем из неё
-//     // внимание: оба значения могут быть null
-//     //   currentDroppable=null,
-//     //     если мы были не над droppable до этого события (например, над пустым пространством)
-//     //   droppableBelow=null,
-//     //     если мы не над droppable именно сейчас, во время этого события
-
-//     if (currentDroppable) {
-//       // логика обработки процесса "вылета" из droppable (удаляем подсветку)
-//       leaveDroppable(currentDroppable);
-//     }
-//     currentDroppable = droppableBelow;
-//     if (currentDroppable) {
-//       // логика обработки процесса, когда мы "влетаем" в элемент droppable
-//       enterDroppable(currentDroppable);
-//     }
-//   }
-// }
+// const empty = JSON.parse(retrievedObject);
