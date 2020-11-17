@@ -63,7 +63,7 @@ function generataSolvebaleGame() {
     let arrayLength = boardSize * boardSize - 1;
     console.log(arrayLength);
     numbers = [...Array(arrayLength).keys()];
-    //.sort(() => Math.random() - 0.5); //array of random numbers
+    .sort(() => Math.random() - 0.5); //array of random numbers
     let sum = 0;
     for (let i = 0; i < numbers.length; i++) {
         let k = i + 1;
@@ -305,6 +305,7 @@ startButton.addEventListener('click', () => {
         startButton.innerText = 'Pause';
         let modal = document.querySelector('.modal__greeting');
         modal.parentNode.removeChild(modal);
+        timeTicker.reset();
         timeTicker.start();
     }
 });
@@ -342,7 +343,17 @@ ${hours.toString().length == 1 ? '0' + hours : hours}
                 timerTick = false;
                 console.log('stop clock');
             }
-        },        
+        }, 
+        
+        reset: () => {
+          seconds = minutes = hours = 0;
+          clearInterval(timerTick);
+          timerTick = false;
+          eleTimer.innerHTML = `<br />0${hours} : 0${minutes} : 0${seconds}`;
+        },
+      
+
+
     };
 })();
 
