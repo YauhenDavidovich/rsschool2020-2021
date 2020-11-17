@@ -217,6 +217,7 @@ function startGame(n) {
   generateBoard(n);
   createBoard(n);
   empty.gameStart = true;
+  timeTicker.reset();
   timeTicker.start();
   startButton.classList.remove('dissabled');
   startButton.classList.add('on');
@@ -298,7 +299,6 @@ startButton.addEventListener('click', () => {
     startButton.innerText = 'Pause';
     let modal = document.querySelector('.modal__greeting');
     modal.parentNode.removeChild(modal);
-    timeTicker.reset();
     timeTicker.start();
   }
 });
