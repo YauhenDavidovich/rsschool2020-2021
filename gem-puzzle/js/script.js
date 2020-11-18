@@ -8,6 +8,8 @@ const empty = {
   left: boardSize - 1,
   step: 0,
   gameStart: false,
+  showImage: true,
+  cpipsImage: 1,
 };
 const nav = document.createElement('nav');
 nav.className = 'nav';
@@ -35,6 +37,11 @@ const soundButton = document.createElement('i');
 soundButton.className = 'material-icons button__sound on';
 soundButton.innerText = 'volume_down';
 nav.append(soundButton);
+
+const imageButton = document.createElement('i');
+imageButton.className = 'material-icons button__image on';
+imageButton.innerText = 'image';
+nav.append(imageButton);
 
 function generateBoard(boardSize = 4) {
   board.style.width = `${boardSize * chipsize}px`;
@@ -98,12 +105,19 @@ function createBoard(boardSize) {
   generataSolvebaleGame();
 
   let backgroundImage = getRandomInt(1, 21);
+  empty.chipsImage = backgroundImage;
 
   for (let i = 0; i <= boardSize * boardSize - 2; i++) {
     const chip = document.createElement('div');
     chip.className = 'chip chip__image';
 
-    chip.style.backgroundImage = `url('assets/images/${backgroundImage}.jpg')`;
+    if(!empty.showImage) {
+        chip.style.backgroundImage = `url('assets/images/0.jpg')`;
+    } else {
+        chip.style.backgroundImage = `url('assets/images/${backgroundImage}.jpg')`;
+    }
+
+    
     const value = numbers[i] + 1;
     chip.innerHTML = value; //get chip index from array of ramdom numbers
 
@@ -347,21 +361,23 @@ ${hours.toString().length == 1 ? '0' + hours : hours}
   };
 })();
 
-function getCity() {
-  if (localStorage.getItem('score') === null) {
-    city.textContent = 'Minsk';
-    localStorage.setItem('city', city.textContent);
-    cityTemp = city.textContent;
-  } else {
-    city.textContent = localStorage.getItem('city');
-    cityTemp = city.textContent;
-  }
-}
 
-// Put the object into storage
-// localStorage.setItem('empty', JSON.stringify(empty));
+imageButton.addEventListener('click', () => {
+    const chips = document.querySelector('.board').children;
+    if (imageButton.classList.contains('on')) {
+      imageButton.classList.remove('on');
+      imageButton.innerText = 'image_not_supported';
+      empty.showImage = false;      
+   for (let i=0, chip; chip=chips[i]; i++) {
+    chip.style.backgroundImage = `none`;
+   }      
+    } else {
+      imageButton.classList.add('on');
+      imageButton.innerText = 'image';   
+      empty.showImage = true;      
+   for (let i=0, chip; chip=chips[i]; i++) {
+    chip.style.backgroundImage = `url('assets/images/${empty.chipsImage}.jpg')`;
+   } 
+    
+  }});
 
-// Retrieve the object from storage
-// const retrievedObject = localStorage.getItem('testObject');
-
-// const empty = JSON.parse(retrievedObject);
