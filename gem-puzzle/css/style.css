@@ -24,6 +24,11 @@
   font-feature-settings: 'liga';
 }
 
+.body {
+  margin: 0 auto;
+}
+
+
 .nav {
   margin: auto;
   margin-top: 200px;
@@ -117,7 +122,7 @@
 
 .chip__image {
   background-image: url('../assets/images/2.jpg');
-  border: none;
+  border: 1px solid;
   background-size: 400px 400px;
   background-repeat: no-repeat;
 }
