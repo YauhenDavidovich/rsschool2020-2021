@@ -1,15 +1,16 @@
-let boardSize = 4;
+
 let chipsize = 100;
 
 const empty = {
     //epmty chip pozition
     value: 0,
-    top: boardSize - 1,
-    left: boardSize - 1,
+    boardSize: 4,
+    top: 3,
+    left: 3,
     step: 0,
     gameStart: false,
     showImage: true,
-    cpipsImage: 1,
+    chipsImage: 1,
 };
 const nav = document.createElement('nav');
 nav.className = 'nav';
@@ -43,9 +44,9 @@ imageButton.className = 'material-icons button__image on';
 imageButton.innerText = 'image';
 nav.append(imageButton);
 
-function generateBoard(boardSize = 4) {
-    board.style.width = `${boardSize * chipsize}px`;
-    board.style.height = `${boardSize * chipsize}px`;
+function generateBoard() {
+    board.style.width = `${empty.boardSize * chipsize}px`;
+    board.style.height = `${empty.boardSize * chipsize}px`;
     document.body.append(board);
 }
 
@@ -65,8 +66,10 @@ function playSound(url) {
 }
 
 function generataSolvebaleGame() {
-    let arrayLength = boardSize * boardSize - 1;    
-    numbers = [...Array(arrayLength).keys()].sort(() => Math.random() - 0.5); //array of random numbers
+    console.log(empty.boardSize)
+    let arrayLength = empty.boardSize * empty.boardSize - 1;    
+    numbers = [...Array(arrayLength).keys()]
+    //.sort(() => Math.random() - 0.5); //array of random numbers
     let sum = 0;
     for (let i = 0; i < numbers.length; i++) {
         let k = i + 1;
@@ -77,18 +80,18 @@ function generataSolvebaleGame() {
             k++;
         }
     }
-    sum = sum + boardSize; //add row number of empty chip    
-    if (boardSize % 2 !== 0) {
+    sum = sum + empty.boardSize; //add row number of empty chip    
+    if (empty.boardSize % 2 !== 0) {
         if (sum % 2 === 0) {
             //if not solvable, randomize again
             console.log('cant solve, new layaot was generated');
-            generataSolvebaleGame(boardSize);
+            generataSolvebaleGame(empty.boardSize);
         }
-    } else if (boardSize % 2 === 0) {
+    } else if (empty.boardSize % 2 === 0) {
         if (sum % 2 !== 0) {
             //if not solvable, randomize again
             console.log('cant solve, new layaot was generated');
-            generataSolvebaleGame(boardSize);
+            generataSolvebaleGame(empty.boardSize);
         }
     }
 }
@@ -99,13 +102,14 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function createBoard(boardSize) {
-    generataSolvebaleGame();
+function createBoard(n) {
+    
+    
 
     let backgroundImage = getRandomInt(1, 21);
     empty.chipsImage = backgroundImage;
 
-    for (let i = 0; i <= boardSize * boardSize - 2; i++) {
+    for (let i = 0; i <= empty.boardSize * empty.boardSize - 2; i++) {
         const chip = document.createElement('div');
         chip.className = 'chip chip__image';
 
@@ -115,12 +119,13 @@ function createBoard(boardSize) {
             chip.style.backgroundImage = `url('assets/images/${backgroundImage}.jpg')`;
         }
 
-
+console.log(numbers)
         const value = numbers[i] + 1;
         chip.innerHTML = value; //get chip index from array of ramdom numbers
 
-        const left = i % boardSize;
-        const top = (i - left) / boardSize;
+        const left = i % empty.boardSize;
+        const top = (i - left) / empty.boardSize;
+        console.log(left, top, value)
 
         chips.push({
             value: value,
@@ -128,18 +133,19 @@ function createBoard(boardSize) {
             top: top,
             element: chip,
         });
+        
         chip.style.width = `${chipsize}px`;
         chip.style.height = `${chipsize}px`;
 
         chip.style.left = `${left * chipsize}px`;
         chip.style.top = `${top * chipsize}px`;
 
-        chip.style.backgroundSize = `${boardSize * chipsize}px`;
+        chip.style.backgroundSize = `${empty.boardSize * chipsize}px`;
         chip.style.backgroundPositionX = `${
-      -((value - 1) % boardSize) * chipsize
+      -((value - 1) % empty.boardSize) * chipsize
     }px`;
         chip.style.backgroundPositionY = `${
-      (-(value - 1 - ((value - 1) % boardSize)) / boardSize) * chipsize
+      (-(value - 1 - ((value - 1) % empty.boardSize)) / empty.boardSize) * chipsize
     }px`;
 
         board.append(chip);
@@ -154,6 +160,7 @@ function createBoard(boardSize) {
 
 function move(index) {
     const chip = chips[index + 1];
+    console.log(chip.left, chip.top, empty.left, empty.top)
     const leftDiff = Math.abs(empty.left - chip.left);
     const toptDiff = Math.abs(empty.top - chip.top);
 
@@ -176,9 +183,8 @@ function move(index) {
         playSound(`./assets/sounds/move.wav`);
     }
 
-    const isFinished = chips.slice(1).every((chip) => {
-        console.log(chip.value, chip.top, chip.left);
-        return chip.value === chip.top * boardSize + chip.left + 1;
+    const isFinished = chips.slice(1).every((chip) => {        
+        return chip.value === chip.top * empty.boardSize + chip.left + 1;
     });
     if (isFinished) {
         const congratulation = document.createElement('div');
@@ -197,6 +203,7 @@ function greeting() {
     const modalGreeting = document.createElement('div');
     modalGreeting.className = 'modal__greeting';
     modalGreeting.innerHTML = `<div class="button__new greeting__button" id="button__new">New Game</div>
+    <div class="button__save greeting__button" id="button__save">Save Game</div>
   <div class="button__load greeting__button" id="button__load">Load Game</div>
   <div class="button__score greeting__button" id="button__score">Score</div>`;
     board.append(modalGreeting);
@@ -205,6 +212,9 @@ function greeting() {
     if (empty.gameStart) {
         startButton.classList.remove('dissabled');
     }
+
+    const saveButton = document.getElementById('button__save');
+    saveButton.addEventListener('click', saveGame);
 
     const loadButton = document.getElementById('button__load');
     loadButton.addEventListener('click', loadgame);
@@ -215,13 +225,18 @@ function greeting() {
 }
 
 function loadgame() {    
-    setTimeout(alert("Load game function is not enable now"), 7000);
+    alert("Load game function is not enable now");
 
 }
 
 
+function saveGame() {    
+    alert("Save game function is not enable now");
+
+}
+
 function showScoree() {    
-    setTimeout(alert("Score is not enable now"), 7000);
+    alert("Score is not enable now");
 
 }
 
@@ -234,12 +249,18 @@ function clearBoard() {
 
 
 function startGame(n) {
-    boardSize = n;
-    chipsize = parseFloat((100 * 4) / n);
     clearBoard();
+    empty.boardSize = n;
+    console.log(empty.boardSize)
+    chipsize = parseFloat((100 * 4) / n);
+    
     empty.top = n - 1;
     empty.left = n - 1;
-    generateBoard(n);
+    empty.step = 0;
+    counter.innerHTML = `<span class="counter__description">Moves </span><span class="counter__count">${empty.step}</span></div>`;
+    console.log(empty.top, empty.left)
+    generateBoard();
+    generataSolvebaleGame(n);
     createBoard(n);
     empty.gameStart = true;
     timeTicker.reset();
@@ -267,7 +288,6 @@ function chooseBoard() {
 
     backFromBoardSize.addEventListener('click', () => {
         document.querySelector('.modal__choose_board').remove();
-
         greeting();
     });
 
@@ -292,8 +312,7 @@ function chooseBoard() {
 
 window.addEventListener(
     'DOMContentLoaded',
-    generateBoard(),
-    createBoard(),
+    generateBoard(4),    
     greeting()
 );
 
