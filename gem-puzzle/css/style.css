@@ -31,7 +31,7 @@
 
 .nav {
   margin: auto;
-  margin-top: 200px;
+  margin-top: 20vh;
   max-width: 400px;
   display: flex;
   justify-content: space-between;
