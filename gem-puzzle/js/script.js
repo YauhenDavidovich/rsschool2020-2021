@@ -54,7 +54,7 @@ const chip = document.querySelector('.chip');
 
 let numbers = [];
 
-const chips = []; //storage for chips positions
+let chips = []; //storage for chips positions
 chips.push(empty);
 
 function playSound(url) {
@@ -65,8 +65,7 @@ function playSound(url) {
     audio = undefined;
 }
 
-function generataSolvebaleGame() {
-    console.log(empty.boardSize)
+function generataSolvebaleGame() {    
     let arrayLength = empty.boardSize * empty.boardSize - 1;    
     numbers = [...Array(arrayLength).keys()]
     //.sort(() => Math.random() - 0.5); //array of random numbers
@@ -102,10 +101,7 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function createBoard(n) {
-    
-    
-
+function createBoard(n) {  
     let backgroundImage = getRandomInt(1, 21);
     empty.chipsImage = backgroundImage;
 
@@ -124,8 +120,7 @@ console.log(numbers)
         chip.innerHTML = value; //get chip index from array of ramdom numbers
 
         const left = i % empty.boardSize;
-        const top = (i - left) / empty.boardSize;
-        console.log(left, top, value)
+        const top = (i - left) / empty.boardSize;        
 
         chips.push({
             value: value,
@@ -159,8 +154,7 @@ console.log(numbers)
 }
 
 function move(index) {
-    const chip = chips[index + 1];
-    console.log(chip.left, chip.top, empty.left, empty.top)
+    const chip = chips[index + 1];    
     const leftDiff = Math.abs(empty.left - chip.left);
     const toptDiff = Math.abs(empty.top - chip.top);
 
@@ -171,8 +165,8 @@ function move(index) {
     chip.element.style.left = `${empty.left * chipsize}px`;
     chip.element.style.top = `${empty.top * chipsize}px`;
 
-    const emptyLeft = empty.left; //bufer chip position
-    const emptyTop = empty.top;
+    let emptyLeft = empty.left; //bufer chip position
+    let emptyTop = empty.top;
     empty.left = chip.left;
     empty.top = chip.top;
     chip.left = emptyLeft;
@@ -245,20 +239,20 @@ function clearBoard() {
     while (myNode.firstChild) {
         myNode.removeChild(myNode.firstChild);
     }
+    numbers = [];
+    chips = [];
+    chips.push(empty);
 }
 
 
 function startGame(n) {
     clearBoard();
-    empty.boardSize = n;
-    console.log(empty.boardSize)
-    chipsize = parseFloat((100 * 4) / n);
-    
+    empty.boardSize = n;    
+    chipsize = parseFloat((100 * 4) / n);    
     empty.top = n - 1;
     empty.left = n - 1;
     empty.step = 0;
-    counter.innerHTML = `<span class="counter__description">Moves </span><span class="counter__count">${empty.step}</span></div>`;
-    console.log(empty.top, empty.left)
+    counter.innerHTML = `<span class="counter__description">Moves </span><span class="counter__count">${empty.step}</span></div>`;    
     generateBoard();
     generataSolvebaleGame(n);
     createBoard(n);
