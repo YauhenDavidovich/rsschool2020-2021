@@ -68,7 +68,7 @@ function playSound(url) {
 function generataSolvebaleGame() {    
     let arrayLength = empty.boardSize * empty.boardSize - 1;    
     numbers = [...Array(arrayLength).keys()]
-    //.sort(() => Math.random() - 0.5); //array of random numbers
+    .sort(() => Math.random() - 0.5); //array of random numbers
     let sum = 0;
     for (let i = 0; i < numbers.length; i++) {
         let k = i + 1;
