@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="Canvas" />
+    <meta name="author" lang="en" content="Yauhen Davidovich" />
+    <title>English for kids</title>
+    <link rel="icon" href="./img/favicon.png" type="image/x-icon">
+     
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Chewy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="header__container">
+        <nav class="burger">
+            <a href="#" class="burger__button" id="burger-button">
+                <span class="burger__button__icon"></span>
+            </a>
+            <ul class="burger__menu" id="burger__menu">
+                <li class="burger__menu-element" id="categories"><img src="../src/img/home.png"
+                        class="burger__menu-element__img" alt="">Main Page</li>
+                <li class="burger__menu-element" id="statistics"><img src="../src/img/stat.png"
+                        class="burger__menu-element__img" alt="">Statistics</li>
+            </ul>
+        </nav>
+        <div class="switch__container" id="switch-container">
+            <label class="switch"><input type="checkbox" class="gamestate-toogle" id="gamestate-toogle" />
+                <div id="switch__description">Train</div>
+            </label>
+        </div>
+    </div>
+    </div>
+
+    <div class="score-container wrapper" id='score-container'>
+    </div>
+    <div class="main-container" id="main-container"></div>
+    <div class="buttons ">
+        <button class="button-start hidden" id="start-button">Start game</button>
+        <button class="button-repeat hidden" id="repeat-button">Start game</button>
+    </div>
+    <section class='modal-section hidden' id='win-section'>
+        <div class="modal-section__overlay"></div>
+        <div class='modal-section__container window-win'>
+            <p>CONGRATULATIONS! YOU WIN!</p>
+            <img src="./img/success.jpg" alt="">
+
+        </div>
+    </section>
+    <section class='modal-section hidden' id='loose-section'>
+        <div class="modal-section__overlay"></div>
+        <div class='modal-section__container window-lose'>
+            <p class="lose-score" id='lose-score'></p>
+            <img src="./img/failure.jpg" alt="">
+
+        </div>
+    </section>
+
+</body>
+
+</html>
