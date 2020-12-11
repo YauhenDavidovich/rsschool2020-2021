@@ -80,6 +80,15 @@ function drawCards(category = 'categories') {
   cards = cardsArray.filter((card) => card.category === category).sort(() => Math.random() - 0.5);
   for (const elem of cards) {
     const card = document.createElement('card');
+    const cardGameModeTemplate = `<audio src="${elem.audioSrc}" class='hidden' id ='audio'></audio>
+    <img src="${elem.image}" alt="" class='card-image'>
+  <div class="card-description">
+  <p class="card-name__eng">${elem.word}</p>
+  <p class="card-name__rus hidden ">${elem.translation}</p>
+  <span class="material-icons icon-rotate">rotate_right</span>
+  </div>
+  </img>`;
+
     card.dataset.category = elem.category;
     if (elem.category === 'categories') {
       card.classList.add('categories_card');
@@ -113,23 +122,9 @@ function drawCards(category = 'categories') {
 </img>`;
     } else if (gameState.isStartPage && gameState.isGameMode) {
       startButton.classList.add("hidden")
-      card.innerHTML = `<audio src="${elem.audioSrc}" class='hidden' id ='audio'></audio>
-  <img src="${elem.image}" alt="" class='card-image'>
-<div class="card-description">
-<p class="card-name__eng">${elem.word}</p>
-<p class="card-name__rus hidden ">${elem.translation}</p>
-<span class="material-icons icon-rotate ">rotate_right</span>
-</div>
-</img>`;
+      card.innerHTML = cardGameModeTemplate;
     } else {
-      card.innerHTML = `<audio src="${elem.audioSrc}" class='hidden' id ='audio'></audio>
-  <img src="${elem.image}" alt="" class='card-image'>
-<div class="card-description">
-<p class="card-name__eng">${elem.word}</p>
-<p class="card-name__rus hidden ">${elem.translation}</p>
-<span class="material-icons icon-rotate">rotate_right</span>
-</div>
-</img>`;
+      card.innerHTML = cardGameModeTemplate
     }
     card.id = elem.word;
     mainContainer.appendChild(card);
