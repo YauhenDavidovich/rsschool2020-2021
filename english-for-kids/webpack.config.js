@@ -102,7 +102,7 @@ const config = {
               bypassOnDebug : true,
               mozjpeg: {
                 progressive: true,
-                quality: 75
+                quality: 100
               },
               // optipng.enabled: false will disable optipng
               optipng: {

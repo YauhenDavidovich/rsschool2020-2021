@@ -1,8 +1,8 @@
+/* eslint-disable func-names */
+/* eslint-disable no-bitwise */
+/* eslint-disable no-restricted-syntax */
 import '../css/style.css';
 import '../css/style.scss';
-import {
-  burgerMenu
-} from './burgerMenu.js';
 import cardsArray from "./cards";
 
 const mainContainer = document.getElementById('main-container');
@@ -24,9 +24,27 @@ const incorrectAnswer = '<img src="./img/star.svg" class="scores-images" alt="">
 const winSection = document.getElementById("win-section");
 const looseSection = document.getElementById("loose-section");
 const switchContainer = document.getElementById("switch-container");
+const burger = document.getElementById("burger-button");
+
+burger.addEventListener("click", (e) => {
+  e.preventDefault();
+  document.body.classList.toggle("open");
+  burger.classList.toggle("open");
+});
+
+// Detect all clicks on the document
+document.addEventListener("click", function (event) {
+  
+  if (event.target.closest(".burger")) return;
+  if (event.target.closest(".burger__menu")) return;
+  if (document.body.classList.contains("open")){
+      document.body.classList.toggle("open");
+      burger.classList.toggle("open");
+    } 
+});
 
 const gameState = {
-  isStartPage: true, //initial parameters
+  isStartPage: true,
   isGameMode: false,
   isTrainMode: false,
   isGameOn: false,
@@ -140,8 +158,24 @@ function generateNav() {
 drawCards();
 generateNav();
 
+// Statistic
+function drawStatistics() {
+  drawCards('statistics');
+  switchContainer.classList.add("hidden")
+  const statContainer = document.createElement('div');
+  statContainer.classList.add('stat-container');
+  statContainer.innerHTML = '<p>Statistic:</p> <br>';
+  mainContainer.append(statContainer);
+  const categoriesStats = cardsArray.filter((card) => card.category === 'categories');
+  for (const category of categoriesStats) {
+    const categoriesWords = cardsArray.filter((card) => card.category === category.word);
+    statContainer.innerHTML += `<p class='statistic-categories'>Category: ${category.word}</p> <br>`;
+    for (const word of categoriesWords) {
+      statContainer.innerHTML += `<p class='statistic-words'>${word.word} - ${word.translation} </p> <br>`;
+    }
+  }
+}
 
-//Burger meny categories click
 navList.addEventListener('click', (event) => {
   if (event.target.closest('li')) {
 
@@ -156,7 +190,96 @@ navList.addEventListener('click', (event) => {
   }
 });
 
-//Cards click
+
+// Sound effects
+function hideResults() {
+  winSection.classList.add('hidden');
+  looseSection.classList.add('hidden');
+}
+
+function playWin() {
+  const audioAlerts = new Audio('./audio/success.mp3');
+  audioAlerts.play();
+  winSection.classList.remove('hidden');
+  setTimeout(resetCards, 4900);
+  setTimeout(drawCards, 5000);
+  setTimeout(hideResults, 5000);
+
+}
+
+
+function playLose() {
+  const audioAlerts = new Audio('./audio/failure.mp3');
+  audioAlerts.play();
+  looseSection.classList.remove('hidden');
+  const loseScore = document.getElementById('lose-score');
+  loseScore.innerText = `You were wrong ${gameState.hasMistakes} times`;
+  setTimeout(resetCards, 4900);
+  setTimeout(drawCards, 5000);
+  setTimeout(hideResults, 5000);
+}
+
+
+// Game Mode
+startButton.addEventListener('click', () => {
+  startButton.classList.add('hidden');
+  repeatButton.classList.remove('hidden');
+  const currentCategory = document.querySelector('card').dataset.category;
+  gameState.isGame = true;
+  gameState.isGameOn = true;
+  if (cardCounter === 0) {
+    currentCardsArray = cardsArray.filter((card) => card.category === currentCategory).sort(() => Math.random() - 0.5);
+    currentCard = currentCardsArray[cardCounter];
+    const audio = new Audio(currentCard.audioSrc);
+    sleep(500)
+    audio.play();
+  }
+});
+
+function playCard() {
+  if (cardCounter >= currentCardsArray.length) {
+    return;
+  }
+  currentCard = currentCardsArray[cardCounter];
+  const audio = new Audio(currentCard.audioSrc);
+  sleep(500)
+  audio.play();
+
+}
+
+repeatButton.addEventListener('click', () => {
+  currentCard = currentCardsArray[cardCounter];
+  const audio = new Audio(currentCard.audioSrc);
+  audio.play();
+})
+
+
+// Cards click
+function cardCorrect(chosenCard) {
+  scoreContainer.innerHTML = correctAnswer + scoreContainer.innerHTML;
+  cardCounter += 1;
+  guessedCards.push(chosenCard);
+  const audioAlerts = new Audio('./audio/correct.mp3');
+  audioAlerts.play();
+  chosenCard.classList.add('card-guessed');
+  if (cardCounter === cards.length) {
+    if (gameState.hasMistakes === 0) {
+      setTimeout(playWin, 1000);
+    } else {
+      setTimeout(playLose, 1000);
+    }
+    return;
+  }
+  setTimeout(playCard, 500);
+}
+
+function cardIncorrect() {
+  gameState.hasMistakes += 1;
+  scoreContainer.innerHTML = incorrectAnswer + scoreContainer.innerHTML;
+  const audioAlerts = new Audio('./audio/error.mp3');
+  audioAlerts.play();
+}
+
 mainContainer.addEventListener('click', (event) => {
   if (event.target.closest('card')) {
     const chosenCard = event.target.closest('card');
@@ -170,7 +293,7 @@ mainContainer.addEventListener('click', (event) => {
         cardIncorrect();
       }
     }
-    //choose category 
+    // choose category 
     else if (gameState.isStartPage) {
       resetCards();
       drawCards(chosenCard.id);
@@ -195,26 +318,26 @@ toogleMode.addEventListener('click', () => {
   if (gameState.isGameMode && gameState.isStartPage) {
     switchDescription.innerHTML = "Train";
     gameState.isGameMode = false;
-    for (let nodes of nodesMainContainer) {
+    for (const nodes of nodesMainContainer) {
       nodes.classList.remove("card-gamemode");
     }
   } else if (!gameState.isGameMode && gameState.isStartPage) {
     switchDescription.innerHTML = "Play";
     gameState.isGameMode = true;
-    for (let nodes of nodesMainContainer) {
+    for (const nodes of nodesMainContainer) {
       nodes.classList.add("card-gamemode");
     }
   } else if (!gameState.isGameMode && !gameState.isStartPage) {
     switchDescription.innerHTML = "Play";
     gameState.isGameMode = true;
     startButton.classList.remove("hidden")
-    for (let nodes of nodesMainContainer) {
+    for (const nodes of nodesMainContainer) {
       nodes.classList.add("card-gamemode");
     }
-    for (let images of cardImages) {
+    for (const images of cardImages) {
       images.classList.add("card-cover");
     }
-    for (let description of cardDescription) {
+    for (const description of cardDescription) {
       description.classList.add("hidden");
     }
 
@@ -229,15 +352,15 @@ toogleMode.addEventListener('click', () => {
     currentCard = {};
     currentCardsArray = [];
     guessedCards = [];
-    scoreContainer.innerHTML ="";    
-    for (let nodes of nodesMainContainer) {
+    scoreContainer.innerHTML = "";
+    for (const nodes of nodesMainContainer) {
       nodes.classList.remove("card-gamemode");
       nodes.classList.remove("card-guessed");
     }
-    for (let images of cardImages) {
+    for (const images of cardImages) {
       images.classList.remove("card-cover");
     }
-    for (let description of cardDescription) {
+    for (const description of cardDescription) {
       description.classList.remove("hidden");
     }
   } else if (gameState.isGameMode && !gameState.isStartPage) {
@@ -245,119 +368,14 @@ toogleMode.addEventListener('click', () => {
     gameState.isGameMode = false;
     repeatButton.classList.add("hidden")
     startButton.classList.add("hidden")
-    for (let nodes of nodesMainContainer) {
+    for (const nodes of nodesMainContainer) {
       nodes.classList.remove("card-gamemode");
     }
-    for (let images of cardImages) {
+    for (const images of cardImages) {
       images.classList.remove("card-cover");
     }
-    for (let description of cardDescription) {
+    for (const description of cardDescription) {
       description.classList.remove("hidden");
     }
   }
 })
-
-// Game Mode
-startButton.addEventListener('click', () => {
-  startButton.classList.add('hidden');
-  repeatButton.classList.remove('hidden');
-  const currentCategory = document.querySelector('card').dataset.category;
-  gameState.isGame = true;
-  gameState.isGameOn = true;
-  if (cardCounter === 0) {
-    currentCardsArray = cardsArray.filter((card) => card.category === currentCategory).sort(() => Math.random() - 0.5);
-    currentCard = currentCardsArray[cardCounter];
-    let audio = new Audio(currentCard.audioSrc);
-    sleep(500)
-    audio.play();
-  }
-});
-
-function playCard() {
-  if (cardCounter >= currentCardsArray.length) {
-    return;
-  }
-  currentCard = currentCardsArray[cardCounter];
-  let audio = new Audio(currentCard.audioSrc);
-  sleep(500)
-  audio.play();
-
-}
-
-repeatButton.addEventListener('click', () => {
-  currentCard = currentCardsArray[cardCounter];
-  let audio = new Audio(currentCard.audioSrc);
-  audio.play();
-})
-
-
-//Sound effects
-
-function cardIncorrect() {
-  gameState.hasMistakes += 1;
-  scoreContainer.innerHTML = incorrectAnswer + scoreContainer.innerHTML;
-  let audioAlerts = new Audio('./audio/error.mp3');
-  audioAlerts.play();
-}
-
-function cardCorrect(chosenCard) {
-  scoreContainer.innerHTML = correctAnswer + scoreContainer.innerHTML;
-  cardCounter += 1;
-  guessedCards.push(chosenCard);
-  let audioAlerts = new Audio('./audio/correct.mp3');
-  audioAlerts.play();
-  chosenCard.classList.add('card-guessed');
-  if (cardCounter === cards.length) {
-    if (gameState.hasMistakes === 0) {
-      setTimeout(playWin, 1000);
-    } else {
-      setTimeout(playLose, 1000);
-    }
-    return;
-  }
-  setTimeout(playCard, 500);
-}
-
-function playWin() {
-  let audioAlerts = new Audio('./audio/success.mp3');
-  audioAlerts.play();
-  winSection.classList.remove('hidden');
-  setTimeout(resetCards, 4900);
-  setTimeout(drawCards, 5000);
-  setTimeout(hideResults, 5000);
-
-}
-
-function playLose() {
-  let audioAlerts = new Audio('./audio/failure.mp3');
-  audioAlerts.play();
-  looseSection.classList.remove('hidden');
-  const loseScore = document.getElementById('lose-score');
-  loseScore.innerText = `You were wrong ${gameState.hasMistakes} times`;
-  setTimeout(resetCards, 4900);
-  setTimeout(drawCards, 5000);
-  setTimeout(hideResults, 5000);
-}
-
-function hideResults() {
-  winSection.classList.add('hidden');
-  looseSection.classList.add('hidden');
-}
-
-//Statistic
-function drawStatistics() {
-  drawCards('statistics');
-  switchContainer.classList.add("hidden")
-  const statContainer = document.createElement('div');
-  statContainer.classList.add('stat-container');
-  statContainer.innerHTML = '<p>Statistic:</p> <br>';
-  mainContainer.append(statContainer);
-  const categoriesStats = cardsArray.filter((card) => card.category === 'categories');
-  for (const category of categoriesStats) {
-    const categoriesWords = cardsArray.filter((card) => card.category === category.word);
-    statContainer.innerHTML += `<p class='statistic-categories'>Category: ${category.word}</p> <br>`;
-    for (const word of categoriesWords) {
-      statContainer.innerHTML += `<p class='statistic-words'>${word.word} - ${word.translation} </p> <br>`;
-    }
-  }
-}

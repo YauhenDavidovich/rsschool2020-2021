@@ -5,7 +5,7 @@ const cardsArray = [
     image: "../img/dive.jpg",
     audioSrc: '',
     category: 'categories',
-    icon: "../img/action.png",
+    icon: "./img/action.png",
   },
   {
     word: 'Adjective',
@@ -80,8 +80,8 @@ const cardsArray = [
   {
     word: 'dive',
     translation: 'нырять',
-    image: '../img/dive.jpg',
-    audioSrc: '../audio/dive.mp3',
+    image: './img/dive.jpg',
+    audioSrc: './audio/dive.mp3',
     category: 'Action'
   },
   {
