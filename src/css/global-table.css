@@ -1,0 +1,161 @@
+/* global table */
+.global-table {
+  width: 100%;
+  display: flex;
+  gap: 10px 0;
+  flex-direction: column;
+  max-height: calc(100vh - 300px);
+}
+
+.global-table table img {
+  margin-right: 20px;
+}
+
+.global-table thead {
+  display: table;
+  width: 100%;
+  height: 20px;
+  margin-bottom: 0.42rem;
+}
+.global-table tbody {
+  display: inline-block;
+  width: 100%;
+  overflow: auto;
+}
+
+.global-table tbody td,
+thead th {
+  width: 20%; /* Optional */
+}
+
+.global-table tr {
+  cursor: pointer;
+}
+
+thead th:first-child {
+  left: 0;
+  z-index: 10;
+}
+
+.global__country td {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.global-table td:not(:last-child) {
+  font-weight: bold;
+  color: #ce0707;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.global__country th {
+  cursor: pointer;
+  background-color: #ce0707;
+}
+
+.global__country .sort-asc::after {
+  content: "\25b4";
+}
+
+.global__country .sort-desc::after {
+  content: "\25be";
+}
+
+.global__country .sort-asc::after,
+.global__country .sort-desc::after {
+  margin-left: 5px;
+}
+
+.global__country .sort-asc,
+.global__country .sort-desc {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.country__highlight {
+  background-color: #f6f6f6;
+  color: black;
+}
+
+.country__hide {
+  display: none;
+}
+
+.country__show {
+  display: block;
+}
+
+.row_hidden {
+  display: none;
+}
+
+.row_active {
+  display: table-cell;
+}
+
+/* scrollbar */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px grey;
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000;
+}
+
+/* country search  */
+.form-control {
+  width: 95%;
+  top: 0;
+  box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
+  padding: 2px 0 4px 10px;
+  border: 1px solid #cecece;
+  background: #f6f6f6;
+  border-radius: 4px;
+  margin: 1px;
+}
+
+/*controls*/
+.global__country__controls {
+  height: 10%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  padding: 3px 0;
+}
+
+.global__country_buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.global__country-controls_btn {
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  padding: 5px 10px;
+  border: 1px solid var(--background-color);
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  border-bottom-width: 3px;
+}
+
+.country-controls_active {
+  background-color: #b30000;
+}

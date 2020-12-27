@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>COVID-19</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <h1 class="page-title">Covid-19 Dashboard</h1>
+    </header>
+    <main class="container">
+      <section class="global__wrapper">
+        <div class="global__case">
+          <h4 class="global__case--title">Global Cases</h4>
+          <p class="global__count"></p>
+        </div>
+        <div class="global__country--wrapper">
+          <div class="global__country">
+            <thead>
+              <tr>
+                <th valuetype="number">Cases</th>
+                <th valuetype="string">Country</th>
+              </tr>
+            </thead>
+          </div>
+          <div class="global__country__controls">
+            <ul class="global__country_buttons">
+              <li class="buttons_item">
+                <button
+                  class="global__country-controls_btn country-controls_active"
+                  type="button"
+                  data-type="global-cases"
+                >
+                  Cases
+                </button>
+              </li>
+              <li class="buttons_item">
+                <button class="global__country-controls_btn" type="button" data-type="recovered">Recovered</button>
+              </li>
+              <li class="buttons_item">
+                <button class="global__country-controls_btn" type="button" data-type="deaths">Deaths</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="global__update">
+          <h4 class="global__update--title">Last Update at (M/D/YYYY)</h4>
+          <div class="update__wrapper">
+            <p class="update__date">
+              <span class="update__day">15</span> / <span class="update__month">12</span> /
+              <span class="update__year">2020</span>
+            </p>
+            <p class="update__time">
+              <span class="update__hours">00</span> :
+              <span class="update__minutes">10</span>
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="map__wrapper">
+        <div id="map" class="map"></div>
+        <ul class="map_tabs tabs">
+          <li class="tabs_item">
+            <button class="tabs_btn active" type="button" data-type="cases">Cumulative Cases</button>
+          </li>
+          <li class="tabs_item">
+            <button class="tabs_btn" type="button" data-type="active">Active Cases</button>
+          </li>
+          <li class="tabs_item">
+            <button class="tabs_btn" type="button" data-type="deaths">Deaths</button>
+          </li>
+          <li class="tabs_item">
+            <button class="tabs_btn" type="button" data-type="recovered">Recovered</button>
+          </li>
+          <li class="tabs_item">
+            <button class="tabs_btn" type="button" data-type="tests">Tests</button>
+          </li>
+        </ul>
+      </section>
+      <section class="data__wrapper">
+        <div class="data data__lives">
+          <div class="data__basic__world"></div>
+          <div class="data__countries__info"></div>
+          <div class="slider__wrapper"></div>
+        </div>
+        <div class="data data__graph"></div>
+      </section>
+    </main>
+    <div class="footer">
+      <a class="rsLogo" href="https://rs.school/js/"><img src="./assets/img/logo-rs-school.svg" alt="logo" /></a>
+      <div>2020</div>
+      <div class="authors">
+        <a class="author-name" href="https://github.com/nkrivitsky/">Nikita Krivitsky</a>
+        <a class="author-name" href="https://github.com/yauhendavidovich">Yauhen Davidovich</a>
+        <a class="author-name" href="https://github.com/SadBamsi">Aleh Maslau</a>
+      </div>
+    </div>
+    <script
+      src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+      crossorigin=""
+    ></script>
+  </body>
+</html>

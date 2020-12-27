@@ -1,0 +1,191 @@
+.data__lives {
+  width: 100%;
+  max-height: calc(100vh - 420px);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.data__countries__info {
+  display: inline-block;
+  flex-grow: 1;
+  margin-bottom: 10px;
+}
+
+.table__world,
+.table__twelve {
+  text-align: center;
+  font-size: 0.8rem;
+}
+
+.table__twelve {
+  width: 100%;
+  display: flex;
+  gap: 10px 0;
+  flex-direction: column;
+  max-height: calc(100vh - 540px);
+}
+
+.table__twelve thead {
+  display: table;
+  width: 100%;
+  height: 20px;
+  margin-bottom: 0.42rem;
+}
+
+/*.table__twelve thead th{*/
+/*  width: 40%;*/
+/*  font-size: 0.7rem;*/
+/*}*/
+
+.table__twelve tbody {
+  display: inline-block;
+  width: 100%;
+  overflow: auto;
+}
+
+.table__world {
+  font-size: 1rem;
+  height: 45px;
+  width: 100%;
+}
+
+.table__world tr td:first-child {
+  color: aliceblue;
+  font-weight: bold;
+  text-align: center;
+}
+
+.table__world td:nth-child(2) {
+  color: red;
+  font-weight: bold;
+}
+
+.table__world td:nth-child(3) {
+  color: yellow;
+  font-weight: bold;
+}
+
+.table__world td:nth-child(4) {
+  color: green;
+  font-weight: bold;
+}
+
+.table__twelve img {
+  width: 1.5rem;
+}
+
+.table__twelve tr td:first-child {
+  text-align: left;
+  padding-left: 5px;
+  font-weight: bold;
+  color: #ce0707;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.table__twelve td {
+  text-align: center;
+}
+
+.table__twelve th {
+  cursor: pointer;
+  background-color: #848482;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.table__twelve td {
+  width: 25%;
+}
+
+.table__twelve tr {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.table__twelve tbody tr {
+  cursor: pointer;
+}
+
+.table__twelve .sort-asc::after {
+  content: "\25b4";
+}
+
+.table__twelve .sort-desc::after {
+  content: "\25be";
+}
+
+.table__twelve .sort-asc::after,
+.table__twelve .sort-desc::after {
+  margin-left: 5px;
+}
+
+.table__twelve .sort-asc,
+.table__twelve .sort-desc {
+  background: rgba(47, 79, 79, 1);
+}
+
+.data:last-child {
+  margin: 0;
+  width: 100%;
+  height: 39%;
+}
+
+.data__title {
+  margin-bottom: 5px;
+}
+
+.lives__item,
+.level__item {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 5px;
+  padding: 0 5px;
+  flex-flow: row wrap;
+  font-size: 0.9rem;
+  border-bottom: 1px solid rgba(47, 79, 79, 1);
+}
+
+.lives__item--count,
+.lives__item--text,
+.lives__item--value,
+.level__item--count,
+.level__item--text,
+.level__item--value {
+  margin-right: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.lives__item--count,
+.level__item--count {
+  justify-content: center;
+  font-weight: bold;
+  color: red;
+}
+
+.lives__item--text,
+.lives__item--value,
+.level__item--text,
+.level__item--value {
+  font-size: 0.7rem;
+}
+
+.lives__item--value,
+.level__item--value {
+  width: 100%;
+}
+
+@media (max-width: 700px) {
+  .data__lives,
+  .data__level {
+    height: 200px;
+  }
+}

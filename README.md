@@ -1,2 +1,2 @@
-# yauhendavidovich-JS2020Q3
-Private repository for @yauhendavidovich
+# covid-dashboard
+COVID-19 Task RSShool
