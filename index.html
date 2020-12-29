@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>Presentation</title>
+
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/reveal.css" />
+  <link rel="stylesheet" href="css/slides.css" />
+  <link rel="stylesheet" href="css/theme/black.css" />
+
+  <!-- Theme used for syntax highlighting of code -->
+  <link rel="stylesheet" href="lib/css/monokai.css" />
+
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = window.location.search.match(/print-pdf/gi) ?
+      "css/print/pdf.css" :
+      "css/print/paper.css";
+    document.getElementsByTagName("head")[0].appendChild(link);
+  </script>
+</head>
+
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <p class="title title_large">OWASP TOP-10</p>
+        <p class="subtitle">RSSchool</p>
+        <p class="text">Yauhen Davidovich</p>
+      </section>
+
+      <section>
+        <img data-src="./img/top10.png" />
+      </section>
+      <section>
+        <section><img data-src="./img/93motivated.png" /></section>
+      </section>
+
+      <section>
+        <p class="title">Injections</p>
+        <img data-src="./img/sql-injection-font.png" />
+      </section>
+      <section>
+        <p class="title">Broken Authentication</p>
+        <img data-src="./img/broken-authentication.png" />
+      </section>
+
+      <section>
+        <p class="title">Sensitive Data Exposure</p>
+        <section><img data-src="./img/Screenshot_sensetivedata.png" /> </section>
+        <section class="text">Data Classification</section>
+        <section class="text">Encryption of transmitted data</section>
+        <section class="text">Encryption of stored data</section>
+      </section>
+
+      <section>
+        <p class="title">XML External Entities (XXE)</p>
+        <section><img data-src="./img/xml.png" /></section>        
+        <section>
+          <p class="subtitle">Types of attack XXE:</p>
+          <li class="fragment text_small">Using XXE to extract files where the external entity that includes the file
+            content
+            is detected and returned in the application response.</li>
+          <li class="fragment text_small">Using XXE to extract files where the external entity that includes the file
+            content
+            is detected and returned in the application response.</li>
+          <li class="fragment text_small">Using XXE to blindly retrieve information through a control channel where
+            sensitive data is transferred from the application server to a system managed by an attacker.</li>
+          <li class="fragment text_small">Using Blind XXE to retrieve data from error messages when an attacker can
+            trigger an error message containing the required information.</li>
+            <li class="fragment text_small">Using XXE to extract files</li>
+        </section>
+      </section>
+
+      <section>
+        <p class="title">Broken Access Control</p>
+        <div class="fragment">
+          <pre><code data-trim data-noescape>
+            mysite.ru/read_message.jsp?id=123654 
+          </code></pre>
+        </div>
+      </section>
+
+      <section>
+        <p class="title">Security Misconfiguration.</p>
+        <section><img data-src="./img/99password_cr.png" /></section>
+        <section><img data-src="./img/99password_cr2.png" /></section>
+      </section>
+
+      <section>
+        <p class="title">Cross-Site Scripting XSS</p>
+        <section><img data-src="./img/xss.png" /></section>
+      </section>
+
+      <section>
+        <p class="title">Insecure Deserialization</p>
+        <section><img data-src="./img/insecure_dec.png"/></section>
+        
+      </section>
+
+      <section>
+        <p class="subtitle">Using Components with Known Vulnerabilities</p>
+        <section><img data-src="./img/known.png"/></section>
+      </section>
+
+      <section>
+        <p class="title">Insufficient Logging & Monitoring</p>
+        <section><img data-src="./img/Logging.png"/></section>
+      </section>
+      <section><img data-src="./img/the-end-6.gif"></section>
+
+
+    </div>
+  </div>
+
+  <script src="js/reveal.js"></script>
+
+  <script>
+    // More info about config & dependencies:
+    // - https://github.com/hakimel/reveal.js#configuration
+    // - https://github.com/hakimel/reveal.js#dependencies
+    Reveal.initialize({
+      hash: true,
+      dependencies: [{
+          src: "plugin/markdown/marked.js",
+        },
+        {
+          src: "plugin/markdown/markdown.js",
+        },
+        {
+          src: "plugin/highlight/highlight.js",
+        },
+        {
+          src: "plugin/notes/notes.js",
+          async: true,
+        },
+      ],
+    });
+  </script>
+</body>
+
+</html>

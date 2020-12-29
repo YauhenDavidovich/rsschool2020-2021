@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="application" />
+    <meta name="author" lang="en" content="Yauhen Davidovich" />
+    <link href="https://fonts.googleapis.com/css?family=Baloo+2&display=swap" rel="stylesheet">
+    <title>Movie search</title>
+    <link rel="stylesheet" href="style.css" />
+
+<link href="style.css" rel="stylesheet"></head>
+
+<body>
+    <div class="wrapper">
+        <header class="header-container">
+            <h2>MovieSearch</h2>
+        </header>
+        <div class="search-field">
+            <form class="search" name='search' onsubmit="return false">
+                <input type="text" class="search__input" placeholder="Your search request"
+                    autocomplete="off" autofocus="" name='film'>
+                    <label for="search" class="icon-button find-button"></label>
+                <div class="search__button-container">
+                    <button id="search__button" class="button search__button" data-do="search">Search</button>
+                </div>
+                <button class="icon-button clear-button" data-do="clear" id="reset__button"></button>
+            </form>
+        </div>
+        <div class="slider" id="slider"></div>
+    </div>
+
+        <footer class="footer-container">
+
+            <div class="copyright">
+                RS School 2020q1
+            </div>
+            <div class="git-link"><a href="https://github.com/yauhendavidovich" class="git-link__text">© Yauhen
+                    Davidovich</a> </div>
+
+        </footer>
+    
+<script type="text/javascript" src="index.js"></script></body>
+
+</html>

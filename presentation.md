@@ -1,0 +1,3 @@
+     - YouTube video - https://youtu.be/
+     - Reveal presentation - https://yauhendavidovich-owasp-top-ten.netlify.app/
+     - Transcript of your presentation - https://docs.google.com/

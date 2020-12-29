@@ -1,0 +1,33 @@
+.header {
+    font-size: 25px;
+}
+
+.reveal p {
+    margin: 20px 0;
+    line-height: 1.3;
+}
+
+.title_large {
+    font-size: 100px;
+}
+
+.title {
+    color: #3EB8B8;
+    font-size: 80px;
+    text-align: center;    
+}
+
+.subtitle {
+    color: #95DCDC;
+    font-size: 60px;
+}
+
+.text {
+    color: #EEF8FB;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.text_small {
+    font-size: 30px;
+}
